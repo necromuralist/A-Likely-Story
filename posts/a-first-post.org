@@ -1,0 +1,15 @@
+#+BEGIN_COMMENT
+.. title: A first post
+.. slug: a-first-post
+.. date: 2019-06-05 15:53:34 UTC-07:00
+.. tags: infrastructure,testing
+.. category: Testing
+.. link: 
+.. description: Testing the setup with a first post
+.. type: text
+.. status: 
+.. updated: 
+
+#+END_COMMENT
+* In the Beginning
+  This is a test of the nikola setup.

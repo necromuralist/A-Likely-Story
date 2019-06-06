@@ -1,0 +1,23 @@
+#+BEGIN_COMMENT
+.. title: The Pox Probabilities
+.. slug: the-pox-probabilities
+.. date: 2019-06-05 17:17:38 UTC-07:00
+.. tags: bayes,notes
+.. category: Bayes Theorem
+.. link: 
+.. description: An example of Bayes' Theorem using pox.
+.. type: text
+.. status: 
+.. updated: 
+
+#+END_COMMENT
+#+OPTIONS: ^:{}
+#+OPTIONS: H:5
+#+TOC: headlines 2
+#+BEGIN_SRC ipython :session pox :results none :exports none
+%load_ext autoreload
+%autoreload 2
+#+END_SRC
+* Beginning
+* Middle
+* End

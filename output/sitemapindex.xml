@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_testing.xml</loc>
+  <lastmod>2019-06-05T22:54:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/infrastructure.xml</loc>
+  <lastmod>2019-06-05T22:54:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/testing.xml</loc>
+  <lastmod>2019-06-05T22:54:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/rss.xml</loc>
+  <lastmod>2019-06-05T22:54:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/sitemap.xml</loc>
+  <lastmod>2019-06-05T22:56:00Z</lastmod>
+ </sitemap>
+</sitemapindex>
