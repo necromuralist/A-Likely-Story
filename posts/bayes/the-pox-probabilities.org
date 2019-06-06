@@ -20,4 +20,13 @@
 #+END_SRC
 * Beginning
 * Middle
+** 
 * End
+** Testing
+*** Disease Object
+
+#+BEGIN_SRC ipython :session pox :results none :exports none
+# Given a disease object
+# When its prior probability is checked
+# Then it is the expected value
+#+END_SRC
