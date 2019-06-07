@@ -19,14 +19,33 @@
 %autoreload 2
 #+END_SRC
 * Beginning
+** Imports
+*** PyPi
+#+begin_src ipython :session pox :results none
+from expects import expect
+#+end_src
 * Middle
-** 
+** The Disease
+#+BEGIN_SRC ipython :session pox :results none
+class Disease:
+    """something to hold disease probabilities
+    
+    Args:
+     prior_probabilty: probability of having this disease
+    """
+    def __init__(self):
+        self.prior_probability = None
+        return
+#+END_SRC
 * End
 ** Testing
 *** Disease Object
 
-#+BEGIN_SRC ipython :session pox :results none :exports none
+#+BEGIN_SRC ipython :session pox :results none
 # Given a disease object
+disease = Disease()
 # When its prior probability is checked
+prior = disease.prior_probability
 # Then it is the expected value
+expect(prior).to(equal(expected.prior))
 #+END_SRC
