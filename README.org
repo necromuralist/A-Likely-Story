@@ -1,0 +1,2 @@
+#+TITLE: A Likely Story
+These are notes from my readings about probability and statistics.
