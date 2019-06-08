@@ -34,11 +34,6 @@ from expects import (
 * Middle
 ** The Classes
 #+begin_src plantuml :file ../../files/posts/bayes/the-pox-probabilities/pox_uml.png
-skinparam class { 
-  BackgroundColor White 
-  BorderColor Gray
-}
-
 Diagnosis o-- Disease
 Diagnosis : Disease disease_1
 Diagnosis : Disease disease_2
@@ -63,14 +58,12 @@ class Disease:
     """something to hold disease probabilities
     
     Args:
-     name: identifier for the disease
      prior_probabilty: probability of having this disease
      likelihood: likelihood of symptoms given this disease
      marginal_likelihood: probability of having the symptoms
     """
-    def __init__(self, name: str, prior_probability: float, likelihood: float,
+    def __init__(self, prior_probability: float, likelihood: float,
                  marginal_likelihood: float) -> None:
-        self.name = name
         self.prior_probability = prior_probability
         self.likelihood = likelihood
         self.marginal_likelihood = marginal_likelihood
@@ -87,11 +80,10 @@ Spots = Namespace(
 #+end_src
 *** SmallPox
 #+begin_src ipython :session pox :results none
-SmallPox = Namespace(
+SmallpoxProbabilities = Namespace(
     probability=0.001,
     probability_of_spots_given_smallpox=0.9,
     probability_of_spots=Spots.probability,
-    name="smallpox",
 )
 #+end_src
 * End
@@ -101,27 +93,20 @@ SmallPox = Namespace(
 #+BEGIN_SRC ipython :session pox :results none
 # Given a disease object
 expected = Namespace(
-    prior=SmallPox.probability,
-    likelihood=SmallPox.probability_of_spots_given_smallpox,
-    marginal_likelihood = SmallPox.probability_of_spots,
-    name = SmallPox.name,
+    prior=SmallpoxProbabilities.probability,
+    likelihood=SmallpoxProbabilities.probability_of_spots_given_smallpox,
+    marginal_likelihood = SmallpoxProbabilities.probability_of_spots,
 )
-disease = Disease(prior_probability=expected.prior, 
-                  likelihood=expected.likelihood, 
-                  marginal_likelihood=expected.marginal_likelihood, 
-                  name=expected.name)
+disease = Disease(expected.prior, expected.likelihood, expected.marginal_likelihood)
 # When its prior probability is checked
 prior = disease.prior_probability
 # And its likelihood is checked
 likelihood = disease.likelihood
 # And its marginal likelihood is checked
 marginal_likelihood = disease.marginal_likelihood
-# And its name is checked
-name = disease.name
 
 # Then it has the expected values
 expect(prior).to(equal(expected.prior))
 expect(likelihood).to(equal(expected.likelihood))
 expect(marginal_likelihood).to(equal(expected.marginal_likelihood))
-expect(name).to(equal(expected.name))
 #+END_SRC

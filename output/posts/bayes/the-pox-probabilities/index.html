@@ -2,18 +2,27 @@
 <html lang="en" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 <head>
 <meta charset="utf-8">
-<meta content="Notes on probability and statistics." name="description">
+<meta content="An example of Bayes' Theorem using pox." name="description">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>A Likely Story</title>
-<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<title>The Pox Probabilities | A Likely Story</title>
+<link href="../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta content="#5670d4" name="theme-color">
 <meta content="Nikola (getnikola.com)" name="generator">
-<link href="rss.xml" rel="alternate" title="RSS" type="application/rss+xml">
-<link href="https://necromuralist.github.io/A-Likely-Story/" rel="canonical"><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+<link href="../../../rss.xml" rel="alternate" title="RSS" type="application/rss+xml">
+<link href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/" rel="canonical"><!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]-->
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
-<link href="posts/bayes/the-pox-probabilities/" rel="prefetch" type="text/html">
+<meta content="Cloistered Monkey" name="author">
+<link href="../../a-first-post/" rel="prev" title="A first post" type="text/html">
+<meta content="A Likely Story" property="og:site_name">
+<meta content="The Pox Probabilities" property="og:title">
+<meta content="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/" property="og:url">
+<meta content="An example of Bayes' Theorem using pox." property="og:description">
+<meta content="article" property="og:type">
+<meta content="2019-06-05T17:17:38-07:00" property="article:published_time">
+<meta content="bayes" property="article:tag">
+<meta content="notes" property="article:tag">
 </head>
 <body>
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> <!-- Menubar -->
@@ -22,52 +31,54 @@
  <a class="navbar-brand" href="https://necromuralist.github.io/A-Likely-Story/"><span id="blog-title">A Likely Story</span></a> <button aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
 <div class="collapse navbar-collapse" id="bs-navbar">
 <ul class="navbar-nav mr-auto">
-<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
-<li class="nav-item"><a class="nav-link" href="categories/">Tags</a></li>
-<li class="nav-item"><a class="nav-link" href="rss.xml">RSS feed</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../archive.html">Archive</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../categories/">Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="../../../rss.xml">RSS feed</a></li>
 <li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pages</a>
-<div class="dropdown-menu"><a class="dropdown-item active" href=".">Cloistered Monkey <span class="sr-only">(active)</span></a></div>
+<div class="dropdown-menu"><a class="dropdown-item" href="https://necromuralist.github.io/">Cloistered Monkey</a></div>
 </li>
 </ul>
 <!-- DuckDuckGo custom search -->
 <form action="https://duckduckgo.com/" class="navbar-form pull-left" id="search" method="get" name="search"><input name="sites" type="hidden" value="https://necromuralist.github.io/A-Likely-Story/"><input name="k8" type="hidden" value="#444444"><input name="k9" type="hidden" value="#D51920"><input name="kt" type="hidden" value="h"><input class="span2" maxlength="255" name="q" placeholder="Search…" type="text"><input style="visibility: hidden;display:none" type="submit" value="DuckDuckGo Search"></form>
 <!-- End of custom search -->
-<ul class="navbar-nav navbar-right"></ul>
+<ul class="navbar-nav navbar-right">
+<li class="nav-item"><a class="nav-link" href="index.org" id="sourcelink">Source</a></li>
+</ul>
 </div>
 <!-- /.navbar-collapse --></div>
 <!-- /.container --></nav>
 <!-- End of Menubar -->
 <div class="container" id="content" role="main">
 <div class="body-content"><!--Body content-->
-<div class="postindex">
-<article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article">
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article">
 <header>
-<h1 class="p-name entry-title"><a class="u-url" href="posts/bayes/the-pox-probabilities/">The Pox Probabilities</a></h1>
+<h1 class="p-name entry-title" itemprop="headline name"><a class="u-url" href=".">The Pox Probabilities</a></h1>
 <div class="metadata">
 <p class="byline author vcard"><span class="byline-name fn" itemprop="author">Cloistered Monkey</span></p>
-<p class="dateline"><a href="posts/bayes/the-pox-probabilities/" rel="bookmark"><time class="published dt-published" datetime="2019-06-05T17:17:38-07:00" itemprop="datePublished" title="2019-06-05 17:17">2019-06-05 17:17</time></a></p>
+<p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2019-06-05T17:17:38-07:00" itemprop="datePublished" title="2019-06-05 17:17">2019-06-05 17:17</time></a></p>
+<p class="sourceline"><a class="sourcelink" href="index.org">Source</a></p>
 </div>
 </header>
-<div class="e-content entry-content">
+<div class="e-content entry-content" itemprop="articleBody text">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#orgc245c89">Beginning</a>
+<li><a href="#orgc245c89">Beginning</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org5b4f429">Imports</a></li>
+<li><a href="#org5b4f429">Imports</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#orgd73a49e">Middle</a>
+<li><a href="#orgd73a49e">Middle</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org3d67d48">The Classes</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org0f117b2">The Disease</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org54c5222">Probabilities</a></li>
+<li><a href="#org3d67d48">The Classes</a></li>
+<li><a href="#org0f117b2">The Disease</a></li>
+<li><a href="#org54c5222">Probabilities</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#orga3d0890">End</a>
+<li><a href="#orga3d0890">End</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org67827c9">Testing</a></li>
+<li><a href="#org67827c9">Testing</a></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +131,7 @@ Disease : float posterior_probability
 Disease : string name
 </pre></div>
 <div class="figure">
-<p><img alt="pox_uml.png" src="posts/bayes/the-pox-probabilities/pox_uml.png"></p>
+<p><img alt="pox_uml.png" src="pox_uml.png"></p>
 </div>
 </div>
 </div>
@@ -207,30 +218,23 @@ expect(marginal_likelihood).to(equal(expected.marginal_likelihood))
 </div>
 </div>
 </div>
+<aside class="postpromonav">
+<nav>
+<ul class="tags" itemprop="keywords">
+<li><a class="tag p-category" href="../../../categories/bayes/" rel="tag">bayes</a></li>
+<li><a class="tag p-category" href="../../../categories/notes/" rel="tag">notes</a></li>
+</ul>
+<ul class="pager hidden-print">
+<li class="previous"><a href="../../a-first-post/" rel="prev" title="A first post">Previous post</a></li>
+</ul>
+</nav>
+</aside>
 </article>
-<article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article">
-<header>
-<h1 class="p-name entry-title"><a class="u-url" href="posts/a-first-post/">A first post</a></h1>
-<div class="metadata">
-<p class="byline author vcard"><span class="byline-name fn" itemprop="author">Cloistered Monkey</span></p>
-<p class="dateline"><a href="posts/a-first-post/" rel="bookmark"><time class="published dt-published" datetime="2019-06-05T15:53:34-07:00" itemprop="datePublished" title="2019-06-05 15:53">2019-06-05 15:53</time></a></p>
-</div>
-</header>
-<div class="e-content entry-content">
-<div class="outline-2" id="outline-container-orgae4b442">
-<h2 id="orgae4b442">In the Beginning</h2>
-<div class="outline-text-2" id="text-orgae4b442">
-<p>This is a test of the nikola setup.</p>
-</div>
-</div>
-</div>
-</article>
-</div>
 <!--End of body content-->
 <footer id="footer">Contents © 2019 <a href="mailto:necromuralist@protonmail.com">Cloistered Monkey</a> - Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></footer>
 </div>
 </div>
-<script src="assets/js/all-nocdn.js"></script>
+<script src="../../../assets/js/all-nocdn.js"></script>
 <script>
 
     baguetteBox.run('div#content', {
