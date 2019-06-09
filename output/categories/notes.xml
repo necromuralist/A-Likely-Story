@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description>Notes on probability and statistics.</description><atom:link href="https://necromuralist.github.io/A-Likely-Story/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Fri, 07 Jun 2019 20:34:10 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about notes)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/notes.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Fri, 07 Jun 2019 20:34:10 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
@@ -161,11 +161,4 @@ expect(marginal_likelihood).to(equal(expected.marginal_likelihood))
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description><category>bayes</category><category>notes</category><guid>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</guid><pubDate>Thu, 06 Jun 2019 00:17:38 GMT</pubDate></item><item><title>A first post</title><link>https://necromuralist.github.io/A-Likely-Story/posts/a-first-post/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="outline-container-orgae4b442" class="outline-2"&gt;
-&lt;h2 id="orgae4b442"&gt;In the Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgae4b442"&gt;
-&lt;p&gt;
-This is a test of the nikola setup.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description><category>infrastructure</category><category>testing</category><guid>https://necromuralist.github.io/A-Likely-Story/posts/a-first-post/</guid><pubDate>Wed, 05 Jun 2019 22:53:34 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;</description><category>bayes</category><category>notes</category><guid>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</guid><pubDate>Thu, 06 Jun 2019 00:17:38 GMT</pubDate></item></channel></rss>
