@@ -19,7 +19,7 @@
 %autoreload 2
 #+END_SRC
 * Beginning
-  This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or small pox. It's an example from the book /Bayes' Rule/ (see below).
+  This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book /Bayes' Rule/ (see below).
 ** Imports
 *** Python
 #+begin_src python :session pox :results none
@@ -199,30 +199,29 @@ class Diagnosis:
 #+end_src
 ** Probabilities
 *** Spots
-    The spots are the symptom, and the probability is the number of people in the population with spots (for any disease) divided by the total population.
+    The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.
 
 #+begin_src python :session pox :results none
 Spots = Namespace(
     probability=0.081
 )
 #+end_src
-*** SmallPox
-    These are the probabililities for smallpox so we can use Bayes' Theorem.
+*** Measles
+    These are the probabililities for measles so we can use Bayes' Theorem.
 \[
-p(smallpox| spots) = \frac{p(spots|smallpox)p(smallpox)}{p(spots)}
+p(measles| spots) = \frac{p(spots|measles)(measles)}{p(spots)}
 \]
 
 #+begin_src python :session pox :results none
-SmallPox = Namespace(
-    probability=0.001,
-    probability_of_spots_given_smallpox=0.9,
+Measles = Namespace(
+    probability=2.9e-06,
+    probability_of_spots_given_measles=0.9,
     probability_of_spots=Spots.probability,
-    name="Small Pox",
-    posterior = 0.011111,
+    name="Measles",
 )
 #+end_src
 
-It should be noted that the probability of getting smallpox nowadays is pretty much zero, not 0.001.
+The =probability= is an estimate of the fraction of the population that gets measles in the United States per year. This turns /really/ small, even though 2019 had the most cases in a decade (981).
 *** Chicken Pox
     And here's the probabilities and equation for chicken pox.
 
@@ -232,35 +231,35 @@ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)}
 
 #+begin_src python :session pox :results none
 ChickenPox = Namespace(
-    probability = 0.1,
+    probability = 0.001,
     probability_of_spots_given_chickenpox = 0.8,
     probability_of_spots = Spots.probability,
     name = "Chicken Pox"
 )
 #+end_src
 
-As with smallpox, the probability here is exagerrated, I couldn't find an exact number, but the CDC says there are fewer than 350,000 cases a year, so the rate in the United States is about 0.001, the rate we're using for small pox. It might have been close to 10% before vaccines came out in 1995, but it appears to be on the decline.
+I don't really know the probability that you'll get spots given each disease. Now that we have vaccines for both of them, though, they appear to be quite rare.
 *** Diseases
     I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.
 #+begin_src python :session pox :results none
 class Poxes:
     def __init__(self, probability_of_spots=0.081) -> None:
-        self._small_pox = None
+        self._measles = None
         self._chicken_pox = None
         self.probability_of_spots = probability_of_spots
         self._diagnosis = None
         return
     
     @property
-    def small_pox(self) -> Disease:
-        """Disease with small-pox probabilities"""
-        if self._small_pox is None:
-            self._small_pox = Disease(
-                prior_probability=SmallPox.probability, 
-                likelihood=SmallPox.probability_of_spots_given_smallpox, 
+    def measles(self) -> Disease:
+        """Disease with measles probabilities"""
+        if self._measles is None:
+            self._measles = Disease(
+                prior_probability=Measles.probability, 
+                likelihood=Measles.probability_of_spots_given_measles,
                 marginal_likelihood=self.probability_of_spots, 
-                name=SmallPox.name)
-        return self._small_pox
+                name=Measles.name)
+        return self._measles
 
     @property
     def chicken_pox(self) -> Disease:
@@ -279,7 +278,7 @@ class Poxes:
         """Diagnosis for chicken pox and smallpox"""
         if self._diagnosis is None:
             self._diagnosis = Diagnosis(
-                self.small_pox,
+                self.measles,
                 self.chicken_pox,
             )
         return self._diagnosis
@@ -287,17 +286,17 @@ class Poxes:
 * End
 ** Testing
 *** The Disease
-**** Smallpox
+**** Measles
 #+BEGIN_SRC python :session pox :results none
 # Given a disease object
-def test_small_pox():
+def test_measles():
     expected = Namespace(
-        prior=SmallPox.probability,
-        likelihood=SmallPox.probability_of_spots_given_smallpox,
-        marginal_likelihood = SmallPox.probability_of_spots,
-        name = SmallPox.name,
-        likelihood_times_prior = 0.0009,
-        posterior = 0.01111
+        prior=Measles.probability,
+        likelihood=Measles.probability_of_spots_given_measles,
+        marginal_likelihood = Measles.probability_of_spots,
+        name = Measles.name,
+        likelihood_times_prior = 2.61e-06,
+        posterior = 3.222e-05
     )
     disease = Disease(prior_probability=expected.prior, 
                       likelihood=expected.likelihood, 
@@ -408,22 +407,22 @@ def test_zero_likelihood():
 **** Getting Diseases Back
     The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.
 #+begin_src python :session pox :results none
-def test_small_pox_retrieval():
+def test_measles_retrieval():
     # Given a Diagnosis with chicken pox and small pox
     diseases = Poxes()
     diagnosis = diseases.diagnosis
-    # When the small pox is retrieved
-    actual = diagnosis[diseases.small_pox.name]
+    # When the measles is retrieved
+    actual = diagnosis[diseases.measles.name]
     # Then it has the correct posterior probability
-    expect(actual).to(be(diseases.small_pox))
+    expect(actual).to(be(diseases.measles))
     return
 #+end_src
 **** Finding the Most Likely Disease
 The diagnosis should also decide which one is the more likely disease.
 #+begin_src python :session pox :results none
-def test_small_or_chicken_pox():
+def test_measles_or_chicken_pox():
     diseases = Poxes()
-    # Given a diagnosis with small_pox and chicken_pox
+    # Given a diagnosis with measles and chicken_pox
     diagnosis = diseases.diagnosis
     # When the best-guess is retrieved
     guess = diagnosis.most_likely
@@ -468,7 +467,7 @@ def test_pox_odds_ratio():
     actual = diagnostic.likeliest_posterior_ratio
     # then it is the ratio of the larger probability to the smaller
     expected = (diseases.chicken_pox.posterior_probability/
-                diseases.small_pox.posterior_probability)
+                diseases.measles.posterior_probability)
     expect(isclose(actual, expected, abs_tol=1e-3)).to(be_true)
     return
 #+end_src
@@ -502,13 +501,13 @@ def test_posterior_ratio(prior_1, likelihood_1, marginal_1, name_1,
 #+end_src
 *** Run them 
 #+begin_src python :session pox :results none
-test_small_pox()
+test_measles()
 test_disease()
 test_zero_marginal_likelihood()
 test_zero_prior()
 test_zero_likelihood()
-test_small_pox_retrieval()
-test_small_or_chicken_pox()
+test_measles_retrieval()
+test_measles_or_chicken_pox()
 test_best_guess()
 test_pox_odds_ratio()
 test_posterior_ratio()
@@ -521,11 +520,11 @@ print(str(Poxes().diagnosis))
 #+end_src
 
 #+RESULTS:
-: Disease 1: Small Pox, Posterior Probability: 0.011
+: Disease 1: Measles, Posterior Probability: 0.000
 : Disease 2: Chicken Pox, Posterior Probability: 0.988
-: Most Likely: Chicken Pox, Posterior Ratio: 88.889
+: Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
 
-So Chicken Pox is about 89 times more likely to be the reason for the spots than small pox.
+So Chicken Pox is about thirty-thousand times more likely to be the reason for the spots than Measles (unless you live in the Pacific Northwest, perhaps).
 
 ** Source
 1. Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p. 

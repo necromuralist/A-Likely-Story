@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about Bayes Theorem)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Mon, 10 Jun 2019 02:19:00 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about Bayes Theorem)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Mon, 10 Jun 2019 02:43:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgf27c6a9"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org68925d4"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgde3c34b"&gt;Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org5011318"&gt;Constants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org43f181c"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org315405e"&gt;Constants&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org2418cb0"&gt;Middle&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org4f60d90"&gt;Middle&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org88ed282"&gt;The Classes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgcbdd784"&gt;Probabilities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org63924f5"&gt;The Classes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org970f772"&gt;Probabilities&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org57aecdf"&gt;End&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org4422b6b"&gt;End&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgd80ecdb"&gt;Testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org888b029"&gt;Inspecting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org0a5ca06"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org8b9e67e"&gt;Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org0709a97"&gt;Inspecting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org3daa53d"&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgf27c6a9" class="outline-2"&gt;
-&lt;h2 id="orgf27c6a9"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgf27c6a9"&gt;
+&lt;div id="outline-container-org68925d4" class="outline-2"&gt;
+&lt;h2 id="org68925d4"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org68925d4"&gt;
 &lt;p&gt;
-This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or small pox. It's an example from the book &lt;i&gt;Bayes' Rule&lt;/i&gt; (see below).
+This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book &lt;i&gt;Bayes' Rule&lt;/i&gt; (see below).
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgde3c34b" class="outline-3"&gt;
-&lt;h3 id="orgde3c34b"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgde3c34b"&gt;
+&lt;div id="outline-container-org43f181c" class="outline-3"&gt;
+&lt;h3 id="org43f181c"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org43f181c"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgafd961e" class="outline-4"&gt;
-&lt;h4 id="orgafd961e"&gt;Python&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgafd961e"&gt;
+&lt;div id="outline-container-org59ca48f" class="outline-4"&gt;
+&lt;h4 id="org59ca48f"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org59ca48f"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;isclose&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga932f39" class="outline-4"&gt;
-&lt;h4 id="orga932f39"&gt;PyPi&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga932f39"&gt;
+&lt;div id="outline-container-org51b8350" class="outline-4"&gt;
+&lt;h4 id="org51b8350"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org51b8350"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;hypothesis&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;hypothesis.strategies&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;floats&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;expects&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -61,9 +61,9 @@ This is a look at calculating which is more likely for a patient with spots on h
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org5011318" class="outline-3"&gt;
-&lt;h3 id="org5011318"&gt;Constants&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org5011318"&gt;
+&lt;div id="outline-container-org315405e" class="outline-3"&gt;
+&lt;h3 id="org315405e"&gt;Constants&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org315405e"&gt;
 &lt;p&gt;
 Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the &lt;code&gt;hypothesis&lt;/code&gt; testing.
 &lt;/p&gt;
@@ -72,13 +72,13 @@ Since I'm multiplying floats the numbers can't be too small or python will inter
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org2418cb0" class="outline-2"&gt;
-&lt;h2 id="org2418cb0"&gt;Middle&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org2418cb0"&gt;
+&lt;div id="outline-container-org4f60d90" class="outline-2"&gt;
+&lt;h2 id="org4f60d90"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org4f60d90"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org88ed282" class="outline-3"&gt;
-&lt;h3 id="org88ed282"&gt;The Classes&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org88ed282"&gt;
+&lt;div id="outline-container-org63924f5" class="outline-3"&gt;
+&lt;h3 id="org63924f5"&gt;The Classes&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org63924f5"&gt;
 
 &lt;div class="figure"&gt;
 &lt;p&gt;&lt;img src="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/pox_uml.png" alt="pox_uml.png"&gt;
@@ -86,9 +86,9 @@ Since I'm multiplying floats the numbers can't be too small or python will inter
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org48d0d0a" class="outline-4"&gt;
-&lt;h4 id="org48d0d0a"&gt;The Disease&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org48d0d0a"&gt;
+&lt;div id="outline-container-org1e96c2d" class="outline-4"&gt;
+&lt;h4 id="org1e96c2d"&gt;The Disease&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org1e96c2d"&gt;
 &lt;p&gt;
 The &lt;code&gt;Disease&lt;/code&gt; knows its own probabilities and name and whether it is more likely than another disease or not.
 &lt;/p&gt;
@@ -157,9 +157,9 @@ The &lt;code&gt;Disease&lt;/code&gt; knows its own probabilities and name and wh
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org9d42584" class="outline-4"&gt;
-&lt;h4 id="org9d42584"&gt;The Diagnosis&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org9d42584"&gt;
+&lt;div id="outline-container-org565dcbf" class="outline-4"&gt;
+&lt;h4 id="org565dcbf"&gt;The Diagnosis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org565dcbf"&gt;
 &lt;p&gt;
 The diagnosis holds two diseases and decides which is more likely.
 &lt;/p&gt;
@@ -223,15 +223,15 @@ The diagnosis holds two diseases and decides which is more likely.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcbdd784" class="outline-3"&gt;
-&lt;h3 id="orgcbdd784"&gt;Probabilities&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgcbdd784"&gt;
+&lt;div id="outline-container-org970f772" class="outline-3"&gt;
+&lt;h3 id="org970f772"&gt;Probabilities&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org970f772"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgacec436" class="outline-4"&gt;
-&lt;h4 id="orgacec436"&gt;Spots&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgacec436"&gt;
+&lt;div id="outline-container-orgbcf29d3" class="outline-4"&gt;
+&lt;h4 id="orgbcf29d3"&gt;Spots&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgbcf29d3"&gt;
 &lt;p&gt;
-The spots are the symptom, and the probability is the number of people in the population with spots (for any disease) divided by the total population.
+The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.
 &lt;/p&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Spots&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -240,33 +240,32 @@ The spots are the symptom, and the probability is the number of people in the po
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd54d29d" class="outline-4"&gt;
-&lt;h4 id="orgd54d29d"&gt;SmallPox&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgd54d29d"&gt;
+&lt;div id="outline-container-org804d564" class="outline-4"&gt;
+&lt;h4 id="org804d564"&gt;Measles&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org804d564"&gt;
 &lt;p&gt;
-These are the probabililities for smallpox so we can use Bayes' Theorem.
+These are the probabililities for measles so we can use Bayes' Theorem.
 \[
-p(smallpox| spots) = \frac{p(spots|smallpox)p(smallpox)}{p(spots)}
+p(measles| spots) = \frac{p(spots|measles)(measles)}{p(spots)}
 \]
 &lt;/p&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.001&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;probability_of_spots_given_smallpox&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;2.9e-06&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;probability_of_spots_given_measles&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;probability_of_spots&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Spots&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"Small Pox"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;posterior&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.011111&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"Measles"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;
-It should be noted that the probability of getting smallpox nowadays is pretty much zero, not 0.001.
+The &lt;code&gt;probability&lt;/code&gt; is an estimate of the fraction of the population that gets measles in the United States per year. This turns &lt;i&gt;really&lt;/i&gt; small, even though 2019 had the most cases in a decade (981).
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgf9e31b5" class="outline-4"&gt;
-&lt;h4 id="orgf9e31b5"&gt;Chicken Pox&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgf9e31b5"&gt;
+&lt;div id="outline-container-orgd9a1279" class="outline-4"&gt;
+&lt;h4 id="orgd9a1279"&gt;Chicken Pox&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd9a1279"&gt;
 &lt;p&gt;
 And here's the probabilities and equation for chicken pox.
 &lt;/p&gt;
@@ -278,7 +277,7 @@ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)}
 &lt;/p&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ChickenPox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;probability&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.001&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;probability_of_spots_given_chickenpox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;probability_of_spots&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Spots&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Chicken Pox"&lt;/span&gt;
@@ -286,34 +285,34 @@ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)}
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;
-As with smallpox, the probability here is exagerrated, I couldn't find an exact number, but the CDC says there are fewer than 350,000 cases a year, so the rate in the United States is about 0.001, the rate we're using for small pox. It might have been close to 10% before vaccines came out in 1995, but it appears to be on the decline.
+I don't really know the probability that you'll get spots given each disease. Now that we have vaccines for both of them, though, they appear to be quite rare.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd7da78d" class="outline-4"&gt;
-&lt;h4 id="orgd7da78d"&gt;Diseases&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgd7da78d"&gt;
+&lt;div id="outline-container-org3106248" class="outline-4"&gt;
+&lt;h4 id="org3106248"&gt;Diseases&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org3106248"&gt;
 &lt;p&gt;
 I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.
 &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Poxes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;probability_of_spots&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.081&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-	&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_small_pox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+	&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_measles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 	&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_chicken_pox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 	&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;probability_of_spots&lt;/span&gt;
 	&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_diagnosis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 	&lt;span class="k"&gt;return&lt;/span&gt;
 
     &lt;span class="nd"&gt;@property&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;small_pox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-	&lt;span class="sd"&gt;"""Disease with small-pox probabilities"""&lt;/span&gt;
-	&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_small_pox&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-	    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_small_pox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-		&lt;span class="n"&gt;prior_probability&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-		&lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots_given_smallpox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;measles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+	&lt;span class="sd"&gt;"""Disease with measles probabilities"""&lt;/span&gt;
+	&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_measles&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+	    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_measles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+		&lt;span class="n"&gt;prior_probability&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+		&lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots_given_measles&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 		&lt;span class="n"&gt;marginal_likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-		&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-	&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_small_pox&lt;/span&gt;
+		&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+	&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_measles&lt;/span&gt;
 
     &lt;span class="nd"&gt;@property&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;chicken_pox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -332,7 +331,7 @@ I was re-using the disease instances, but I'm changing the definitions as I go, 
 	&lt;span class="sd"&gt;"""Diagnosis for chicken pox and smallpox"""&lt;/span&gt;
 	&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_diagnosis&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 	    &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_diagnosis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Diagnosis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-		&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;small_pox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+		&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;measles&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 		&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chicken_pox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 	    &lt;span class="p"&gt;)&lt;/span&gt;
 	&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_diagnosis&lt;/span&gt;
@@ -341,30 +340,30 @@ I was re-using the disease instances, but I'm changing the definitions as I go, 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org57aecdf" class="outline-2"&gt;
-&lt;h2 id="org57aecdf"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org57aecdf"&gt;
+&lt;div id="outline-container-org4422b6b" class="outline-2"&gt;
+&lt;h2 id="org4422b6b"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org4422b6b"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd80ecdb" class="outline-3"&gt;
-&lt;h3 id="orgd80ecdb"&gt;Testing&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgd80ecdb"&gt;
+&lt;div id="outline-container-org8b9e67e" class="outline-3"&gt;
+&lt;h3 id="org8b9e67e"&gt;Testing&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org8b9e67e"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org3f5fc93" class="outline-4"&gt;
-&lt;h4 id="org3f5fc93"&gt;The Disease&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org3f5fc93"&gt;
+&lt;div id="outline-container-org4094aae" class="outline-4"&gt;
+&lt;h4 id="org4094aae"&gt;The Disease&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org4094aae"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org244f95a" class="outline-5"&gt;
-&lt;h5 id="org244f95a"&gt;Smallpox&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org244f95a"&gt;
+&lt;div id="outline-container-org679efc6" class="outline-5"&gt;
+&lt;h5 id="org679efc6"&gt;Measles&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org679efc6"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Given a disease object&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_small_pox&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_measles&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;expected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-	&lt;span class="n"&gt;prior&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-	&lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots_given_smallpox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-	&lt;span class="n"&gt;marginal_likelihood&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-	&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SmallPox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-	&lt;span class="n"&gt;likelihood_times_prior&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.0009&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-	&lt;span class="n"&gt;posterior&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.01111&lt;/span&gt;
+	&lt;span class="n"&gt;prior&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots_given_measles&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;marginal_likelihood&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;probability_of_spots&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;likelihood_times_prior&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;2.61e-06&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+	&lt;span class="n"&gt;posterior&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;3.222e-05&lt;/span&gt;
     &lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;disease&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Disease&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prior_probability&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;expected&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prior&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
 		      &lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;expected&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;likelihood&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
@@ -396,9 +395,9 @@ I was re-using the disease instances, but I'm changing the definitions as I go, 
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org86b6ac6" class="outline-5"&gt;
-&lt;h5 id="org86b6ac6"&gt;Any Disease&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org86b6ac6"&gt;
+&lt;div id="outline-container-orgf4464c1" class="outline-5"&gt;
+&lt;h5 id="orgf4464c1"&gt;Any Disease&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-orgf4464c1"&gt;
 &lt;p&gt;
 Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across &lt;a href="https://hypothesis.readthedocs.io/en/latest/"&gt;Hypothesis&lt;/a&gt; and want to try it out, so I'll make a generic version.
 &lt;/p&gt;
@@ -427,20 +426,20 @@ This turned out to show that I wasn't checking division by zero cases, so I gues
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org562df52" class="outline-4"&gt;
-&lt;h4 id="org562df52"&gt;The Diagnosis&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org562df52"&gt;
+&lt;div id="outline-container-orgf702df6" class="outline-4"&gt;
+&lt;h4 id="orgf702df6"&gt;The Diagnosis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgf702df6"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga96aca1" class="outline-5"&gt;
-&lt;h5 id="orga96aca1"&gt;Blocking Infinite Probabilities&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-orga96aca1"&gt;
+&lt;div id="outline-container-org0178366" class="outline-5"&gt;
+&lt;h5 id="org0178366"&gt;Blocking Infinite Probabilities&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org0178366"&gt;
 &lt;p&gt;
 Bayes' Rule has divisions in it (either calculating the &lt;i&gt;posterior probability&lt;/i&gt; or &lt;i&gt;posterior ratio&lt;/i&gt;) so I'm going to block letting the &lt;i&gt;prior probability&lt;/i&gt; or &lt;i&gt;marginal probability&lt;/i&gt; be zero by raising an exception.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org7632c9a" class="outline-6"&gt;
-&lt;h6 id="org7632c9a"&gt;Zero Marginal Likelihood&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-org7632c9a"&gt;
+&lt;div id="outline-container-org53ef4fd" class="outline-6"&gt;
+&lt;h6 id="org53ef4fd"&gt;Zero Marginal Likelihood&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org53ef4fd"&gt;
 &lt;p&gt;
 This means the probability of the data is zero (no one has spots as a symptom of disease).
 &lt;/p&gt;
@@ -460,9 +459,9 @@ This means the probability of the data is zero (no one has spots as a symptom of
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgb9ce4f2" class="outline-6"&gt;
-&lt;h6 id="orgb9ce4f2"&gt;Zero Prior Probability&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-orgb9ce4f2"&gt;
+&lt;div id="outline-container-org860472d" class="outline-6"&gt;
+&lt;h6 id="org860472d"&gt;Zero Prior Probability&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org860472d"&gt;
 &lt;p&gt;
 This means the probability of the hypothesis is (was) zero - no one has this disease.
 &lt;/p&gt;
@@ -482,9 +481,9 @@ This means the probability of the hypothesis is (was) zero - no one has this dis
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org45a56fe" class="outline-6"&gt;
-&lt;h6 id="org45a56fe"&gt;Zero Likelihood&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-org45a56fe"&gt;
+&lt;div id="outline-container-org4fe5fab" class="outline-6"&gt;
+&lt;h6 id="org4fe5fab"&gt;Zero Likelihood&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org4fe5fab"&gt;
 &lt;p&gt;
 This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.
 &lt;/p&gt;
@@ -506,33 +505,33 @@ This means the probability of the data given the hypothesis is zero no - one wit
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orga6149a3" class="outline-5"&gt;
-&lt;h5 id="orga6149a3"&gt;Getting Diseases Back&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-orga6149a3"&gt;
+&lt;div id="outline-container-org9f58d69" class="outline-5"&gt;
+&lt;h5 id="org9f58d69"&gt;Getting Diseases Back&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org9f58d69"&gt;
 &lt;p&gt;
 The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.
 &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_small_pox_retrieval&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_measles_retrieval&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# Given a Diagnosis with chicken pox and small pox&lt;/span&gt;
     &lt;span class="n"&gt;diseases&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Poxes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;diagnosis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;diagnosis&lt;/span&gt;
-    &lt;span class="c1"&gt;# When the small pox is retrieved&lt;/span&gt;
-    &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diagnosis&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;small_pox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="c1"&gt;# When the measles is retrieved&lt;/span&gt;
+    &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diagnosis&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="c1"&gt;# Then it has the correct posterior probability&lt;/span&gt;
-    &lt;span class="n"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actual&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;small_pox&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actual&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;measles&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org2b8a62c" class="outline-5"&gt;
-&lt;h5 id="org2b8a62c"&gt;Finding the Most Likely Disease&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org2b8a62c"&gt;
+&lt;div id="outline-container-orgdf7efe3" class="outline-5"&gt;
+&lt;h5 id="orgdf7efe3"&gt;Finding the Most Likely Disease&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-orgdf7efe3"&gt;
 &lt;p&gt;
 The diagnosis should also decide which one is the more likely disease.
 &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_small_or_chicken_pox&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_measles_or_chicken_pox&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;diseases&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Poxes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="c1"&gt;# Given a diagnosis with small_pox and chicken_pox&lt;/span&gt;
+    &lt;span class="c1"&gt;# Given a diagnosis with measles and chicken_pox&lt;/span&gt;
     &lt;span class="n"&gt;diagnosis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;diagnosis&lt;/span&gt;
     &lt;span class="c1"&gt;# When the best-guess is retrieved&lt;/span&gt;
     &lt;span class="n"&gt;guess&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diagnosis&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;most_likely&lt;/span&gt;
@@ -569,9 +568,9 @@ Now generalize it with hypothesis.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org668915b" class="outline-5"&gt;
-&lt;h5 id="org668915b"&gt;The Posterior Ratio&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org668915b"&gt;
+&lt;div id="outline-container-org39ef786" class="outline-5"&gt;
+&lt;h5 id="org39ef786"&gt;The Posterior Ratio&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org39ef786"&gt;
 &lt;p&gt;
 Besides knowing the more likely outcome, we want to know how much more likely it is.
 &lt;/p&gt;
@@ -583,7 +582,7 @@ Besides knowing the more likely outcome, we want to know how much more likely it
     &lt;span class="n"&gt;actual&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;diagnostic&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;likeliest_posterior_ratio&lt;/span&gt;
     &lt;span class="c1"&gt;# then it is the ratio of the larger probability to the smaller&lt;/span&gt;
     &lt;span class="n"&gt;expected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;chicken_pox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;posterior_probability&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-		&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;small_pox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;posterior_probability&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+		&lt;span class="n"&gt;diseases&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;measles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;posterior_probability&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;isclose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actual&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expected&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abs_tol&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1e-3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;be_true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -617,16 +616,16 @@ Besides knowing the more likely outcome, we want to know how much more likely it
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org5dc1a60" class="outline-4"&gt;
-&lt;h4 id="org5dc1a60"&gt;Run them&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org5dc1a60"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_small_pox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div id="outline-container-orgd481e63" class="outline-4"&gt;
+&lt;h4 id="orgd481e63"&gt;Run them&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd481e63"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_measles&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_disease&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_zero_marginal_likelihood&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_zero_prior&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_zero_likelihood&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;test_small_pox_retrieval&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;test_small_or_chicken_pox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;test_measles_retrieval&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;test_measles_or_chicken_pox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_best_guess&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_pox_odds_ratio&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_posterior_ratio&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -634,9 +633,9 @@ Besides knowing the more likely outcome, we want to know how much more likely it
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org888b029" class="outline-3"&gt;
-&lt;h3 id="org888b029"&gt;Inspecting&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org888b029"&gt;
+&lt;div id="outline-container-org0709a97" class="outline-3"&gt;
+&lt;h3 id="org0709a97"&gt;Inspecting&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org0709a97"&gt;
 &lt;p&gt;
 While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.
 &lt;/p&gt;
@@ -645,21 +644,21 @@ While the tests sort of give us a decent sense that things are working, let's ta
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;pre class="example"&gt;
-Disease 1: Small Pox, Posterior Probability: 0.011
+Disease 1: Measles, Posterior Probability: 0.000
 Disease 2: Chicken Pox, Posterior Probability: 0.988
-Most Likely: Chicken Pox, Posterior Ratio: 88.889
+Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
 
 &lt;/pre&gt;
 
 &lt;p&gt;
-So Chicken Pox is about 89 times more likely to be the reason for the spots than small pox.
+So Chicken Pox is about thirty-thousand times more likely to be the reason for the spots than Measles (unless you live in the Pacific Northwest, perhaps).
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org0a5ca06" class="outline-3"&gt;
-&lt;h3 id="org0a5ca06"&gt;Source&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org0a5ca06"&gt;
+&lt;div id="outline-container-org3daa53d" class="outline-3"&gt;
+&lt;h3 id="org3daa53d"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org3daa53d"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
 &lt;/ol&gt;
