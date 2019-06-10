@@ -19,21 +19,40 @@
 %autoreload 2
 #+END_SRC
 * Beginning
+  This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or small pox. It's an example from the book /Bayes' Rule/ (see below).
 ** Imports
 *** Python
-#+begin_src ipython :session pox :results none
+#+begin_src python :session pox :results none
 from argparse import Namespace
+from math import isclose
+import sys
 #+end_src
 *** PyPi
-#+begin_src ipython :session pox :results none
+#+begin_src python :session pox :results none
+from hypothesis import given
+from hypothesis.strategies import floats, text
 from expects import (
+    be,
+    be_true,
     equal,
     expect,
+    raise_error,
 )
+#+end_src
+** Constants
+   Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the =hypothesis= testing.
+#+begin_src python :session pox :results none
+SMALLEST = 1e-5
 #+end_src
 * Middle
 ** The Classes
-#+begin_src plantuml :file ../../files/posts/bayes/the-pox-probabilities/pox_uml.png
+#+attr_html: width="400px"
+#+begin_src plantuml :file ../../files/posts/bayes/the-pox-probabilities/pox_uml.png :exports none
+skinparam class { 
+  BackgroundColor White 
+  BorderColor Gray
+}
+
 Diagnosis o-- Disease
 Diagnosis : Disease disease_1
 Diagnosis : Disease disease_2
@@ -52,61 +71,461 @@ Disease : string name
 
 [[file:pox_uml.png]]
 
-** The Disease
-#+BEGIN_SRC ipython :session pox :results none
+*** The Disease
+    The =Disease= knows its own probabilities and name and whether it is more likely than another disease or not.
+
+#+BEGIN_SRC python :session pox :results none
 class Disease:
     """something to hold disease probabilities
     
     Args:
+     name: identifier for the disease
      prior_probabilty: probability of having this disease
      likelihood: likelihood of symptoms given this disease
      marginal_likelihood: probability of having the symptoms
     """
-    def __init__(self, prior_probability: float, likelihood: float,
+    def __init__(self, name: str, prior_probability: float, likelihood: float,
                  marginal_likelihood: float) -> None:
+        self.name = name
         self.prior_probability = prior_probability
         self.likelihood = likelihood
         self.marginal_likelihood = marginal_likelihood
+        self._likelihood_times_prior = None
+        self._posterior_probability = None
+        self.check_rep()
         return
+    
+    @property
+    def likelihood_times_prior(self) -> float:
+        """The product of the likelihood and prior"""
+        if self._likelihood_times_prior is None:
+        
+            self._likelihood_times_prior = (self.likelihood 
+                                            ,* self.prior_probability)
+        return self._likelihood_times_prior
+    
+    @property
+    def posterior_probability(self) -> float:
+        """The posterior_probability of having the disease"""
+        if self._posterior_probability is None:
+            self._posterior_probability = (
+                self.likelihood_times_prior
+                /self.marginal_likelihood)
+        return self._posterior_probability
+    
+    def check_rep(self) -> None:
+        """Checks that there are no zero values
+        """        
+        assert self.marginal_likelihood > 0,\
+            f"({self.name}) Marginal Likelihood: {self.marginal_likelihood}"
+        assert self.prior_probability > 0,\
+            f"({self.name}) Prior Probability: {self.prior_probability}"
+        assert self.likelihood > 0,\
+            f"({self.name}) Likelihood: {self.likelihood}"
+        assert self.likelihood * self.prior_probability > 0
+        return
+
+    def __str__(self) -> str:
+        return (f"{self.name}, Posterior Probability:"
+                f" {self.posterior_probability:.3f}")
+
+    def __gt__(self, other: Disease) -> bool:
+        """Checks if this is more likely than other"""
+        return self.posterior_probability > other.posterior_probability
+
+    def __truediv__(self, other: Disease) -> float:
+        """divides posterior probabilities"""
+        return self.likelihood_times_prior/other.likelihood_times_prior
 #+END_SRC
+*** The Diagnosis
+    The diagnosis holds two diseases and decides which is more likely.
+
+#+begin_src python :session pox :results none
+class Diagnosis:
+    """A class to determine the more probable disease
+
+    Args:
+     disease_1: the first disease to consider
+     disease_2: the second disesase to consider
+    """
+    def __init__(self, disease_1: Disease, disease_2: Disease) -> None:
+        self.disease_1 = disease_1
+        self.disease_2 = disease_2
+        self._diseases = None
+        self._diagnosis = None
+        self._most_likely = None
+        self._likeliest_posterior_ratio = None
+        return
+    
+    @property
+    def diseases(self) -> dict:
+        """The disease dictionary"""
+        if self._diseases is None:
+            self._diseases = {
+                self.disease_1.name: self.disease_1,
+                self.disease_2.name: self.disease_2,
+            }
+        return self._diseases
+    
+    @property
+    def most_likely(self) -> Disease:
+        """Gets the most likely disease"""
+        if self._most_likely is None:
+            self._most_likely = max(self.diseases.values())
+        return self._most_likely
+
+    @property
+    def likeliest_posterior_ratio(self) -> float:
+        """Gets the ratio of the most-likely probability to least-likely"""
+        if self._likeliest_posterior_ratio is None:            
+            most, least = self.most_likely, min(self.diseases.values())
+            self._likeliest_posterior_ratio = (most.likelihood_times_prior
+                                     /least.likelihood_times_prior)
+        return self._likeliest_posterior_ratio
+    
+    def __getitem__(self, name: str) -> Disease:
+        """Gets the disease by name
+        
+        Raises:
+         KeyError: name not one of the diseases
+        """
+        return self.diseases[name]
+    
+    def __str__(self) -> str:
+        return (f"Disease 1: {self.disease_1}\n"
+                f"Disease 2: {self.disease_2}\n"
+                f"Most Likely: {self.most_likely.name}, Posterior Ratio:"
+                f" {self.likeliest_posterior_ratio:,.3f}")
+#+end_src
 ** Probabilities
 *** Spots
-    The spots are the symptom, and the probability is the number of people in the population with spots divided by the total population.
+    The spots are the symptom, and the probability is the number of people in the population with spots (for any disease) divided by the total population.
 
-#+begin_src ipython :session pox :results none
+#+begin_src python :session pox :results none
 Spots = Namespace(
     probability=0.081
 )
 #+end_src
 *** SmallPox
-#+begin_src ipython :session pox :results none
-SmallpoxProbabilities = Namespace(
+    These are the probabililities for smallpox so we can use Bayes' Theorem.
+\[
+p(smallpox| spots) = \frac{p(spots|smallpox)p(smallpox)}{p(spots)}
+\]
+
+#+begin_src python :session pox :results none
+SmallPox = Namespace(
     probability=0.001,
     probability_of_spots_given_smallpox=0.9,
     probability_of_spots=Spots.probability,
+    name="Small Pox",
+    posterior = 0.011111,
 )
+#+end_src
+
+It should be noted that the probability of getting smallpox nowadays is pretty much zero, not 0.001.
+*** Chicken Pox
+    And here's the probabilities and equation for chicken pox.
+
+\[
+p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)}
+\]
+
+#+begin_src python :session pox :results none
+ChickenPox = Namespace(
+    probability = 0.1,
+    probability_of_spots_given_chickenpox = 0.8,
+    probability_of_spots = Spots.probability,
+    name = "Chicken Pox"
+)
+#+end_src
+
+As with smallpox, the probability here is exagerrated, I couldn't find an exact number, but the CDC says there are fewer than 350,000 cases a year, so the rate in the United States is about 0.001, the rate we're using for small pox. It might have been close to 10% before vaccines came out in 1995, but it appears to be on the decline.
+*** Diseases
+    I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.
+#+begin_src python :session pox :results none
+class Poxes:
+    def __init__(self, probability_of_spots=0.081) -> None:
+        self._small_pox = None
+        self._chicken_pox = None
+        self.probability_of_spots = probability_of_spots
+        self._diagnosis = None
+        return
+    
+    @property
+    def small_pox(self) -> Disease:
+        """Disease with small-pox probabilities"""
+        if self._small_pox is None:
+            self._small_pox = Disease(
+                prior_probability=SmallPox.probability, 
+                likelihood=SmallPox.probability_of_spots_given_smallpox, 
+                marginal_likelihood=self.probability_of_spots, 
+                name=SmallPox.name)
+        return self._small_pox
+
+    @property
+    def chicken_pox(self) -> Disease:
+        """Disease with chicken-pox probabilities"""
+        if self._chicken_pox is None:
+            self._chicken_pox = Disease(
+                prior_probability = ChickenPox.probability,
+                likelihood = ChickenPox.probability_of_spots_given_chickenpox,
+                marginal_likelihood = self.probability_of_spots,
+                name = ChickenPox.name,
+            )
+        return self._chicken_pox
+        
+    @property
+    def diagnosis(self) -> Diagnosis:
+        """Diagnosis for chicken pox and smallpox"""
+        if self._diagnosis is None:
+            self._diagnosis = Diagnosis(
+                self.small_pox,
+                self.chicken_pox,
+            )
+        return self._diagnosis
 #+end_src
 * End
 ** Testing
-*** Disease Object
-
-#+BEGIN_SRC ipython :session pox :results none
+*** The Disease
+**** Smallpox
+#+BEGIN_SRC python :session pox :results none
 # Given a disease object
-expected = Namespace(
-    prior=SmallpoxProbabilities.probability,
-    likelihood=SmallpoxProbabilities.probability_of_spots_given_smallpox,
-    marginal_likelihood = SmallpoxProbabilities.probability_of_spots,
-)
-disease = Disease(expected.prior, expected.likelihood, expected.marginal_likelihood)
-# When its prior probability is checked
-prior = disease.prior_probability
-# And its likelihood is checked
-likelihood = disease.likelihood
-# And its marginal likelihood is checked
-marginal_likelihood = disease.marginal_likelihood
-
-# Then it has the expected values
-expect(prior).to(equal(expected.prior))
-expect(likelihood).to(equal(expected.likelihood))
-expect(marginal_likelihood).to(equal(expected.marginal_likelihood))
+def test_small_pox():
+    expected = Namespace(
+        prior=SmallPox.probability,
+        likelihood=SmallPox.probability_of_spots_given_smallpox,
+        marginal_likelihood = SmallPox.probability_of_spots,
+        name = SmallPox.name,
+        likelihood_times_prior = 0.0009,
+        posterior = 0.01111
+    )
+    disease = Disease(prior_probability=expected.prior, 
+                      likelihood=expected.likelihood, 
+                      marginal_likelihood=expected.marginal_likelihood, 
+                      name=expected.name)
+    # When its prior probability is checked
+    prior = disease.prior_probability
+    # And its likelihood is checked
+    likelihood = disease.likelihood
+    # And its marginal likelihood is checked
+    marginal_likelihood = disease.marginal_likelihood
+    # And its name is checked
+    name = disease.name
+    # And the likelihood times the prior is checked
+    likelihood_times_prior = disease.likelihood_times_prior
+    # And its posterior is checked
+    posterior = disease.posterior_probability
+    
+    # Then it has the expected values
+    expect(prior).to(equal(expected.prior))
+    expect(likelihood).to(equal(expected.likelihood))
+    expect(marginal_likelihood).to(equal(expected.marginal_likelihood))
+    expect(name).to(equal(expected.name))
+    expect(isclose(likelihood_times_prior, expected.likelihood_times_prior, 
+                   abs_tol=1e-4)).to(be_true)
+    expect(isclose(posterior, expected.posterior, abs_tol=1e-5)).to(be_true)
+    return
 #+END_SRC
+
+**** Any Disease
+     Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across [[https://hypothesis.readthedocs.io/en/latest/][Hypothesis]] and want to try it out, so I'll make a generic version.
+
+#+begin_src python :session pox :results none
+@given(floats(min_value=SMALLEST, max_value=1), 
+       floats(SMALLEST, 1), 
+       floats(SMALLEST, 1),
+       text(min_size=1))
+def test_disease(prior, likelihood, marginal, name):
+    expected = (prior * likelihood)/marginal
+    # Given a disease
+    disease = Disease(prior_probability=prior,
+                      likelihood=likelihood,
+                      marginal_likelihood=marginal,
+                      name=name)
+    # when the posterior is retrieved
+    actual = disease.posterior_probability
+    # then it is close enough    
+    expect(isclose(actual, expected, abs_tol=1e-3)).to(be_true)
+    return
+#+end_src
+
+This turned out to show that I wasn't checking division by zero cases, so I guess it is good to do more testing.
+*** The Diagnosis
+**** Blocking Infinite Probabilities
+     Bayes' Rule has divisions in it (either calculating the /posterior probability/ or /posterior ratio/) so I'm going to block letting the /prior probability/ or /marginal probability/ be zero by raising an exception.
+***** Zero Marginal Likelihood
+      This means the probability of the data is zero (no one has spots as a symptom of disease).
+#+begin_src python :session pox :results none
+def test_zero_marginal_likelihood():
+    # Given a disease with zero marginal likelihood
+    def bad_call():
+        disease_1 = Disease(prior_probability=0.5,
+                            likelihood=0.5,
+                            marginal_likelihood=0,
+                            name="bad diseases")
+        return
+    
+    # When the disease is created
+    # Then it raises an exception
+    expect(bad_call).to(raise_error(AssertionError))
+    return
+#+end_src
+***** Zero Prior Probability
+      This means the probability of the hypothesis is (was) zero - no one has this disease.
+#+begin_src python :session pox :results none
+def test_zero_prior():
+    # Given a disease with zero prior probability
+    def bad_call():
+        disease_1 = Disease(prior_probability=0,
+                            likelihood=0.5,
+                            marginal_likelihood=0.5,
+                            name="bad diseases")
+        return
+
+    # When the disease is created
+    # Then it raises an exception
+    expect(bad_call).to(raise_error(AssertionError))
+    return
+#+end_src
+***** Zero Likelihood
+      This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.
+#+begin_src python :session pox :results none
+def test_zero_likelihood():
+    # Given a disease with zero likelihood
+    def bad_call():
+        disease_1 = Disease(prior_probability=0.5,
+                            likelihood=0,
+                            marginal_likelihood=0.5,
+                            name="bad diseases")
+        return
+
+    # When the disease is created
+    # Then it raises an exception
+    expect(bad_call).to(raise_error(AssertionError))
+    return
+#+end_src
+
+**** Getting Diseases Back
+    The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.
+#+begin_src python :session pox :results none
+def test_small_pox_retrieval():
+    # Given a Diagnosis with chicken pox and small pox
+    diseases = Poxes()
+    diagnosis = diseases.diagnosis
+    # When the small pox is retrieved
+    actual = diagnosis[diseases.small_pox.name]
+    # Then it has the correct posterior probability
+    expect(actual).to(be(diseases.small_pox))
+    return
+#+end_src
+**** Finding the Most Likely Disease
+The diagnosis should also decide which one is the more likely disease.
+#+begin_src python :session pox :results none
+def test_small_or_chicken_pox():
+    diseases = Poxes()
+    # Given a diagnosis with small_pox and chicken_pox
+    diagnosis = diseases.diagnosis
+    # When the best-guess is retrieved
+    guess = diagnosis.most_likely
+    # Then it is the chicken_pox
+    expect(guess).to(be(diseases.chicken_pox))
+    return
+#+end_src
+
+Now generalize it with hypothesis.
+
+#+begin_src python :session pox :results none
+@given(floats(SMALLEST, 1), floats(SMALLEST, 1), floats(SMALLEST, 1),
+       floats(SMALLEST, 1), floats(SMALLEST, 1), floats(SMALLEST, 1))
+def test_best_guess(prior_1, likelihood_1, marginal_1,
+                    prior_2, likelihood_2, marginal_2):
+    # Given a Diagnostic with two diseases
+    disease_1 = Disease(prior_probability=prior_1,
+                        likelihood=likelihood_1,
+                        marginal_likelihood=marginal_1,
+                        name="diseased_1")
+    disease_2 = Disease(prior_probability=prior_2,
+                        likelihood=likelihood_2,
+                        marginal_likelihood=marginal_2,
+                        name="diseased_2")
+    diagnostic = Diagnosis(disease_1, disease_2)
+    
+    # When the best-guess is retrieved
+    the_guess = diagnostic.most_likely
+    # Then it is the more likely one
+    the_one_we_expected = max((disease_1, disease_2))
+    expect(the_guess).to(be(the_one_we_expected))
+    return
+#+end_src
+**** The Posterior Ratio
+     Besides knowing the more likely outcome, we want to know how much more likely it is.
+#+begin_src python :session pox :results none
+def test_pox_odds_ratio():
+    # Given a diagnostic with the poxes
+    diseases = Poxes()
+    diagnostic = diseases.diagnosis
+    # When odds ratio is retrieved
+    actual = diagnostic.likeliest_posterior_ratio
+    # then it is the ratio of the larger probability to the smaller
+    expected = (diseases.chicken_pox.posterior_probability/
+                diseases.small_pox.posterior_probability)
+    expect(isclose(actual, expected, abs_tol=1e-3)).to(be_true)
+    return
+#+end_src
+
+#+begin_src python :session pox :results none
+@given(floats(SMALLEST, 1), floats(SMALLEST, 1), floats(SMALLEST, 1), 
+       text(min_size=1),
+       floats(SMALLEST, 1), floats(SMALLEST, 1), floats(SMALLEST, 1),
+       text(min_size=1))
+def test_posterior_ratio(prior_1, likelihood_1, marginal_1, name_1,
+                         prior_2, likelihood_2, marginal_2, name_2):
+    # Given a Diagnostic with two diseases
+    disease_1 = Disease(prior_probability=prior_1,
+                        likelihood=likelihood_1,
+                        marginal_likelihood=marginal_1,
+                        name=name_1)
+    disease_2 = Disease(prior_probability=prior_2,
+                        likelihood=likelihood_2,
+                        marginal_likelihood=marginal_2,
+                        name=name_2)
+    diagnostic = Diagnosis(disease_1, disease_2)
+    
+    # When the posterior-ratio is retrieved
+    the_ratio = diagnostic.likeliest_posterior_ratio
+
+    # Then it's the expected ratio
+    likeliest, least = max((disease_1, disease_2)), min((disease_1, disease_2))
+    expected = likeliest/least
+    expect(isclose(the_ratio, expected, abs_tol=1e-3)).to(be_true)
+    return
+#+end_src
+*** Run them 
+#+begin_src python :session pox :results none
+test_small_pox()
+test_disease()
+test_zero_marginal_likelihood()
+test_zero_prior()
+test_zero_likelihood()
+test_small_pox_retrieval()
+test_small_or_chicken_pox()
+test_best_guess()
+test_pox_odds_ratio()
+test_posterior_ratio()
+#+end_src
+** Inspecting
+   While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.
+
+#+begin_src python :session pox :results output :exports both
+print(str(Poxes().diagnosis))
+#+end_src
+
+#+RESULTS:
+: Disease 1: Small Pox, Posterior Probability: 0.011
+: Disease 2: Chicken Pox, Posterior Probability: 0.988
+: Most Likely: Chicken Pox, Posterior Ratio: 88.889
+
+So Chicken Pox is about 89 times more likely to be the reason for the spots than small pox.
+
+** Source
+1. Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p. 
