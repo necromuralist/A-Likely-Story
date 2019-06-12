@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<head>
+<meta charset="utf-8">
+<meta content="Notes on probability and statistics." name="description">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>A Likely Story</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
+<meta content="Nikola (getnikola.com)" name="generator">
+<link href="rss.xml" rel="alternate" title="RSS" type="application/rss+xml">
+<link href="https://necromuralist.github.io/A-Likely-Story/" rel="canonical"><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+<link href="posts/bayes/the-pox-probabilities/" rel="prefetch" type="text/html">
+</head>
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> <!-- Menubar -->
+<nav class="navbar navbar-expand-md static-top mb-4 navbar-light bg-light">
+<div class="container"><!-- This keeps the margins nice -->
+ <a class="navbar-brand" href="https://necromuralist.github.io/A-Likely-Story/"><span id="blog-title">A Likely Story</span></a> <button aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="bs-navbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+<li class="nav-item"><a class="nav-link" href="categories/">Tags</a></li>
+<li class="nav-item"><a class="nav-link" href="rss.xml">RSS feed</a></li>
+<li class="nav-item dropdown"><a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pages</a>
+<div class="dropdown-menu"><a class="dropdown-item active" href=".">Cloistered Monkey <span class="sr-only">(active)</span></a></div>
+</li>
+</ul>
+<!-- DuckDuckGo custom search -->
+<form action="https://duckduckgo.com/" class="navbar-form pull-left" id="search" method="get" name="search"><input name="sites" type="hidden" value="https://necromuralist.github.io/A-Likely-Story/"><input name="k8" type="hidden" value="#444444"><input name="k9" type="hidden" value="#D51920"><input name="kt" type="hidden" value="h"><input class="span2" maxlength="255" name="q" placeholder="Search…" type="text"><input style="visibility: hidden;display:none" type="submit" value="DuckDuckGo Search"></form>
+<!-- End of custom search -->
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse --></div>
+<!-- /.container --></nav>
+<!-- End of Menubar -->
+<div class="container" id="content" role="main">
+<div class="body-content"><!--Body content-->
+<div class="postindex">
+<article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article">
+<header>
+<h1 class="p-name entry-title"><a class="u-url" href="posts/bayes/the-pox-probabilities/">The Pox Probabilities</a></h1>
+<div class="metadata">
+<p class="byline author vcard"><span class="byline-name fn" itemprop="author">Cloistered Monkey</span></p>
+<p class="dateline"><a href="posts/bayes/the-pox-probabilities/" rel="bookmark"><time class="published dt-published" datetime="2019-06-05T17:17:38-07:00" itemprop="datePublished" title="2019-06-05 17:17">2019-06-05 17:17</time></a></p>
+</div>
+</header>
+<div class="e-content entry-content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="posts/bayes/the-pox-probabilities/#org3a48dc2">Beginning</a>
+<ul>
+<li><a href="posts/bayes/the-pox-probabilities/#org26ca41b">Imports</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org214d19e">Constants</a></li>
+</ul>
+</li>
+<li><a href="posts/bayes/the-pox-probabilities/#orgf99fb29">Middle</a>
+<ul>
+<li><a href="posts/bayes/the-pox-probabilities/#org562e5c3">The Classes</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#orge6967e7">Probabilities</a></li>
+</ul>
+</li>
+<li><a href="posts/bayes/the-pox-probabilities/#org38a9893">End</a>
+<ul>
+<li><a href="posts/bayes/the-pox-probabilities/#orga8f2ea8">Testing</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org616a463">Inspecting</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org4682590">Source</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org3a48dc2">
+<h2 id="org3a48dc2">Beginning</h2>
+<div class="outline-text-2" id="text-org3a48dc2">
+<p>This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book <i>Bayes' Rule</i> (see below).</p>
+</div>
+<div class="outline-3" id="outline-container-org26ca41b">
+<h3 id="org26ca41b">Imports</h3>
+<div class="outline-text-3" id="text-org26ca41b"></div>
+<div class="outline-4" id="outline-container-org1b2ae8e">
+<h4 id="org1b2ae8e">Python</h4>
+<div class="outline-text-4" id="text-org1b2ae8e">
+<div class="highlight">
+<pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orgcc4e0f5">
+<h4 id="orgcc4e0f5">PyPi</h4>
+<div class="outline-text-4" id="text-orgcc4e0f5">
+<div class="highlight">
+<pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">floats</span><span class="p">,</span> <span class="n">text</span>
+<span class="kn">from</span> <span class="nn">expects</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">be</span><span class="p">,</span>
+    <span class="n">be_true</span><span class="p">,</span>
+    <span class="n">equal</span><span class="p">,</span>
+    <span class="n">expect</span><span class="p">,</span>
+    <span class="n">raise_error</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org214d19e">
+<h3 id="org214d19e">Constants</h3>
+<div class="outline-text-3" id="text-org214d19e">
+<p>Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the <a href="https://hypothesis.readthedocs.io/en/latest/">hypothesis</a> testing.</p>
+<div class="highlight">
+<pre><span></span><span class="n">SMALLEST</span> <span class="o">=</span> <span class="mf">1e-5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orgf99fb29">
+<h2 id="orgf99fb29">Middle</h2>
+<div class="outline-text-2" id="text-orgf99fb29"></div>
+<div class="outline-3" id="outline-container-org562e5c3">
+<h3 id="org562e5c3">The Classes</h3>
+<div class="outline-text-3" id="text-org562e5c3">
+<div class="figure">
+<p><img alt="pox_uml.png" src="posts/bayes/the-pox-probabilities/pox_uml.png"></p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orgdb22e54">
+<h4 id="orgdb22e54">The Disease</h4>
+<div class="outline-text-4" id="text-orgdb22e54">
+<p>The <code>Disease</code> knows its own probabilities and name and whether it is more likely than another disease or not.</p>
+<div class="highlight">
+<pre><span></span><span class="k">class</span> <span class="nc">Disease</span><span class="p">:</span>
+    <span class="sd">"""something to hold disease probabilities</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">     name: identifier for the disease</span>
+<span class="sd">     prior_probabilty: probability of having this disease</span>
+<span class="sd">     likelihood: likelihood of symptoms given this disease</span>
+<span class="sd">     marginal_likelihood: probability of having the symptoms</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prior_probability</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                 <span class="n">marginal_likelihood</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prior_probability</span> <span class="o">=</span> <span class="n">prior_probability</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">likelihood</span> <span class="o">=</span> <span class="n">likelihood</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">marginal_likelihood</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_likelihood_times_prior</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_posterior_probability</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_rep</span><span class="p">()</span>
+        <span class="k">return</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">likelihood_times_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The product of the likelihood and prior"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_likelihood_times_prior</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_likelihood_times_prior</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">likelihood</span> 
+                                            <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior_probability</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_likelihood_times_prior</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">posterior_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The posterior_probability of having the disease"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_posterior_probability</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_posterior_probability</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_times_prior</span>
+                <span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">marginal_likelihood</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_posterior_probability</span>
+
+    <span class="k">def</span> <span class="nf">check_rep</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="sd">"""Checks that there are no zero values</span>
+<span class="sd">       """</span>        
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">marginal_likelihood</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>\
+            <span class="n">f</span><span class="s2">"({self.name}) Marginal Likelihood: {self.marginal_likelihood}"</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior_probability</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>\
+            <span class="n">f</span><span class="s2">"({self.name}) Prior Probability: {self.prior_probability}"</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>\
+            <span class="n">f</span><span class="s2">"({self.name}) Likelihood: {self.likelihood}"</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior_probability</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="s2">"{self.name}, Posterior Probability:"</span>
+                <span class="n">f</span><span class="s2">" {self.posterior_probability:.3f}"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Disease</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">"""Checks if this is more likely than other"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">posterior_probability</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">posterior_probability</span>
+
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Disease</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""divides posterior probabilities"""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_times_prior</span><span class="o">/</span><span class="n">other</span><span class="o">.</span><span class="n">likelihood_times_prior</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org85b4ed8">
+<h4 id="org85b4ed8">The Diagnosis</h4>
+<div class="outline-text-4" id="text-org85b4ed8">
+<p>The diagnosis holds two diseases and decides which is more likely.</p>
+<div class="highlight">
+<pre><span></span><span class="k">class</span> <span class="nc">Diagnosis</span><span class="p">:</span>
+    <span class="sd">"""A class to determine the more probable disease</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">     disease_1: the first disease to consider</span>
+<span class="sd">     disease_2: the second disesase to consider</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disease_1</span><span class="p">:</span> <span class="n">Disease</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">:</span> <span class="n">Disease</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disease_1</span> <span class="o">=</span> <span class="n">disease_1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disease_2</span> <span class="o">=</span> <span class="n">disease_2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_most_likely</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_likeliest_posterior_ratio</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">"""The disease dictionary"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disease_1</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">disease_1</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">disease_2</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">disease_2</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">most_likely</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Disease</span><span class="p">:</span>
+        <span class="sd">"""Gets the most likely disease"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_most_likely</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_most_likely</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">diseases</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_most_likely</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">likeliest_posterior_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""Gets the ratio of the most-likely probability to least-likely"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_likeliest_posterior_ratio</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>            
+            <span class="n">most</span><span class="p">,</span> <span class="n">least</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">most_likely</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">diseases</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_likeliest_posterior_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">most</span><span class="o">.</span><span class="n">likelihood_times_prior</span>
+                                     <span class="o">/</span><span class="n">least</span><span class="o">.</span><span class="n">likelihood_times_prior</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_likeliest_posterior_ratio</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Disease</span><span class="p">:</span>
+        <span class="sd">"""Gets the disease by name</span>
+
+<span class="sd">       Raises:</span>
+<span class="sd">        KeyError: name not one of the diseases</span>
+<span class="sd">       """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">diseases</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="s2">"Disease 1: {self.disease_1}</span><span class="se">\n</span><span class="s2">"</span>
+                <span class="n">f</span><span class="s2">"Disease 2: {self.disease_2}</span><span class="se">\n</span><span class="s2">"</span>
+                <span class="n">f</span><span class="s2">"Most Likely: {self.most_likely.name}, Posterior Ratio:"</span>
+                <span class="n">f</span><span class="s2">" {self.likeliest_posterior_ratio:,.3f}"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-orge6967e7">
+<h3 id="orge6967e7">Probabilities</h3>
+<div class="outline-text-3" id="text-orge6967e7"></div>
+<div class="outline-4" id="outline-container-org4a6ab9a">
+<h4 id="org4a6ab9a">Spots</h4>
+<div class="outline-text-4" id="text-org4a6ab9a">
+<p>The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.</p>
+<div class="highlight">
+<pre><span></span><span class="n">Spots</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
+    <span class="n">probability</span><span class="o">=</span><span class="mf">0.081</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orga053084">
+<h4 id="orga053084">Measles</h4>
+<div class="outline-text-4" id="text-orga053084">
+<p>These are the probabililities for measles so we can use Bayes' Theorem. \[ p(measles| spots) = \frac{p(spots|measles)p(measles)}{p(spots)} \]</p>
+<div class="highlight">
+<pre><span></span><span class="n">Measles</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
+    <span class="n">probability</span><span class="o">=</span><span class="mf">2.9e-06</span><span class="p">,</span>
+    <span class="n">probability_of_spots_given_measles</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">probability_of_spots</span><span class="o">=</span><span class="n">Spots</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Measles"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<p>The <code>probability</code> is an estimate of the fraction of the population that gets measles in the United States per year. This turns <i>really</i> small, even though 2019 had the most cases in a decade (981).</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orgdb6cade">
+<h4 id="orgdb6cade">Chicken Pox</h4>
+<div class="outline-text-4" id="text-orgdb6cade">
+<p>And here's the probabilities and equation for chicken pox.</p>
+<p>\[ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)} \]</p>
+<div class="highlight">
+<pre><span></span><span class="n">ChickenPox</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
+    <span class="n">probability_of_spots_given_chickenpox</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">probability_of_spots</span> <span class="o">=</span> <span class="n">Spots</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Chicken Pox"</span>
+<span class="p">)</span>
+</pre></div>
+<p>I don't really know the probability that you'll get spots given each disease. Now that we have vaccines for both of them, though, they appear to be quite rare.</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org05c24f0">
+<h4 id="org05c24f0">Diseases</h4>
+<div class="outline-text-4" id="text-org05c24f0">
+<p>I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.</p>
+<div class="highlight">
+<pre><span></span><span class="k">class</span> <span class="nc">Poxes</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability_of_spots</span><span class="o">=</span><span class="mf">0.081</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_measles</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chicken_pox</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">probability_of_spots</span> <span class="o">=</span> <span class="n">probability_of_spots</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">measles</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Disease</span><span class="p">:</span>
+        <span class="sd">"""Disease with measles probabilities"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measles</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_measles</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span>
+                <span class="n">prior_probability</span><span class="o">=</span><span class="n">Measles</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span> 
+                <span class="n">likelihood</span><span class="o">=</span><span class="n">Measles</span><span class="o">.</span><span class="n">probability_of_spots_given_measles</span><span class="p">,</span>
+                <span class="n">marginal_likelihood</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">probability_of_spots</span><span class="p">,</span> 
+                <span class="n">name</span><span class="o">=</span><span class="n">Measles</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measles</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">chicken_pox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Disease</span><span class="p">:</span>
+        <span class="sd">"""Disease with chicken-pox probabilities"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chicken_pox</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chicken_pox</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span>
+                <span class="n">prior_probability</span> <span class="o">=</span> <span class="n">ChickenPox</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span>
+                <span class="n">likelihood</span> <span class="o">=</span> <span class="n">ChickenPox</span><span class="o">.</span><span class="n">probability_of_spots_given_chickenpox</span><span class="p">,</span>
+                <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probability_of_spots</span><span class="p">,</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">ChickenPox</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chicken_pox</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">diagnosis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Diagnosis</span><span class="p">:</span>
+        <span class="sd">"""Diagnosis for chicken pox and smallpox"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis</span> <span class="o">=</span> <span class="n">Diagnosis</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">measles</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">chicken_pox</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diagnosis</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org38a9893">
+<h2 id="org38a9893">End</h2>
+<div class="outline-text-2" id="text-org38a9893"></div>
+<div class="outline-3" id="outline-container-orga8f2ea8">
+<h3 id="orga8f2ea8">Testing</h3>
+<div class="outline-text-3" id="text-orga8f2ea8"></div>
+<div class="outline-4" id="outline-container-orgfc32f5b">
+<h4 id="orgfc32f5b">The Disease</h4>
+<div class="outline-text-4" id="text-orgfc32f5b"></div>
+<div class="outline-5" id="outline-container-org8bc66ee">
+<h5 id="org8bc66ee">Measles</h5>
+<div class="outline-text-5" id="text-org8bc66ee">
+<div class="highlight">
+<pre><span></span><span class="c1"># Given a disease object</span>
+<span class="k">def</span> <span class="nf">test_measles</span><span class="p">():</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
+        <span class="n">prior</span><span class="o">=</span><span class="n">Measles</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span>
+        <span class="n">likelihood</span><span class="o">=</span><span class="n">Measles</span><span class="o">.</span><span class="n">probability_of_spots_given_measles</span><span class="p">,</span>
+        <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">Measles</span><span class="o">.</span><span class="n">probability_of_spots</span><span class="p">,</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">Measles</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">likelihood_times_prior</span> <span class="o">=</span> <span class="mf">2.61e-06</span><span class="p">,</span>
+        <span class="n">posterior</span> <span class="o">=</span> <span class="mf">3.222e-05</span>
+    <span class="p">)</span>
+    <span class="n">disease</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">expected</span><span class="o">.</span><span class="n">prior</span><span class="p">,</span> 
+                      <span class="n">likelihood</span><span class="o">=</span><span class="n">expected</span><span class="o">.</span><span class="n">likelihood</span><span class="p">,</span> 
+                      <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">expected</span><span class="o">.</span><span class="n">marginal_likelihood</span><span class="p">,</span> 
+                      <span class="n">name</span><span class="o">=</span><span class="n">expected</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="c1"># When its prior probability is checked</span>
+    <span class="n">prior</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">prior_probability</span>
+    <span class="c1"># And its likelihood is checked</span>
+    <span class="n">likelihood</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">likelihood</span>
+    <span class="c1"># And its marginal likelihood is checked</span>
+    <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">marginal_likelihood</span>
+    <span class="c1"># And its name is checked</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">name</span>
+    <span class="c1"># And the likelihood times the prior is checked</span>
+    <span class="n">likelihood_times_prior</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">likelihood_times_prior</span>
+    <span class="c1"># And its posterior is checked</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">posterior_probability</span>
+
+    <span class="c1"># Then it has the expected values</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">expected</span><span class="o">.</span><span class="n">prior</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">likelihood</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">expected</span><span class="o">.</span><span class="n">likelihood</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">marginal_likelihood</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">expected</span><span class="o">.</span><span class="n">marginal_likelihood</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">expected</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">likelihood_times_prior</span><span class="p">,</span> <span class="n">expected</span><span class="o">.</span><span class="n">likelihood_times_prior</span><span class="p">,</span> 
+                   <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">posterior</span><span class="p">,</span> <span class="n">expected</span><span class="o">.</span><span class="n">posterior</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-5" id="outline-container-org38af47c">
+<h5 id="org38af47c">Any Disease</h5>
+<div class="outline-text-5" id="text-org38af47c">
+<p>Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across <a href="https://hypothesis.readthedocs.io/en/latest/">Hypothesis</a> and want to try it out, so I'll make a generic version.</p>
+<div class="highlight">
+<pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
+       <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+       <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+       <span class="n">text</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_disease</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">marginal</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">(</span><span class="n">prior</span> <span class="o">*</span> <span class="n">likelihood</span><span class="p">)</span><span class="o">/</span><span class="n">marginal</span>
+    <span class="c1"># Given a disease</span>
+    <span class="n">disease</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">prior</span><span class="p">,</span>
+                      <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood</span><span class="p">,</span>
+                      <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">marginal</span><span class="p">,</span>
+                      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="c1"># when the posterior is retrieved</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">posterior_probability</span>
+    <span class="c1"># then it is close enough    </span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+<p>This turned out to show that I wasn't checking division by zero cases, so I guess it is good to do more testing.</p>
+</div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orgbc5a094">
+<h4 id="orgbc5a094">The Diagnosis</h4>
+<div class="outline-text-4" id="text-orgbc5a094"></div>
+<div class="outline-5" id="outline-container-orgcbb76aa">
+<h5 id="orgcbb76aa">Blocking Infinite Probabilities</h5>
+<div class="outline-text-5" id="text-orgcbb76aa">
+<p>Bayes' Rule has divisions in it (either calculating the <i>posterior probability</i> or <i>posterior ratio</i>) so I'm going to block letting the <i>prior probability</i> or <i>marginal probability</i> be zero by raising an exception.</p>
+</div>
+<div class="outline-6" id="outline-container-orga512d7d">
+<h6 id="orga512d7d">Zero Marginal Likelihood</h6>
+<div class="outline-text-6" id="text-orga512d7d">
+<p>This means the probability of the data is zero (no one has spots as a symptom of disease).</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_zero_marginal_likelihood</span><span class="p">():</span>
+    <span class="c1"># Given a disease with zero marginal likelihood</span>
+    <span class="k">def</span> <span class="nf">bad_call</span><span class="p">():</span>
+        <span class="n">disease_1</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">likelihood</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">marginal_likelihood</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">name</span><span class="o">=</span><span class="s2">"bad diseases"</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># When the disease is created</span>
+    <span class="c1"># Then it raises an exception</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">bad_call</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">raise_error</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-6" id="outline-container-orgee9647e">
+<h6 id="orgee9647e">Zero Prior Probability</h6>
+<div class="outline-text-6" id="text-orgee9647e">
+<p>This means the probability of the hypothesis is (was) zero - no one has this disease.</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_zero_prior</span><span class="p">():</span>
+    <span class="c1"># Given a disease with zero prior probability</span>
+    <span class="k">def</span> <span class="nf">bad_call</span><span class="p">():</span>
+        <span class="n">disease_1</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">likelihood</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">marginal_likelihood</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">name</span><span class="o">=</span><span class="s2">"bad diseases"</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># When the disease is created</span>
+    <span class="c1"># Then it raises an exception</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">bad_call</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">raise_error</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-6" id="outline-container-org2bd5bd3">
+<h6 id="org2bd5bd3">Zero Likelihood</h6>
+<div class="outline-text-6" id="text-org2bd5bd3">
+<p>This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_zero_likelihood</span><span class="p">():</span>
+    <span class="c1"># Given a disease with zero likelihood</span>
+    <span class="k">def</span> <span class="nf">bad_call</span><span class="p">():</span>
+        <span class="n">disease_1</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">likelihood</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                            <span class="n">marginal_likelihood</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                            <span class="n">name</span><span class="o">=</span><span class="s2">"bad diseases"</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># When the disease is created</span>
+    <span class="c1"># Then it raises an exception</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">bad_call</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">raise_error</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-5" id="outline-container-orgaf0abda">
+<h5 id="orgaf0abda">Getting Diseases Back</h5>
+<div class="outline-text-5" id="text-orgaf0abda">
+<p>The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_measles_retrieval</span><span class="p">():</span>
+    <span class="c1"># Given a Diagnosis with chicken pox and small pox</span>
+    <span class="n">diseases</span> <span class="o">=</span> <span class="n">Poxes</span><span class="p">()</span>
+    <span class="n">diagnosis</span> <span class="o">=</span> <span class="n">diseases</span><span class="o">.</span><span class="n">diagnosis</span>
+    <span class="c1"># When the measles is retrieved</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">diagnosis</span><span class="p">[</span><span class="n">diseases</span><span class="o">.</span><span class="n">measles</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="c1"># Then it has the correct posterior probability</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be</span><span class="p">(</span><span class="n">diseases</span><span class="o">.</span><span class="n">measles</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-5" id="outline-container-org8e72514">
+<h5 id="org8e72514">Finding the Most Likely Disease</h5>
+<div class="outline-text-5" id="text-org8e72514">
+<p>The diagnosis should also decide which one is the more likely disease.</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_measles_or_chicken_pox</span><span class="p">():</span>
+    <span class="n">diseases</span> <span class="o">=</span> <span class="n">Poxes</span><span class="p">()</span>
+    <span class="c1"># Given a diagnosis with measles and chicken_pox</span>
+    <span class="n">diagnosis</span> <span class="o">=</span> <span class="n">diseases</span><span class="o">.</span><span class="n">diagnosis</span>
+    <span class="c1"># When the best-guess is retrieved</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="n">diagnosis</span><span class="o">.</span><span class="n">most_likely</span>
+    <span class="c1"># Then it is the chicken_pox</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">guess</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be</span><span class="p">(</span><span class="n">diseases</span><span class="o">.</span><span class="n">chicken_pox</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+<p>Now generalize it with hypothesis.</p>
+<div class="highlight">
+<pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+       <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_best_guess</span><span class="p">(</span><span class="n">prior_1</span><span class="p">,</span> <span class="n">likelihood_1</span><span class="p">,</span> <span class="n">marginal_1</span><span class="p">,</span>
+                    <span class="n">prior_2</span><span class="p">,</span> <span class="n">likelihood_2</span><span class="p">,</span> <span class="n">marginal_2</span><span class="p">):</span>
+    <span class="c1"># Given a Diagnostic with two diseases</span>
+    <span class="n">disease_1</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">prior_1</span><span class="p">,</span>
+                        <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood_1</span><span class="p">,</span>
+                        <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">marginal_1</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="s2">"diseased_1"</span><span class="p">)</span>
+    <span class="n">disease_2</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">prior_2</span><span class="p">,</span>
+                        <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood_2</span><span class="p">,</span>
+                        <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">marginal_2</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="s2">"diseased_2"</span><span class="p">)</span>
+    <span class="n">diagnostic</span> <span class="o">=</span> <span class="n">Diagnosis</span><span class="p">(</span><span class="n">disease_1</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">)</span>
+
+    <span class="c1"># When the best-guess is retrieved</span>
+    <span class="n">the_guess</span> <span class="o">=</span> <span class="n">diagnostic</span><span class="o">.</span><span class="n">most_likely</span>
+    <span class="c1"># Then it is the more likely one</span>
+    <span class="n">the_one_we_expected</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">disease_1</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">))</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">the_guess</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be</span><span class="p">(</span><span class="n">the_one_we_expected</span><span class="p">))</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="outline-5" id="outline-container-org93000c9">
+<h5 id="org93000c9">The Posterior Ratio</h5>
+<div class="outline-text-5" id="text-org93000c9">
+<p>Besides knowing the more likely outcome, we want to know how much more likely it is.</p>
+<div class="highlight">
+<pre><span></span><span class="k">def</span> <span class="nf">test_pox_odds_ratio</span><span class="p">():</span>
+    <span class="c1"># Given a diagnostic with the poxes</span>
+    <span class="n">diseases</span> <span class="o">=</span> <span class="n">Poxes</span><span class="p">()</span>
+    <span class="n">diagnostic</span> <span class="o">=</span> <span class="n">diseases</span><span class="o">.</span><span class="n">diagnosis</span>
+    <span class="c1"># When odds ratio is retrieved</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">diagnostic</span><span class="o">.</span><span class="n">likeliest_posterior_ratio</span>
+    <span class="c1"># then it is the ratio of the larger probability to the smaller</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">(</span><span class="n">diseases</span><span class="o">.</span><span class="n">chicken_pox</span><span class="o">.</span><span class="n">posterior_probability</span><span class="o">/</span>
+                <span class="n">diseases</span><span class="o">.</span><span class="n">measles</span><span class="o">.</span><span class="n">posterior_probability</span><span class="p">)</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+<div class="highlight">
+<pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+       <span class="n">text</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+       <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">floats</span><span class="p">(</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+       <span class="n">text</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_posterior_ratio</span><span class="p">(</span><span class="n">prior_1</span><span class="p">,</span> <span class="n">likelihood_1</span><span class="p">,</span> <span class="n">marginal_1</span><span class="p">,</span> <span class="n">name_1</span><span class="p">,</span>
+                         <span class="n">prior_2</span><span class="p">,</span> <span class="n">likelihood_2</span><span class="p">,</span> <span class="n">marginal_2</span><span class="p">,</span> <span class="n">name_2</span><span class="p">):</span>
+    <span class="c1"># Given a Diagnostic with two diseases</span>
+    <span class="n">disease_1</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">prior_1</span><span class="p">,</span>
+                        <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood_1</span><span class="p">,</span>
+                        <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">marginal_1</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">name_1</span><span class="p">)</span>
+    <span class="n">disease_2</span> <span class="o">=</span> <span class="n">Disease</span><span class="p">(</span><span class="n">prior_probability</span><span class="o">=</span><span class="n">prior_2</span><span class="p">,</span>
+                        <span class="n">likelihood</span><span class="o">=</span><span class="n">likelihood_2</span><span class="p">,</span>
+                        <span class="n">marginal_likelihood</span><span class="o">=</span><span class="n">marginal_2</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">name_2</span><span class="p">)</span>
+    <span class="n">diagnostic</span> <span class="o">=</span> <span class="n">Diagnosis</span><span class="p">(</span><span class="n">disease_1</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">)</span>
+
+    <span class="c1"># When the posterior-ratio is retrieved</span>
+    <span class="n">the_ratio</span> <span class="o">=</span> <span class="n">diagnostic</span><span class="o">.</span><span class="n">likeliest_posterior_ratio</span>
+
+    <span class="c1"># Then it's the expected ratio</span>
+    <span class="n">likeliest</span><span class="p">,</span> <span class="n">least</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">disease_1</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">)),</span> <span class="nb">min</span><span class="p">((</span><span class="n">disease_1</span><span class="p">,</span> <span class="n">disease_2</span><span class="p">))</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">likeliest</span><span class="o">/</span><span class="n">least</span>
+    <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">the_ratio</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-orgfd297cf">
+<h4 id="orgfd297cf">Run them</h4>
+<div class="outline-text-4" id="text-orgfd297cf">
+<div class="highlight">
+<pre><span></span><span class="n">test_measles</span><span class="p">()</span>
+<span class="n">test_disease</span><span class="p">()</span>
+<span class="n">test_zero_marginal_likelihood</span><span class="p">()</span>
+<span class="n">test_zero_prior</span><span class="p">()</span>
+<span class="n">test_zero_likelihood</span><span class="p">()</span>
+<span class="n">test_measles_retrieval</span><span class="p">()</span>
+<span class="n">test_measles_or_chicken_pox</span><span class="p">()</span>
+<span class="n">test_best_guess</span><span class="p">()</span>
+<span class="n">test_pox_odds_ratio</span><span class="p">()</span>
+<span class="n">test_posterior_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org616a463">
+<h3 id="org616a463">Inspecting</h3>
+<div class="outline-text-3" id="text-org616a463">
+<p>While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.</p>
+<div class="highlight">
+<pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Poxes</span><span class="p">()</span><span class="o">.</span><span class="n">diagnosis</span><span class="p">))</span>
+</pre></div>
+<pre class="example">
+Disease 1: Measles, Posterior Probability: 0.000
+Disease 2: Chicken Pox, Posterior Probability: 0.988
+Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
+
+</pre>
+<p>So Chicken Pox is about thirty-thousand times more likely to be the reason for the spots than Measles (unless you live in the Pacific Northwest, perhaps).</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org4682590">
+<h3 id="org4682590">Source</h3>
+<div class="outline-text-3" id="text-org4682590">
+<ol class="org-ol">
+<li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article">
+<header>
+<h1 class="p-name entry-title"><a class="u-url" href="posts/a-first-post/">A first post</a></h1>
+<div class="metadata">
+<p class="byline author vcard"><span class="byline-name fn" itemprop="author">Cloistered Monkey</span></p>
+<p class="dateline"><a href="posts/a-first-post/" rel="bookmark"><time class="published dt-published" datetime="2019-06-05T15:53:34-07:00" itemprop="datePublished" title="2019-06-05 15:53">2019-06-05 15:53</time></a></p>
+</div>
+</header>
+<div class="e-content entry-content">
+<div class="outline-2" id="outline-container-orgae4b442">
+<h2 id="orgae4b442">In the Beginning</h2>
+<div class="outline-text-2" id="text-orgae4b442">
+<p>This is a test of the nikola setup.</p>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!--End of body content-->
+<footer id="footer">Contents © 2019 <a href="mailto:necromuralist@protonmail.com">Cloistered Monkey</a> - Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a></footer>
+</div>
+</div>
+<script src="assets/js/all-nocdn.js"></script>
+<script>
+
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Sitemap: https://necromuralist.github.io/A-Likely-Story/sitemapindex.xml
+
+User-Agent: *
+Host: necromuralist.github.io
