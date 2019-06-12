@@ -40,7 +40,7 @@ from expects import (
 )
 #+end_src
 ** Constants
-   Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the =hypothesis= testing.
+   Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the [[https://hypothesis.readthedocs.io/en/latest/][hypothesis]] testing.
 #+begin_src python :session pox :results none
 SMALLEST = 1e-5
 #+end_src
