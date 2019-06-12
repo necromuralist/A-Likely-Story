@@ -53,39 +53,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org68925d4">Beginning</a>
+<li><a href="posts/bayes/the-pox-probabilities/#org2d45a0b">Beginning</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org43f181c">Imports</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org315405e">Constants</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#orge8e80ff">Imports</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org6b1abd0">Constants</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#org4f60d90">Middle</a>
+<li><a href="posts/bayes/the-pox-probabilities/#orgafe7b93">Middle</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org63924f5">The Classes</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org970f772">Probabilities</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org19c4204">The Classes</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org05d8e8a">Probabilities</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#org4422b6b">End</a>
+<li><a href="posts/bayes/the-pox-probabilities/#orgf42c88a">End</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org8b9e67e">Testing</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org0709a97">Inspecting</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org3daa53d">Source</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#orgfb82d93">Testing</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org70960ed">Inspecting</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#orgd9b8580">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org68925d4">
-<h2 id="org68925d4">Beginning</h2>
-<div class="outline-text-2" id="text-org68925d4">
+<div class="outline-2" id="outline-container-org2d45a0b">
+<h2 id="org2d45a0b">Beginning</h2>
+<div class="outline-text-2" id="text-org2d45a0b">
 <p>This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book <i>Bayes' Rule</i> (see below).</p>
 </div>
-<div class="outline-3" id="outline-container-org43f181c">
-<h3 id="org43f181c">Imports</h3>
-<div class="outline-text-3" id="text-org43f181c"></div>
-<div class="outline-4" id="outline-container-org59ca48f">
-<h4 id="org59ca48f">Python</h4>
-<div class="outline-text-4" id="text-org59ca48f">
+<div class="outline-3" id="outline-container-orge8e80ff">
+<h3 id="orge8e80ff">Imports</h3>
+<div class="outline-text-3" id="text-orge8e80ff"></div>
+<div class="outline-4" id="outline-container-org2f5a878">
+<h4 id="org2f5a878">Python</h4>
+<div class="outline-text-4" id="text-org2f5a878">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
@@ -93,9 +93,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org51b8350">
-<h4 id="org51b8350">PyPi</h4>
-<div class="outline-text-4" id="text-org51b8350">
+<div class="outline-4" id="outline-container-orgbf3384f">
+<h4 id="orgbf3384f">PyPi</h4>
+<div class="outline-text-4" id="text-orgbf3384f">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
 <span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">floats</span><span class="p">,</span> <span class="n">text</span>
@@ -110,9 +110,9 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org315405e">
-<h3 id="org315405e">Constants</h3>
-<div class="outline-text-3" id="text-org315405e">
+<div class="outline-3" id="outline-container-org6b1abd0">
+<h3 id="org6b1abd0">Constants</h3>
+<div class="outline-text-3" id="text-org6b1abd0">
 <p>Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the <code>hypothesis</code> testing.</p>
 <div class="highlight">
 <pre><span></span><span class="n">SMALLEST</span> <span class="o">=</span> <span class="mf">1e-5</span>
@@ -120,19 +120,19 @@
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org4f60d90">
-<h2 id="org4f60d90">Middle</h2>
-<div class="outline-text-2" id="text-org4f60d90"></div>
-<div class="outline-3" id="outline-container-org63924f5">
-<h3 id="org63924f5">The Classes</h3>
-<div class="outline-text-3" id="text-org63924f5">
+<div class="outline-2" id="outline-container-orgafe7b93">
+<h2 id="orgafe7b93">Middle</h2>
+<div class="outline-text-2" id="text-orgafe7b93"></div>
+<div class="outline-3" id="outline-container-org19c4204">
+<h3 id="org19c4204">The Classes</h3>
+<div class="outline-text-3" id="text-org19c4204">
 <div class="figure">
 <p><img alt="pox_uml.png" src="posts/bayes/the-pox-probabilities/pox_uml.png"></p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org1e96c2d">
-<h4 id="org1e96c2d">The Disease</h4>
-<div class="outline-text-4" id="text-org1e96c2d">
+<div class="outline-4" id="outline-container-org093caa6">
+<h4 id="org093caa6">The Disease</h4>
+<div class="outline-text-4" id="text-org093caa6">
 <p>The <code>Disease</code> knows its own probabilities and name and whether it is more likely than another disease or not.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Disease</span><span class="p">:</span>
@@ -199,9 +199,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org565dcbf">
-<h4 id="org565dcbf">The Diagnosis</h4>
-<div class="outline-text-4" id="text-org565dcbf">
+<div class="outline-4" id="outline-container-orgc1d1019">
+<h4 id="orgc1d1019">The Diagnosis</h4>
+<div class="outline-text-4" id="text-orgc1d1019">
 <p>The diagnosis holds two diseases and decides which is more likely.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Diagnosis</span><span class="p">:</span>
@@ -263,12 +263,12 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org970f772">
-<h3 id="org970f772">Probabilities</h3>
-<div class="outline-text-3" id="text-org970f772"></div>
-<div class="outline-4" id="outline-container-orgbcf29d3">
-<h4 id="orgbcf29d3">Spots</h4>
-<div class="outline-text-4" id="text-orgbcf29d3">
+<div class="outline-3" id="outline-container-org05d8e8a">
+<h3 id="org05d8e8a">Probabilities</h3>
+<div class="outline-text-3" id="text-org05d8e8a"></div>
+<div class="outline-4" id="outline-container-org8f8514d">
+<h4 id="org8f8514d">Spots</h4>
+<div class="outline-text-4" id="text-org8f8514d">
 <p>The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.</p>
 <div class="highlight">
 <pre><span></span><span class="n">Spots</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
@@ -277,10 +277,10 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org804d564">
-<h4 id="org804d564">Measles</h4>
-<div class="outline-text-4" id="text-org804d564">
-<p>These are the probabililities for measles so we can use Bayes' Theorem. \[ p(measles| spots) = \frac{p(spots|measles)(measles)}{p(spots)} \]</p>
+<div class="outline-4" id="outline-container-org53c8f9e">
+<h4 id="org53c8f9e">Measles</h4>
+<div class="outline-text-4" id="text-org53c8f9e">
+<p>These are the probabililities for measles so we can use Bayes' Theorem. \[ p(measles| spots) = \frac{p(spots|measles)p(measles)}{p(spots)} \]</p>
 <div class="highlight">
 <pre><span></span><span class="n">Measles</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
     <span class="n">probability</span><span class="o">=</span><span class="mf">2.9e-06</span><span class="p">,</span>
@@ -292,9 +292,9 @@
 <p>The <code>probability</code> is an estimate of the fraction of the population that gets measles in the United States per year. This turns <i>really</i> small, even though 2019 had the most cases in a decade (981).</p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgd9a1279">
-<h4 id="orgd9a1279">Chicken Pox</h4>
-<div class="outline-text-4" id="text-orgd9a1279">
+<div class="outline-4" id="outline-container-org7837889">
+<h4 id="org7837889">Chicken Pox</h4>
+<div class="outline-text-4" id="text-org7837889">
 <p>And here's the probabilities and equation for chicken pox.</p>
 <p>\[ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)} \]</p>
 <div class="highlight">
@@ -308,9 +308,9 @@
 <p>I don't really know the probability that you'll get spots given each disease. Now that we have vaccines for both of them, though, they appear to be quite rare.</p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org3106248">
-<h4 id="org3106248">Diseases</h4>
-<div class="outline-text-4" id="text-org3106248">
+<div class="outline-4" id="outline-container-org5f5b474">
+<h4 id="org5f5b474">Diseases</h4>
+<div class="outline-text-4" id="text-org5f5b474">
 <p>I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Poxes</span><span class="p">:</span>
@@ -358,18 +358,18 @@
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org4422b6b">
-<h2 id="org4422b6b">End</h2>
-<div class="outline-text-2" id="text-org4422b6b"></div>
-<div class="outline-3" id="outline-container-org8b9e67e">
-<h3 id="org8b9e67e">Testing</h3>
-<div class="outline-text-3" id="text-org8b9e67e"></div>
-<div class="outline-4" id="outline-container-org4094aae">
-<h4 id="org4094aae">The Disease</h4>
-<div class="outline-text-4" id="text-org4094aae"></div>
-<div class="outline-5" id="outline-container-org679efc6">
-<h5 id="org679efc6">Measles</h5>
-<div class="outline-text-5" id="text-org679efc6">
+<div class="outline-2" id="outline-container-orgf42c88a">
+<h2 id="orgf42c88a">End</h2>
+<div class="outline-text-2" id="text-orgf42c88a"></div>
+<div class="outline-3" id="outline-container-orgfb82d93">
+<h3 id="orgfb82d93">Testing</h3>
+<div class="outline-text-3" id="text-orgfb82d93"></div>
+<div class="outline-4" id="outline-container-orgc7836fc">
+<h4 id="orgc7836fc">The Disease</h4>
+<div class="outline-text-4" id="text-orgc7836fc"></div>
+<div class="outline-5" id="outline-container-orgd1d8d4a">
+<h5 id="orgd1d8d4a">Measles</h5>
+<div class="outline-text-5" id="text-orgd1d8d4a">
 <div class="highlight">
 <pre><span></span><span class="c1"># Given a disease object</span>
 <span class="k">def</span> <span class="nf">test_measles</span><span class="p">():</span>
@@ -410,9 +410,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-orgf4464c1">
-<h5 id="orgf4464c1">Any Disease</h5>
-<div class="outline-text-5" id="text-orgf4464c1">
+<div class="outline-5" id="outline-container-orgd365a82">
+<h5 id="orgd365a82">Any Disease</h5>
+<div class="outline-text-5" id="text-orgd365a82">
 <p>Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across <a href="https://hypothesis.readthedocs.io/en/latest/">Hypothesis</a> and want to try it out, so I'll make a generic version.</p>
 <div class="highlight">
 <pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
@@ -436,17 +436,17 @@
 </div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgf702df6">
-<h4 id="orgf702df6">The Diagnosis</h4>
-<div class="outline-text-4" id="text-orgf702df6"></div>
-<div class="outline-5" id="outline-container-org0178366">
-<h5 id="org0178366">Blocking Infinite Probabilities</h5>
-<div class="outline-text-5" id="text-org0178366">
+<div class="outline-4" id="outline-container-org1cc8e87">
+<h4 id="org1cc8e87">The Diagnosis</h4>
+<div class="outline-text-4" id="text-org1cc8e87"></div>
+<div class="outline-5" id="outline-container-org072a46a">
+<h5 id="org072a46a">Blocking Infinite Probabilities</h5>
+<div class="outline-text-5" id="text-org072a46a">
 <p>Bayes' Rule has divisions in it (either calculating the <i>posterior probability</i> or <i>posterior ratio</i>) so I'm going to block letting the <i>prior probability</i> or <i>marginal probability</i> be zero by raising an exception.</p>
 </div>
-<div class="outline-6" id="outline-container-org53ef4fd">
-<h6 id="org53ef4fd">Zero Marginal Likelihood</h6>
-<div class="outline-text-6" id="text-org53ef4fd">
+<div class="outline-6" id="outline-container-org99e7b84">
+<h6 id="org99e7b84">Zero Marginal Likelihood</h6>
+<div class="outline-text-6" id="text-org99e7b84">
 <p>This means the probability of the data is zero (no one has spots as a symptom of disease).</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_marginal_likelihood</span><span class="p">():</span>
@@ -465,9 +465,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-6" id="outline-container-org860472d">
-<h6 id="org860472d">Zero Prior Probability</h6>
-<div class="outline-text-6" id="text-org860472d">
+<div class="outline-6" id="outline-container-orgd4cac31">
+<h6 id="orgd4cac31">Zero Prior Probability</h6>
+<div class="outline-text-6" id="text-orgd4cac31">
 <p>This means the probability of the hypothesis is (was) zero - no one has this disease.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_prior</span><span class="p">():</span>
@@ -486,9 +486,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-6" id="outline-container-org4fe5fab">
-<h6 id="org4fe5fab">Zero Likelihood</h6>
-<div class="outline-text-6" id="text-org4fe5fab">
+<div class="outline-6" id="outline-container-org9febd8e">
+<h6 id="org9febd8e">Zero Likelihood</h6>
+<div class="outline-text-6" id="text-org9febd8e">
 <p>This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_likelihood</span><span class="p">():</span>
@@ -508,9 +508,9 @@
 </div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-org9f58d69">
-<h5 id="org9f58d69">Getting Diseases Back</h5>
-<div class="outline-text-5" id="text-org9f58d69">
+<div class="outline-5" id="outline-container-org480d00a">
+<h5 id="org480d00a">Getting Diseases Back</h5>
+<div class="outline-text-5" id="text-org480d00a">
 <p>The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_measles_retrieval</span><span class="p">():</span>
@@ -525,9 +525,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-orgdf7efe3">
-<h5 id="orgdf7efe3">Finding the Most Likely Disease</h5>
-<div class="outline-text-5" id="text-orgdf7efe3">
+<div class="outline-5" id="outline-container-org4c4699f">
+<h5 id="org4c4699f">Finding the Most Likely Disease</h5>
+<div class="outline-text-5" id="text-org4c4699f">
 <p>The diagnosis should also decide which one is the more likely disease.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_measles_or_chicken_pox</span><span class="p">():</span>
@@ -566,9 +566,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-org39ef786">
-<h5 id="org39ef786">The Posterior Ratio</h5>
-<div class="outline-text-5" id="text-org39ef786">
+<div class="outline-5" id="outline-container-org6e87ee3">
+<h5 id="org6e87ee3">The Posterior Ratio</h5>
+<div class="outline-text-5" id="text-org6e87ee3">
 <p>Besides knowing the more likely outcome, we want to know how much more likely it is.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_pox_odds_ratio</span><span class="p">():</span>
@@ -613,9 +613,9 @@
 </div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgd481e63">
-<h4 id="orgd481e63">Run them</h4>
-<div class="outline-text-4" id="text-orgd481e63">
+<div class="outline-4" id="outline-container-orgebec826">
+<h4 id="orgebec826">Run them</h4>
+<div class="outline-text-4" id="text-orgebec826">
 <div class="highlight">
 <pre><span></span><span class="n">test_measles</span><span class="p">()</span>
 <span class="n">test_disease</span><span class="p">()</span>
@@ -631,9 +631,9 @@
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0709a97">
-<h3 id="org0709a97">Inspecting</h3>
-<div class="outline-text-3" id="text-org0709a97">
+<div class="outline-3" id="outline-container-org70960ed">
+<h3 id="org70960ed">Inspecting</h3>
+<div class="outline-text-3" id="text-org70960ed">
 <p>While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.</p>
 <div class="highlight">
 <pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Poxes</span><span class="p">()</span><span class="o">.</span><span class="n">diagnosis</span><span class="p">))</span>
@@ -647,9 +647,9 @@ Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
 <p>So Chicken Pox is about thirty-thousand times more likely to be the reason for the spots than Measles (unless you live in the Pacific Northwest, perhaps).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org3daa53d">
-<h3 id="org3daa53d">Source</h3>
-<div class="outline-text-3" id="text-org3daa53d">
+<div class="outline-3" id="outline-container-orgd9b8580">
+<h3 id="orgd9b8580">Source</h3>
+<div class="outline-text-3" id="text-orgd9b8580">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>

@@ -209,7 +209,7 @@ Spots = Namespace(
 *** Measles
     These are the probabililities for measles so we can use Bayes' Theorem.
 \[
-p(measles| spots) = \frac{p(spots|measles)(measles)}{p(spots)}
+p(measles| spots) = \frac{p(spots|measles)p(measles)}{p(spots)}
 \]
 
 #+begin_src python :session pox :results none
