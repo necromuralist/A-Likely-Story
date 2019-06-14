@@ -53,64 +53,64 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#orgd4a7066">Beginning</a>
+<li><a href="posts/bayes/joint-probability-functions/#orgae5cf9b">Beginning</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#orgc5fe540">Imports</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org7707691">The Embed</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#orgfefe573">Imports</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#orgc6f86bc">The Embed</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/joint-probability-functions/#org2448595">Middle</a>
+<li><a href="posts/bayes/joint-probability-functions/#orgfa1e545">Middle</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#org2f257ad">The Joint Probability Function</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org3a41b98">Visualizing It</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org838f345">The Joint Probability Function</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#orgd12a69c">Visualizing It</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/joint-probability-functions/#org0000ea5">End</a>
+<li><a href="posts/bayes/joint-probability-functions/#orgbf3b734">End</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#org7ca618a">Source</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org5690acc">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgd4a7066">
-<h2 id="orgd4a7066">Beginning</h2>
-<div class="outline-text-2" id="text-orgd4a7066">
+<div class="outline-2" id="outline-container-orgae5cf9b">
+<h2 id="orgae5cf9b">Beginning</h2>
+<div class="outline-text-2" id="text-orgae5cf9b">
 <p>This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete.</p>
 </div>
-<div class="outline-3" id="outline-container-orgc5fe540">
-<h3 id="orgc5fe540">Imports</h3>
-<div class="outline-text-3" id="text-orgc5fe540"></div>
-<div class="outline-4" id="outline-container-orgca76bd8">
-<h4 id="orgca76bd8">Python</h4>
-<div class="outline-text-4" id="text-orgca76bd8">
+<div class="outline-3" id="outline-container-orgfefe573">
+<h3 id="orgfefe573">Imports</h3>
+<div class="outline-text-3" id="text-orgfefe573"></div>
+<div class="outline-4" id="outline-container-org46d7ec3">
+<h4 id="org46d7ec3">Python</h4>
+<div class="outline-text-4" id="text-org46d7ec3">
 <div class="highlight">
 <pre><span></span>from functools import partial
 from pathlib import Path
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgab25950">
-<h4 id="orgab25950">PyPi</h4>
-<div class="outline-text-4" id="text-orgab25950">
+<div class="outline-4" id="outline-container-orgc853498">
+<h4 id="orgc853498">PyPi</h4>
+<div class="outline-text-4" id="text-orgc853498">
 <div class="highlight">
 <pre><span></span>import holoviews
 import pandas
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgcff0d54">
-<h4 id="orgcff0d54">My Stuff</h4>
-<div class="outline-text-4" id="text-orgcff0d54">
+<div class="outline-4" id="outline-container-orgedc7715">
+<h4 id="orgedc7715">My Stuff</h4>
+<div class="outline-text-4" id="text-orgedc7715">
 <div class="highlight">
 <pre><span></span>from graeae.visualization import EmbedHoloview
 </pre></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org7707691">
-<h3 id="org7707691">The Embed</h3>
-<div class="outline-text-3" id="text-org7707691">
+<div class="outline-3" id="outline-container-orgc6f86bc">
+<h3 id="orgc6f86bc">The Embed</h3>
+<div class="outline-text-3" id="text-orgc6f86bc">
 <div class="highlight">
 <pre><span></span>SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
@@ -119,12 +119,12 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org2448595">
-<h2 id="org2448595">Middle</h2>
-<div class="outline-text-2" id="text-org2448595"></div>
-<div class="outline-3" id="outline-container-org2f257ad">
-<h3 id="org2f257ad">The Joint Probability Function</h3>
-<div class="outline-text-3" id="text-org2f257ad">
+<div class="outline-2" id="outline-container-orgfa1e545">
+<h2 id="orgfa1e545">Middle</h2>
+<div class="outline-text-2" id="text-orgfa1e545"></div>
+<div class="outline-3" id="outline-container-org838f345">
+<h3 id="org838f345">The Joint Probability Function</h3>
+<div class="outline-text-3" id="text-org838f345">
 <p>The <b>Joint Probability Function</b> is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.</p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -214,9 +214,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 <p>So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - \(p(\theta_2) = 0.4\) - and the summary values on the far right are the <i>marginal likelihood of the data</i> - \(p(x_2) = 0.7\).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org3a41b98">
-<h3 id="org3a41b98">Visualizing It</h3>
-<div class="outline-text-3" id="text-org3a41b98">
+<div class="outline-3" id="outline-container-orgd12a69c">
+<h3 id="orgd12a69c">Visualizing It</h3>
+<div class="outline-text-3" id="text-orgd12a69c">
 <div class="highlight">
 <pre><span></span>data = pandas.DataFrame([
     [2, 0, 1],
@@ -229,12 +229,12 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000ea5">
-<h2 id="org0000ea5">End</h2>
-<div class="outline-text-2" id="text-org0000ea5"></div>
-<div class="outline-3" id="outline-container-org7ca618a">
-<h3 id="org7ca618a">Source</h3>
-<div class="outline-text-3" id="text-org7ca618a">
+<div class="outline-2" id="outline-container-orgbf3b734">
+<h2 id="orgbf3b734">End</h2>
+<div class="outline-text-2" id="text-orgbf3b734"></div>
+<div class="outline-3" id="outline-container-org5690acc">
+<h3 id="org5690acc">Source</h3>
+<div class="outline-text-3" id="text-org5690acc">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>
@@ -256,39 +256,39 @@ Embed = partial(EmbedHoloview, folder_path = output)
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org89302df">Beginning</a>
+<li><a href="posts/bayes/the-pox-probabilities/#org7d069f2">Beginning</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org11b07ad">Imports</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org5bd4a50">Constants</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org4d80842">Imports</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#orgdc30bf5">Constants</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#org8076ebf">Middle</a>
+<li><a href="posts/bayes/the-pox-probabilities/#org8eebf3d">Middle</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#org01d6217">The Classes</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org3b54080">Probabilities</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org2fa826b">The Classes</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org4c47b5c">Probabilities</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/the-pox-probabilities/#orgea4691a">End</a>
+<li><a href="posts/bayes/the-pox-probabilities/#org2385434">End</a>
 <ul>
-<li><a href="posts/bayes/the-pox-probabilities/#orgff34966">Testing</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org716bf6f">Inspecting</a></li>
-<li><a href="posts/bayes/the-pox-probabilities/#org3fe1474">Source</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org060332c">Testing</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org533b878">Inspecting</a></li>
+<li><a href="posts/bayes/the-pox-probabilities/#org44afccb">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org89302df">
-<h2 id="org89302df">Beginning</h2>
-<div class="outline-text-2" id="text-org89302df">
+<div class="outline-2" id="outline-container-org7d069f2">
+<h2 id="org7d069f2">Beginning</h2>
+<div class="outline-text-2" id="text-org7d069f2">
 <p>This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book <i>Bayes' Rule</i> (see below).</p>
 </div>
-<div class="outline-3" id="outline-container-org11b07ad">
-<h3 id="org11b07ad">Imports</h3>
-<div class="outline-text-3" id="text-org11b07ad"></div>
-<div class="outline-4" id="outline-container-orgae665f3">
-<h4 id="orgae665f3">Python</h4>
-<div class="outline-text-4" id="text-orgae665f3">
+<div class="outline-3" id="outline-container-org4d80842">
+<h3 id="org4d80842">Imports</h3>
+<div class="outline-text-3" id="text-org4d80842"></div>
+<div class="outline-4" id="outline-container-org7a0b7c9">
+<h4 id="org7a0b7c9">Python</h4>
+<div class="outline-text-4" id="text-org7a0b7c9">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
@@ -296,9 +296,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgbdd7f64">
-<h4 id="orgbdd7f64">PyPi</h4>
-<div class="outline-text-4" id="text-orgbdd7f64">
+<div class="outline-4" id="outline-container-org692f823">
+<h4 id="org692f823">PyPi</h4>
+<div class="outline-text-4" id="text-org692f823">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
 <span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">floats</span><span class="p">,</span> <span class="n">text</span>
@@ -313,9 +313,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org5bd4a50">
-<h3 id="org5bd4a50">Constants</h3>
-<div class="outline-text-3" id="text-org5bd4a50">
+<div class="outline-3" id="outline-container-orgdc30bf5">
+<h3 id="orgdc30bf5">Constants</h3>
+<div class="outline-text-3" id="text-orgdc30bf5">
 <p>Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the <a href="https://hypothesis.readthedocs.io/en/latest/">hypothesis</a> testing.</p>
 <div class="highlight">
 <pre><span></span><span class="n">SMALLEST</span> <span class="o">=</span> <span class="mf">1e-5</span>
@@ -323,19 +323,19 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org8076ebf">
-<h2 id="org8076ebf">Middle</h2>
-<div class="outline-text-2" id="text-org8076ebf"></div>
-<div class="outline-3" id="outline-container-org01d6217">
-<h3 id="org01d6217">The Classes</h3>
-<div class="outline-text-3" id="text-org01d6217">
+<div class="outline-2" id="outline-container-org8eebf3d">
+<h2 id="org8eebf3d">Middle</h2>
+<div class="outline-text-2" id="text-org8eebf3d"></div>
+<div class="outline-3" id="outline-container-org2fa826b">
+<h3 id="org2fa826b">The Classes</h3>
+<div class="outline-text-3" id="text-org2fa826b">
 <div class="figure">
 <p><img alt="pox_uml.png" src="posts/bayes/the-pox-probabilities/pox_uml.png"></p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org1b39a65">
-<h4 id="org1b39a65">The Disease</h4>
-<div class="outline-text-4" id="text-org1b39a65">
+<div class="outline-4" id="outline-container-org6f06b61">
+<h4 id="org6f06b61">The Disease</h4>
+<div class="outline-text-4" id="text-org6f06b61">
 <p>The <code>Disease</code> knows its own probabilities and name and whether it is more likely than another disease or not.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Disease</span><span class="p">:</span>
@@ -402,9 +402,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org8f53237">
-<h4 id="org8f53237">The Diagnosis</h4>
-<div class="outline-text-4" id="text-org8f53237">
+<div class="outline-4" id="outline-container-org2207a51">
+<h4 id="org2207a51">The Diagnosis</h4>
+<div class="outline-text-4" id="text-org2207a51">
 <p>The diagnosis holds two diseases and decides which is more likely.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Diagnosis</span><span class="p">:</span>
@@ -466,12 +466,12 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org3b54080">
-<h3 id="org3b54080">Probabilities</h3>
-<div class="outline-text-3" id="text-org3b54080"></div>
-<div class="outline-4" id="outline-container-orgeaebf12">
-<h4 id="orgeaebf12">Spots</h4>
-<div class="outline-text-4" id="text-orgeaebf12">
+<div class="outline-3" id="outline-container-org4c47b5c">
+<h3 id="org4c47b5c">Probabilities</h3>
+<div class="outline-text-3" id="text-org4c47b5c"></div>
+<div class="outline-4" id="outline-container-orga9baa78">
+<h4 id="orga9baa78">Spots</h4>
+<div class="outline-text-4" id="text-orga9baa78">
 <p>The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.</p>
 <div class="highlight">
 <pre><span></span><span class="n">Spots</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
@@ -480,9 +480,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org5d5f3d9">
-<h4 id="org5d5f3d9">Measles</h4>
-<div class="outline-text-4" id="text-org5d5f3d9">
+<div class="outline-4" id="outline-container-org8029f28">
+<h4 id="org8029f28">Measles</h4>
+<div class="outline-text-4" id="text-org8029f28">
 <p>These are the probabililities for measles so we can use Bayes' Theorem. \[ p(measles| spots) = \frac{p(spots|measles)p(measles)}{p(spots)} \]</p>
 <div class="highlight">
 <pre><span></span><span class="n">Measles</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
@@ -495,9 +495,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 <p>The <code>probability</code> is an estimate of the fraction of the population that gets measles in the United States per year. This turns <i>really</i> small, even though 2019 had the most cases in a decade (981).</p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orga84a0b3">
-<h4 id="orga84a0b3">Chicken Pox</h4>
-<div class="outline-text-4" id="text-orga84a0b3">
+<div class="outline-4" id="outline-container-org732540f">
+<h4 id="org732540f">Chicken Pox</h4>
+<div class="outline-text-4" id="text-org732540f">
 <p>And here's the probabilities and equation for chicken pox.</p>
 <p>\[ p(chicken pox|spots) = \frac{p(spots|chicken pox)p(chicken pox)}{p(spots)} \]</p>
 <div class="highlight">
@@ -511,9 +511,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 <p>I don't really know the probability that you'll get spots given each disease. Now that we have vaccines for both of them, though, they appear to be quite rare.</p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org9a04f66">
-<h4 id="org9a04f66">Diseases</h4>
-<div class="outline-text-4" id="text-org9a04f66">
+<div class="outline-4" id="outline-container-org2b40962">
+<h4 id="org2b40962">Diseases</h4>
+<div class="outline-text-4" id="text-org2b40962">
 <p>I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">Poxes</span><span class="p">:</span>
@@ -561,18 +561,18 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgea4691a">
-<h2 id="orgea4691a">End</h2>
-<div class="outline-text-2" id="text-orgea4691a"></div>
-<div class="outline-3" id="outline-container-orgff34966">
-<h3 id="orgff34966">Testing</h3>
-<div class="outline-text-3" id="text-orgff34966"></div>
-<div class="outline-4" id="outline-container-org6d39069">
-<h4 id="org6d39069">The Disease</h4>
-<div class="outline-text-4" id="text-org6d39069"></div>
-<div class="outline-5" id="outline-container-org6594e63">
-<h5 id="org6594e63">Measles</h5>
-<div class="outline-text-5" id="text-org6594e63">
+<div class="outline-2" id="outline-container-org2385434">
+<h2 id="org2385434">End</h2>
+<div class="outline-text-2" id="text-org2385434"></div>
+<div class="outline-3" id="outline-container-org060332c">
+<h3 id="org060332c">Testing</h3>
+<div class="outline-text-3" id="text-org060332c"></div>
+<div class="outline-4" id="outline-container-org2ca4c92">
+<h4 id="org2ca4c92">The Disease</h4>
+<div class="outline-text-4" id="text-org2ca4c92"></div>
+<div class="outline-5" id="outline-container-org2c87031">
+<h5 id="org2c87031">Measles</h5>
+<div class="outline-text-5" id="text-org2c87031">
 <div class="highlight">
 <pre><span></span><span class="c1"># Given a disease object</span>
 <span class="k">def</span> <span class="nf">test_measles</span><span class="p">():</span>
@@ -613,9 +613,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-orgb5e7813">
-<h5 id="orgb5e7813">Any Disease</h5>
-<div class="outline-text-5" id="text-orgb5e7813">
+<div class="outline-5" id="outline-container-orgabc24a9">
+<h5 id="orgabc24a9">Any Disease</h5>
+<div class="outline-text-5" id="text-orgabc24a9">
 <p>Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across <a href="https://hypothesis.readthedocs.io/en/latest/">Hypothesis</a> and want to try it out, so I'll make a generic version.</p>
 <div class="highlight">
 <pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="n">SMALLEST</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
@@ -639,17 +639,17 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgaa82dfd">
-<h4 id="orgaa82dfd">The Diagnosis</h4>
-<div class="outline-text-4" id="text-orgaa82dfd"></div>
-<div class="outline-5" id="outline-container-org1f4ea08">
-<h5 id="org1f4ea08">Blocking Infinite Probabilities</h5>
-<div class="outline-text-5" id="text-org1f4ea08">
+<div class="outline-4" id="outline-container-org2cdc8be">
+<h4 id="org2cdc8be">The Diagnosis</h4>
+<div class="outline-text-4" id="text-org2cdc8be"></div>
+<div class="outline-5" id="outline-container-orgc0f03ab">
+<h5 id="orgc0f03ab">Blocking Infinite Probabilities</h5>
+<div class="outline-text-5" id="text-orgc0f03ab">
 <p>Bayes' Rule has divisions in it (either calculating the <i>posterior probability</i> or <i>posterior ratio</i>) so I'm going to block letting the <i>prior probability</i> or <i>marginal probability</i> be zero by raising an exception.</p>
 </div>
-<div class="outline-6" id="outline-container-org2c5c794">
-<h6 id="org2c5c794">Zero Marginal Likelihood</h6>
-<div class="outline-text-6" id="text-org2c5c794">
+<div class="outline-6" id="outline-container-orgd8cba58">
+<h6 id="orgd8cba58">Zero Marginal Likelihood</h6>
+<div class="outline-text-6" id="text-orgd8cba58">
 <p>This means the probability of the data is zero (no one has spots as a symptom of disease).</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_marginal_likelihood</span><span class="p">():</span>
@@ -668,9 +668,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-6" id="outline-container-org581336c">
-<h6 id="org581336c">Zero Prior Probability</h6>
-<div class="outline-text-6" id="text-org581336c">
+<div class="outline-6" id="outline-container-org3ad7214">
+<h6 id="org3ad7214">Zero Prior Probability</h6>
+<div class="outline-text-6" id="text-org3ad7214">
 <p>This means the probability of the hypothesis is (was) zero - no one has this disease.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_prior</span><span class="p">():</span>
@@ -689,9 +689,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-6" id="outline-container-org700a96a">
-<h6 id="org700a96a">Zero Likelihood</h6>
-<div class="outline-text-6" id="text-org700a96a">
+<div class="outline-6" id="outline-container-org0e7fd1d">
+<h6 id="org0e7fd1d">Zero Likelihood</h6>
+<div class="outline-text-6" id="text-org0e7fd1d">
 <p>This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_zero_likelihood</span><span class="p">():</span>
@@ -711,9 +711,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-org527037b">
-<h5 id="org527037b">Getting Diseases Back</h5>
-<div class="outline-text-5" id="text-org527037b">
+<div class="outline-5" id="outline-container-org824da34">
+<h5 id="org824da34">Getting Diseases Back</h5>
+<div class="outline-text-5" id="text-org824da34">
 <p>The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_measles_retrieval</span><span class="p">():</span>
@@ -728,9 +728,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-org5a0d641">
-<h5 id="org5a0d641">Finding the Most Likely Disease</h5>
-<div class="outline-text-5" id="text-org5a0d641">
+<div class="outline-5" id="outline-container-org7faaf56">
+<h5 id="org7faaf56">Finding the Most Likely Disease</h5>
+<div class="outline-text-5" id="text-org7faaf56">
 <p>The diagnosis should also decide which one is the more likely disease.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_measles_or_chicken_pox</span><span class="p">():</span>
@@ -769,9 +769,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-5" id="outline-container-orgeefe3af">
-<h5 id="orgeefe3af">The Posterior Ratio</h5>
-<div class="outline-text-5" id="text-orgeefe3af">
+<div class="outline-5" id="outline-container-org732deb8">
+<h5 id="org732deb8">The Posterior Ratio</h5>
+<div class="outline-text-5" id="text-org732deb8">
 <p>Besides knowing the more likely outcome, we want to know how much more likely it is.</p>
 <div class="highlight">
 <pre><span></span><span class="k">def</span> <span class="nf">test_pox_odds_ratio</span><span class="p">():</span>
@@ -816,9 +816,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org2709aea">
-<h4 id="org2709aea">Run them</h4>
-<div class="outline-text-4" id="text-org2709aea">
+<div class="outline-4" id="outline-container-orgb73c024">
+<h4 id="orgb73c024">Run them</h4>
+<div class="outline-text-4" id="text-orgb73c024">
 <div class="highlight">
 <pre><span></span><span class="n">test_measles</span><span class="p">()</span>
 <span class="n">test_disease</span><span class="p">()</span>
@@ -834,9 +834,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org716bf6f">
-<h3 id="org716bf6f">Inspecting</h3>
-<div class="outline-text-3" id="text-org716bf6f">
+<div class="outline-3" id="outline-container-org533b878">
+<h3 id="org533b878">Inspecting</h3>
+<div class="outline-text-3" id="text-org533b878">
 <p>While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.</p>
 <div class="highlight">
 <pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Poxes</span><span class="p">()</span><span class="o">.</span><span class="n">diagnosis</span><span class="p">))</span>
@@ -850,9 +850,9 @@ Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
 <p>So Chicken Pox is about thirty-thousand times more likely to be the reason for the spots than Measles (unless you live in the Pacific Northwest, perhaps).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org3fe1474">
-<h3 id="org3fe1474">Source</h3>
-<div class="outline-text-3" id="text-org3fe1474">
+<div class="outline-3" id="outline-container-org44afccb">
+<h3 id="org44afccb">Source</h3>
+<div class="outline-text-3" id="text-org44afccb">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>
@@ -870,9 +870,9 @@ Most Likely: Chicken Pox, Posterior Ratio: 30,651.341
 </div>
 </header>
 <div class="e-content entry-content">
-<div class="outline-2" id="outline-container-org7707586">
-<h2 id="org7707586">In the Beginning</h2>
-<div class="outline-text-2" id="text-org7707586">
+<div class="outline-2" id="outline-container-orgf47dcec">
+<h2 id="orgf47dcec">In the Beginning</h2>
+<div class="outline-text-2" id="text-orgf47dcec">
 <p>This is a test of the nikola setup.</p>
 </div>
 </div>
