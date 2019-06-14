@@ -7,11 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/bayes.xml</loc>
-  <lastmod>2019-06-12T18:53:00Z</lastmod>
+  <lastmod>2019-06-13T19:25:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-rule.xml</loc>
+  <lastmod>2019-06-13T19:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml</loc>
-  <lastmod>2019-06-12T18:53:00Z</lastmod>
+  <lastmod>2019-06-12T18:56:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_testing.xml</loc>
@@ -23,7 +27,11 @@
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/notes.xml</loc>
-  <lastmod>2019-06-12T18:53:00Z</lastmod>
+  <lastmod>2019-06-12T18:56:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/probability.xml</loc>
+  <lastmod>2019-06-13T19:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/testing.xml</loc>
@@ -31,10 +39,10 @@
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/rss.xml</loc>
-  <lastmod>2019-06-12T18:53:00Z</lastmod>
+  <lastmod>2019-06-13T19:25:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/sitemap.xml</loc>
-  <lastmod>2019-06-12T18:53:00Z</lastmod>
+  <lastmod>2019-06-13T19:25:00Z</lastmod>
  </sitemap>
 </sitemapindex>
