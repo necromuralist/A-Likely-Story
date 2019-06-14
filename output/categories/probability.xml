@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about probability)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/probability.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Fri, 14 Jun 2019 05:15:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Joint Probability Functions</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgd4a7066"&gt;Beginning&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgc5fe540"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org7707691"&gt;The Embed&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org2448595"&gt;Middle&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org2f257ad"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org3a41b98"&gt;Visualizing It&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org0000ea5"&gt;End&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org7ca618a"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgd4a7066" class="outline-2"&gt;
+&lt;h2 id="orgd4a7066"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgd4a7066"&gt;
+&lt;p&gt;
+This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgc5fe540" class="outline-3"&gt;
+&lt;h3 id="orgc5fe540"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgc5fe540"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgca76bd8" class="outline-4"&gt;
+&lt;h4 id="orgca76bd8"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgca76bd8"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from functools import partial
+from pathlib import Path
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgab25950" class="outline-4"&gt;
+&lt;h4 id="orgab25950"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgab25950"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;import holoviews
+import pandas
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgcff0d54" class="outline-4"&gt;
+&lt;h4 id="orgcff0d54"&gt;My Stuff&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgcff0d54"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from graeae.visualization import EmbedHoloview
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org7707691" class="outline-3"&gt;
+&lt;h3 id="org7707691"&gt;The Embed&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org7707691"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SLUG = "joint-probability-functions"
+output = Path("../../files/posts/bayes/")/SLUG
+Embed = partial(EmbedHoloview, folder_path = output)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org2448595" class="outline-2"&gt;
+&lt;h2 id="org2448595"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org2448595"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org2f257ad" class="outline-3"&gt;
+&lt;h3 id="org2f257ad"&gt;The Joint Probability Function&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org2f257ad"&gt;
+&lt;p&gt;
+The &lt;b&gt;Joint Probability Function&lt;/b&gt; is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;Data&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_1\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_2\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_3\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;Sum&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;\(x_1\)&lt;/td&gt;
+&lt;td class="org-right"&gt;2&lt;/td&gt;
+&lt;td class="org-right"&gt;0&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;\(x_2\)&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;2&lt;/td&gt;
+&lt;td class="org-right"&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Sum&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;4&lt;/td&gt;
+&lt;td class="org-right"&gt;3&lt;/td&gt;
+&lt;td class="org-right"&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+The intersection of data and hypothesis is the count we got for our joint probability calculation. To get the actual joint probability we divide the numbers by the total count.
+&lt;/p&gt;
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+
+
+&lt;colgroup&gt;
+&lt;col class="org-left"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+
+&lt;col class="org-right"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th scope="col" class="org-left"&gt;Data&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_1\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_2\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;\(\theta_3\)&lt;/th&gt;
+&lt;th scope="col" class="org-right"&gt;Sum&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;\(x_1\)&lt;/td&gt;
+&lt;td class="org-right"&gt;0.2&lt;/td&gt;
+&lt;td class="org-right"&gt;0&lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt;0.3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td class="org-left"&gt;\(x_2\)&lt;/td&gt;
+&lt;td class="org-right"&gt;0.1&lt;/td&gt;
+&lt;td class="org-right"&gt;0.4&lt;/td&gt;
+&lt;td class="org-right"&gt;0.2&lt;/td&gt;
+&lt;td class="org-right"&gt;0.7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Sum&lt;/td&gt;
+&lt;td class="org-right"&gt;0.3&lt;/td&gt;
+&lt;td class="org-right"&gt;0.4&lt;/td&gt;
+&lt;td class="org-right"&gt;0.3&lt;/td&gt;
+&lt;td class="org-right"&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary values at the bottom are the &lt;i&gt;marginal likelihood of the hypotheses&lt;/i&gt; - \(p(\theta_2) = 0.4\) - and the summary values on the far right are the &lt;i&gt;marginal likelihood of the data&lt;/i&gt; - \(p(x_2) = 0.7\).
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="outline-container-org3a41b98" class="outline-3"&gt;
+&lt;h3 id="org3a41b98"&gt;Visualizing It&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org3a41b98"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;data = pandas.DataFrame([
+    [2, 0, 1],
+    [1, 4, 2],
+], columns=["theta_1", "theta_2", "theta_3"], index=["x_1", "x_2"])
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org0000ea5" class="outline-2"&gt;
+&lt;h2 id="org0000ea5"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0000ea5"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org7ca618a" class="outline-3"&gt;
+&lt;h3 id="org7ca618a"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org7ca618a"&gt;
+&lt;ol class="org-ol"&gt;
+&lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><category>bayes</category><category>probability</category><guid>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</guid><pubDate>Wed, 12 Jun 2019 19:33:59 GMT</pubDate></item></channel></rss>
