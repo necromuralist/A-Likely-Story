@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about Bayes Theorem)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Wed, 12 Jun 2019 18:56:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about Bayes Theorem)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Fri, 14 Jun 2019 05:15:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The Pox Probabilities</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org3a48dc2"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org89302df"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org26ca41b"&gt;Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org214d19e"&gt;Constants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org11b07ad"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org5bd4a50"&gt;Constants&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgf99fb29"&gt;Middle&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org8076ebf"&gt;Middle&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org562e5c3"&gt;The Classes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orge6967e7"&gt;Probabilities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org01d6217"&gt;The Classes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org3b54080"&gt;Probabilities&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org38a9893"&gt;End&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgea4691a"&gt;End&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orga8f2ea8"&gt;Testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org616a463"&gt;Inspecting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org4682590"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#orgff34966"&gt;Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org716bf6f"&gt;Inspecting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/#org3fe1474"&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org3a48dc2" class="outline-2"&gt;
-&lt;h2 id="org3a48dc2"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org3a48dc2"&gt;
+&lt;div id="outline-container-org89302df" class="outline-2"&gt;
+&lt;h2 id="org89302df"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org89302df"&gt;
 &lt;p&gt;
 This is a look at calculating which is more likely for a patient with spots on his face - chicken pox or measles. It's an example adapted from the book &lt;i&gt;Bayes' Rule&lt;/i&gt; (see below).
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org26ca41b" class="outline-3"&gt;
-&lt;h3 id="org26ca41b"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org26ca41b"&gt;
+&lt;div id="outline-container-org11b07ad" class="outline-3"&gt;
+&lt;h3 id="org11b07ad"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org11b07ad"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org1b2ae8e" class="outline-4"&gt;
-&lt;h4 id="org1b2ae8e"&gt;Python&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org1b2ae8e"&gt;
+&lt;div id="outline-container-orgae665f3" class="outline-4"&gt;
+&lt;h4 id="orgae665f3"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgae665f3"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;isclose&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcc4e0f5" class="outline-4"&gt;
-&lt;h4 id="orgcc4e0f5"&gt;PyPi&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgcc4e0f5"&gt;
+&lt;div id="outline-container-orgbdd7f64" class="outline-4"&gt;
+&lt;h4 id="orgbdd7f64"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgbdd7f64"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;hypothesis&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;hypothesis.strategies&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;floats&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;expects&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -61,9 +61,9 @@ This is a look at calculating which is more likely for a patient with spots on h
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org214d19e" class="outline-3"&gt;
-&lt;h3 id="org214d19e"&gt;Constants&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org214d19e"&gt;
+&lt;div id="outline-container-org5bd4a50" class="outline-3"&gt;
+&lt;h3 id="org5bd4a50"&gt;Constants&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org5bd4a50"&gt;
 &lt;p&gt;
 Since I'm multiplying floats the numbers can't be too small or python will interpret their products as zero. This is mostly a problem for the &lt;a href="https://hypothesis.readthedocs.io/en/latest/"&gt;hypothesis&lt;/a&gt; testing.
 &lt;/p&gt;
@@ -72,13 +72,13 @@ Since I'm multiplying floats the numbers can't be too small or python will inter
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgf99fb29" class="outline-2"&gt;
-&lt;h2 id="orgf99fb29"&gt;Middle&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgf99fb29"&gt;
+&lt;div id="outline-container-org8076ebf" class="outline-2"&gt;
+&lt;h2 id="org8076ebf"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org8076ebf"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org562e5c3" class="outline-3"&gt;
-&lt;h3 id="org562e5c3"&gt;The Classes&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org562e5c3"&gt;
+&lt;div id="outline-container-org01d6217" class="outline-3"&gt;
+&lt;h3 id="org01d6217"&gt;The Classes&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org01d6217"&gt;
 
 &lt;div class="figure"&gt;
 &lt;p&gt;&lt;img src="https://necromuralist.github.io/A-Likely-Story/posts/bayes/the-pox-probabilities/pox_uml.png" alt="pox_uml.png"&gt;
@@ -86,9 +86,9 @@ Since I'm multiplying floats the numbers can't be too small or python will inter
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgdb22e54" class="outline-4"&gt;
-&lt;h4 id="orgdb22e54"&gt;The Disease&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgdb22e54"&gt;
+&lt;div id="outline-container-org1b39a65" class="outline-4"&gt;
+&lt;h4 id="org1b39a65"&gt;The Disease&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org1b39a65"&gt;
 &lt;p&gt;
 The &lt;code&gt;Disease&lt;/code&gt; knows its own probabilities and name and whether it is more likely than another disease or not.
 &lt;/p&gt;
@@ -157,9 +157,9 @@ The &lt;code&gt;Disease&lt;/code&gt; knows its own probabilities and name and wh
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org85b4ed8" class="outline-4"&gt;
-&lt;h4 id="org85b4ed8"&gt;The Diagnosis&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org85b4ed8"&gt;
+&lt;div id="outline-container-org8f53237" class="outline-4"&gt;
+&lt;h4 id="org8f53237"&gt;The Diagnosis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org8f53237"&gt;
 &lt;p&gt;
 The diagnosis holds two diseases and decides which is more likely.
 &lt;/p&gt;
@@ -223,13 +223,13 @@ The diagnosis holds two diseases and decides which is more likely.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orge6967e7" class="outline-3"&gt;
-&lt;h3 id="orge6967e7"&gt;Probabilities&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orge6967e7"&gt;
+&lt;div id="outline-container-org3b54080" class="outline-3"&gt;
+&lt;h3 id="org3b54080"&gt;Probabilities&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org3b54080"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org4a6ab9a" class="outline-4"&gt;
-&lt;h4 id="org4a6ab9a"&gt;Spots&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org4a6ab9a"&gt;
+&lt;div id="outline-container-orgeaebf12" class="outline-4"&gt;
+&lt;h4 id="orgeaebf12"&gt;Spots&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgeaebf12"&gt;
 &lt;p&gt;
 The spots are the symptom, and the probability is the number of people in the population with spots (for any reason) divided by the total population.
 &lt;/p&gt;
@@ -240,9 +240,9 @@ The spots are the symptom, and the probability is the number of people in the po
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga053084" class="outline-4"&gt;
-&lt;h4 id="orga053084"&gt;Measles&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga053084"&gt;
+&lt;div id="outline-container-org5d5f3d9" class="outline-4"&gt;
+&lt;h4 id="org5d5f3d9"&gt;Measles&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org5d5f3d9"&gt;
 &lt;p&gt;
 These are the probabililities for measles so we can use Bayes' Theorem.
 \[
@@ -263,9 +263,9 @@ The &lt;code&gt;probability&lt;/code&gt; is an estimate of the fraction of the p
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgdb6cade" class="outline-4"&gt;
-&lt;h4 id="orgdb6cade"&gt;Chicken Pox&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgdb6cade"&gt;
+&lt;div id="outline-container-orga84a0b3" class="outline-4"&gt;
+&lt;h4 id="orga84a0b3"&gt;Chicken Pox&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga84a0b3"&gt;
 &lt;p&gt;
 And here's the probabilities and equation for chicken pox.
 &lt;/p&gt;
@@ -289,9 +289,9 @@ I don't really know the probability that you'll get spots given each disease. No
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org05c24f0" class="outline-4"&gt;
-&lt;h4 id="org05c24f0"&gt;Diseases&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org05c24f0"&gt;
+&lt;div id="outline-container-org9a04f66" class="outline-4"&gt;
+&lt;h4 id="org9a04f66"&gt;Diseases&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org9a04f66"&gt;
 &lt;p&gt;
 I was re-using the disease instances, but I'm changing the definitions as I go, so I need to create them everytime a test gets run and this next bit is to help with that.
 &lt;/p&gt;
@@ -340,21 +340,21 @@ I was re-using the disease instances, but I'm changing the definitions as I go, 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org38a9893" class="outline-2"&gt;
-&lt;h2 id="org38a9893"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org38a9893"&gt;
+&lt;div id="outline-container-orgea4691a" class="outline-2"&gt;
+&lt;h2 id="orgea4691a"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orgea4691a"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga8f2ea8" class="outline-3"&gt;
-&lt;h3 id="orga8f2ea8"&gt;Testing&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orga8f2ea8"&gt;
+&lt;div id="outline-container-orgff34966" class="outline-3"&gt;
+&lt;h3 id="orgff34966"&gt;Testing&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgff34966"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgfc32f5b" class="outline-4"&gt;
-&lt;h4 id="orgfc32f5b"&gt;The Disease&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgfc32f5b"&gt;
+&lt;div id="outline-container-org6d39069" class="outline-4"&gt;
+&lt;h4 id="org6d39069"&gt;The Disease&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org6d39069"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org8bc66ee" class="outline-5"&gt;
-&lt;h5 id="org8bc66ee"&gt;Measles&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org8bc66ee"&gt;
+&lt;div id="outline-container-org6594e63" class="outline-5"&gt;
+&lt;h5 id="org6594e63"&gt;Measles&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org6594e63"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Given a disease object&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_measles&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;expected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -395,9 +395,9 @@ I was re-using the disease instances, but I'm changing the definitions as I go, 
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org38af47c" class="outline-5"&gt;
-&lt;h5 id="org38af47c"&gt;Any Disease&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org38af47c"&gt;
+&lt;div id="outline-container-orgb5e7813" class="outline-5"&gt;
+&lt;h5 id="orgb5e7813"&gt;Any Disease&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-orgb5e7813"&gt;
 &lt;p&gt;
 Since I'm re-using the Disease class I don't really need to re-test it (I think), but I just ran across &lt;a href="https://hypothesis.readthedocs.io/en/latest/"&gt;Hypothesis&lt;/a&gt; and want to try it out, so I'll make a generic version.
 &lt;/p&gt;
@@ -426,20 +426,20 @@ This turned out to show that I wasn't checking division by zero cases, so I gues
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgbc5a094" class="outline-4"&gt;
-&lt;h4 id="orgbc5a094"&gt;The Diagnosis&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgbc5a094"&gt;
+&lt;div id="outline-container-orgaa82dfd" class="outline-4"&gt;
+&lt;h4 id="orgaa82dfd"&gt;The Diagnosis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgaa82dfd"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcbb76aa" class="outline-5"&gt;
-&lt;h5 id="orgcbb76aa"&gt;Blocking Infinite Probabilities&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-orgcbb76aa"&gt;
+&lt;div id="outline-container-org1f4ea08" class="outline-5"&gt;
+&lt;h5 id="org1f4ea08"&gt;Blocking Infinite Probabilities&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org1f4ea08"&gt;
 &lt;p&gt;
 Bayes' Rule has divisions in it (either calculating the &lt;i&gt;posterior probability&lt;/i&gt; or &lt;i&gt;posterior ratio&lt;/i&gt;) so I'm going to block letting the &lt;i&gt;prior probability&lt;/i&gt; or &lt;i&gt;marginal probability&lt;/i&gt; be zero by raising an exception.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga512d7d" class="outline-6"&gt;
-&lt;h6 id="orga512d7d"&gt;Zero Marginal Likelihood&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-orga512d7d"&gt;
+&lt;div id="outline-container-org2c5c794" class="outline-6"&gt;
+&lt;h6 id="org2c5c794"&gt;Zero Marginal Likelihood&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org2c5c794"&gt;
 &lt;p&gt;
 This means the probability of the data is zero (no one has spots as a symptom of disease).
 &lt;/p&gt;
@@ -459,9 +459,9 @@ This means the probability of the data is zero (no one has spots as a symptom of
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgee9647e" class="outline-6"&gt;
-&lt;h6 id="orgee9647e"&gt;Zero Prior Probability&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-orgee9647e"&gt;
+&lt;div id="outline-container-org581336c" class="outline-6"&gt;
+&lt;h6 id="org581336c"&gt;Zero Prior Probability&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org581336c"&gt;
 &lt;p&gt;
 This means the probability of the hypothesis is (was) zero - no one has this disease.
 &lt;/p&gt;
@@ -481,9 +481,9 @@ This means the probability of the hypothesis is (was) zero - no one has this dis
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org2bd5bd3" class="outline-6"&gt;
-&lt;h6 id="org2bd5bd3"&gt;Zero Likelihood&lt;/h6&gt;
-&lt;div class="outline-text-6" id="text-org2bd5bd3"&gt;
+&lt;div id="outline-container-org700a96a" class="outline-6"&gt;
+&lt;h6 id="org700a96a"&gt;Zero Likelihood&lt;/h6&gt;
+&lt;div class="outline-text-6" id="text-org700a96a"&gt;
 &lt;p&gt;
 This means the probability of the data given the hypothesis is zero no - one with this disease has these symptoms.
 &lt;/p&gt;
@@ -505,9 +505,9 @@ This means the probability of the data given the hypothesis is zero no - one wit
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgaf0abda" class="outline-5"&gt;
-&lt;h5 id="orgaf0abda"&gt;Getting Diseases Back&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-orgaf0abda"&gt;
+&lt;div id="outline-container-org527037b" class="outline-5"&gt;
+&lt;h5 id="org527037b"&gt;Getting Diseases Back&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org527037b"&gt;
 &lt;p&gt;
 The Diagnosis maintains the diseases both as attributes and in a dictionary which lets you retrieve them back out.
 &lt;/p&gt;
@@ -523,9 +523,9 @@ The Diagnosis maintains the diseases both as attributes and in a dictionary whic
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org8e72514" class="outline-5"&gt;
-&lt;h5 id="org8e72514"&gt;Finding the Most Likely Disease&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org8e72514"&gt;
+&lt;div id="outline-container-org5a0d641" class="outline-5"&gt;
+&lt;h5 id="org5a0d641"&gt;Finding the Most Likely Disease&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org5a0d641"&gt;
 &lt;p&gt;
 The diagnosis should also decide which one is the more likely disease.
 &lt;/p&gt;
@@ -568,9 +568,9 @@ Now generalize it with hypothesis.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org93000c9" class="outline-5"&gt;
-&lt;h5 id="org93000c9"&gt;The Posterior Ratio&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org93000c9"&gt;
+&lt;div id="outline-container-orgeefe3af" class="outline-5"&gt;
+&lt;h5 id="orgeefe3af"&gt;The Posterior Ratio&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-orgeefe3af"&gt;
 &lt;p&gt;
 Besides knowing the more likely outcome, we want to know how much more likely it is.
 &lt;/p&gt;
@@ -616,9 +616,9 @@ Besides knowing the more likely outcome, we want to know how much more likely it
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgfd297cf" class="outline-4"&gt;
-&lt;h4 id="orgfd297cf"&gt;Run them&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgfd297cf"&gt;
+&lt;div id="outline-container-org2709aea" class="outline-4"&gt;
+&lt;h4 id="org2709aea"&gt;Run them&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org2709aea"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_measles&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_disease&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;test_zero_marginal_likelihood&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -633,9 +633,9 @@ Besides knowing the more likely outcome, we want to know how much more likely it
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org616a463" class="outline-3"&gt;
-&lt;h3 id="org616a463"&gt;Inspecting&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org616a463"&gt;
+&lt;div id="outline-container-org716bf6f" class="outline-3"&gt;
+&lt;h3 id="org716bf6f"&gt;Inspecting&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org716bf6f"&gt;
 &lt;p&gt;
 While the tests sort of give us a decent sense that things are working, let's take a look at the actual numbers.
 &lt;/p&gt;
@@ -656,9 +656,9 @@ So Chicken Pox is about thirty-thousand times more likely to be the reason for t
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org4682590" class="outline-3"&gt;
-&lt;h3 id="org4682590"&gt;Source&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org4682590"&gt;
+&lt;div id="outline-container-org3fe1474" class="outline-3"&gt;
+&lt;h3 id="org3fe1474"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org3fe1474"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
 &lt;/ol&gt;

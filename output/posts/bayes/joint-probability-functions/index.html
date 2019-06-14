@@ -64,96 +64,78 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgddcc8cb">Beginning</a>
+<li><a href="#orgd4a7066">Beginning</a>
 <ul>
-<li><a href="#org41c6299">Imports</a></li>
-<li><a href="#orgcfe3d8e">The Plotting</a></li>
+<li><a href="#orgc5fe540">Imports</a></li>
+<li><a href="#org7707691">The Embed</a></li>
 </ul>
 </li>
-<li><a href="#orgb86a17d">Middle</a>
+<li><a href="#org2448595">Middle</a>
 <ul>
-<li><a href="#orgec9205b">The Joint Probability Function</a></li>
-<li><a href="#orga12ac29">Visualizing It</a></li>
+<li><a href="#org2f257ad">The Joint Probability Function</a></li>
+<li><a href="#org3a41b98">Visualizing It</a></li>
 </ul>
 </li>
-<li><a href="#orga3f86aa">End</a>
+<li><a href="#org0000ea5">End</a>
 <ul>
-<li><a href="#orgc6ce981">Source</a></li>
+<li><a href="#org7ca618a">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgddcc8cb">
-<h2 id="orgddcc8cb">Beginning</h2>
-<div class="outline-text-2" id="text-orgddcc8cb">
+<div class="outline-2" id="outline-container-orgd4a7066">
+<h2 id="orgd4a7066">Beginning</h2>
+<div class="outline-text-2" id="text-orgd4a7066">
 <p>This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete.</p>
 </div>
-<div class="outline-3" id="outline-container-org41c6299">
-<h3 id="org41c6299">Imports</h3>
-<div class="outline-text-3" id="text-org41c6299"></div>
-<div class="outline-4" id="outline-container-orgb66937f">
-<h4 id="orgb66937f">Python</h4>
-<div class="outline-text-4" id="text-orgb66937f">
+<div class="outline-3" id="outline-container-orgc5fe540">
+<h3 id="orgc5fe540">Imports</h3>
+<div class="outline-text-3" id="text-orgc5fe540"></div>
+<div class="outline-4" id="outline-container-orgca76bd8">
+<h4 id="orgca76bd8">Python</h4>
+<div class="outline-text-4" id="text-orgca76bd8">
 <div class="highlight">
-<pre><span></span>from argparse import Namespace
-from functools import partial
+<pre><span></span>from functools import partial
 from pathlib import Path
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgf3205cf">
-<h4 id="orgf3205cf">PyPi</h4>
-<div class="outline-text-4" id="text-orgf3205cf">
+<div class="outline-4" id="outline-container-orgab25950">
+<h4 id="orgab25950">PyPi</h4>
+<div class="outline-text-4" id="text-orgab25950">
 <div class="highlight">
-<pre><span></span>from bokeh.models import HoverTool
-import holoviews
+<pre><span></span>import holoviews
 import pandas
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgc9f061a">
-<h4 id="orgc9f061a">My Stuff</h4>
-<div class="outline-text-4" id="text-orgc9f061a">
+<div class="outline-4" id="outline-container-orgcff0d54">
+<h4 id="orgcff0d54">My Stuff</h4>
+<div class="outline-text-4" id="text-orgcff0d54">
 <div class="highlight">
 <pre><span></span>from graeae.visualization import EmbedHoloview
 </pre></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orgcfe3d8e">
-<h3 id="orgcfe3d8e">The Plotting</h3>
-<div class="outline-text-3" id="text-orgcfe3d8e"></div>
-<div class="outline-4" id="outline-container-org6278799">
-<h4 id="org6278799">The Holoviews Embedder</h4>
-<div class="outline-text-4" id="text-org6278799">
+<div class="outline-3" id="outline-container-org7707691">
+<h3 id="org7707691">The Embed</h3>
+<div class="outline-text-3" id="text-org7707691">
 <div class="highlight">
 <pre><span></span>SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
-holoviews.extension("bokeh")
 Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org301e6dc">
-<h4 id="org301e6dc">The Plot Settings</h4>
-<div class="outline-text-4" id="text-org301e6dc">
-<div class="highlight">
-<pre><span></span>Plot = Namespace(
-    width=800,
-    height=800,
-)
-</pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-orgb86a17d">
-<h2 id="orgb86a17d">Middle</h2>
-<div class="outline-text-2" id="text-orgb86a17d"></div>
-<div class="outline-3" id="outline-container-orgec9205b">
-<h3 id="orgec9205b">The Joint Probability Function</h3>
-<div class="outline-text-3" id="text-orgec9205b">
+<div class="outline-2" id="outline-container-org2448595">
+<h2 id="org2448595">Middle</h2>
+<div class="outline-text-2" id="text-org2448595"></div>
+<div class="outline-3" id="outline-container-org2f257ad">
+<h3 id="org2f257ad">The Joint Probability Function</h3>
+<div class="outline-text-3" id="text-org2f257ad">
 <p>The <b>Joint Probability Function</b> is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.</p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -243,41 +225,27 @@ Embed = partial(EmbedHoloview, folder_path = output)
 <p>So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - \(p(\theta_2) = 0.4\) - and the summary values on the far right are the <i>marginal likelihood of the data</i> - \(p(x_2) = 0.7\).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orga12ac29">
-<h3 id="orga12ac29">Visualizing It</h3>
-<div class="outline-text-3" id="text-orga12ac29">
+<div class="outline-3" id="outline-container-org3a41b98">
+<h3 id="org3a41b98">Visualizing It</h3>
+<div class="outline-text-3" id="text-org3a41b98">
 <div class="highlight">
 <pre><span></span>data = pandas.DataFrame([
-    [2, 1, 1],
-    [0, 4, 2],
-    [1, 2, 3]
-], columns=["x_1", "x_2", "theta"])
+    [2, 0, 1],
+    [1, 4, 2],
+], columns=["theta_1", "theta_2", "theta_3"], index=["x_1", "x_2"])
 </pre></div>
 <div class="highlight">
-<pre><span></span>scattered = holoviews.Scatter(data, vdims=["x_1"], kdims=["theta"]).opts(
-    jitter=0.1,
-    size=holoviews.dim("x_1")*10 + 5,
-).opts(
-    padding=0.5,
-    height=Plot.height - 200,
-    width=Plot.width,
-    tools=["hover"],
-)
-bar = holoviews.Bars(data, "theta")
-plot = (scattered + bar).opts(title="Theta vs x1")
-Embed(plot=plot, file_name="theta_vs_x1_toy")()
+<pre><span></span>
 </pre></div>
-<object data="theta_vs_x1_toy.html" height="800" style="width:100%" type="text/html">
-<p>Figure Missing</p>
-</object></div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orga3f86aa">
-<h2 id="orga3f86aa">End</h2>
-<div class="outline-text-2" id="text-orga3f86aa"></div>
-<div class="outline-3" id="outline-container-orgc6ce981">
-<h3 id="orgc6ce981">Source</h3>
-<div class="outline-text-3" id="text-orgc6ce981">
+</div>
+<div class="outline-2" id="outline-container-org0000ea5">
+<h2 id="org0000ea5">End</h2>
+<div class="outline-text-2" id="text-org0000ea5"></div>
+<div class="outline-3" id="outline-container-org7ca618a">
+<h3 id="org7ca618a">Source</h3>
+<div class="outline-text-3" id="text-org7ca618a">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>
