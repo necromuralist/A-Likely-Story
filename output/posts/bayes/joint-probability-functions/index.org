@@ -87,7 +87,7 @@ data = data.reset_index().rename(columns={"index": "theta"})
 #+end_src
 
 #+begin_src ipython :session joint :results output raw :exports both
-height = Plot.height - 200
+height = Plot.height - 300
 scatter_1 = holoviews.Scatter(data, vdims=["x_1"], kdims=["theta"]).opts(
     jitter=0.1,
     size=holoviews.dim("x_1")*10 + 5,
@@ -112,7 +112,7 @@ scatter_2 = holoviews.Scatter(data, vdims=["x_2"], kdims=["theta"]).opts(
     yticks=3,
 )
 
-scattered = scatter_1 * scatter_2
+scattered = (scatter_1 * scatter_2).opts(ylabel="X")
 spikes = holoviews.Spikes(data, "theta", "theta_likelihood").opts(
     width=Plot.width,
     xaxis=None,

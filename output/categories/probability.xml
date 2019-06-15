@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about probability)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/probability.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Sat, 15 Jun 2019 01:03:29 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Joint Probability Functions</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about probability)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/probability.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Sat, 15 Jun 2019 05:24:08 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Joint Probability Functions</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgdad5f34"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orge8eec7d"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org58f9ff2"&gt;Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org9d51967"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org338678d"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org41056b6"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgd50a7f9"&gt;Middle&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org45c3634"&gt;Middle&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orga74b598"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgfd34e8e"&gt;Visualizing It&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org2978a61"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org57521b9"&gt;Visualizing It&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org7a461be"&gt;End&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orge113dfa"&gt;End&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgd4edd66"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org826855a"&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgdad5f34" class="outline-2"&gt;
-&lt;h2 id="orgdad5f34"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgdad5f34"&gt;
+&lt;div id="outline-container-orge8eec7d" class="outline-2"&gt;
+&lt;h2 id="orge8eec7d"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orge8eec7d"&gt;
 &lt;p&gt;
 This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org58f9ff2" class="outline-3"&gt;
-&lt;h3 id="org58f9ff2"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org58f9ff2"&gt;
+&lt;div id="outline-container-org338678d" class="outline-3"&gt;
+&lt;h3 id="org338678d"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org338678d"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgfa9ba2b" class="outline-4"&gt;
-&lt;h4 id="orgfa9ba2b"&gt;Python&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgfa9ba2b"&gt;
+&lt;div id="outline-container-org4e3065f" class="outline-4"&gt;
+&lt;h4 id="org4e3065f"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org4e3065f"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from argparse import Namespace
 from functools import partial
 from pathlib import Path
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org31577ba" class="outline-4"&gt;
-&lt;h4 id="org31577ba"&gt;PyPi&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org31577ba"&gt;
+&lt;div id="outline-container-orga78b183" class="outline-4"&gt;
+&lt;h4 id="orga78b183"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga78b183"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from bokeh.models import HoverTool
 import holoviews
 import pandas
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org0869f48" class="outline-4"&gt;
-&lt;h4 id="org0869f48"&gt;My Stuff&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org0869f48"&gt;
+&lt;div id="outline-container-orgbe68c05" class="outline-4"&gt;
+&lt;h4 id="orgbe68c05"&gt;My Stuff&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgbe68c05"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from graeae.visualization import EmbedHoloview
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org9d51967" class="outline-3"&gt;
-&lt;h3 id="org9d51967"&gt;The Plotting&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org9d51967"&gt;
+&lt;div id="outline-container-org41056b6" class="outline-3"&gt;
+&lt;h3 id="org41056b6"&gt;The Plotting&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org41056b6"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga622eb1" class="outline-4"&gt;
-&lt;h4 id="orga622eb1"&gt;The Holoviews Embedder&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga622eb1"&gt;
+&lt;div id="outline-container-org7035cd3" class="outline-4"&gt;
+&lt;h4 id="org7035cd3"&gt;The Holoviews Embedder&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org7035cd3"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
 holoviews.extension("bokeh")
@@ -75,9 +75,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgc7bc533" class="outline-4"&gt;
-&lt;h4 id="orgc7bc533"&gt;The Plot Settings&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgc7bc533"&gt;
+&lt;div id="outline-container-org59583c3" class="outline-4"&gt;
+&lt;h4 id="org59583c3"&gt;The Plot Settings&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org59583c3"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plot = Namespace(
     width=800,
     height=800,
@@ -87,13 +87,13 @@ Embed = partial(EmbedHoloview, folder_path = output)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd50a7f9" class="outline-2"&gt;
-&lt;h2 id="orgd50a7f9"&gt;Middle&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd50a7f9"&gt;
+&lt;div id="outline-container-org45c3634" class="outline-2"&gt;
+&lt;h2 id="org45c3634"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org45c3634"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga74b598" class="outline-3"&gt;
-&lt;h3 id="orga74b598"&gt;The Joint Probability Function&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orga74b598"&gt;
+&lt;div id="outline-container-org2978a61" class="outline-3"&gt;
+&lt;h3 id="org2978a61"&gt;The Joint Probability Function&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org2978a61"&gt;
 &lt;p&gt;
 The &lt;b&gt;Joint Probability Function&lt;/b&gt; is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
 &lt;/p&gt;
@@ -210,9 +210,9 @@ So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgfd34e8e" class="outline-3"&gt;
-&lt;h3 id="orgfd34e8e"&gt;Visualizing It&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgfd34e8e"&gt;
+&lt;div id="outline-container-org57521b9" class="outline-3"&gt;
+&lt;h3 id="org57521b9"&gt;Visualizing It&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org57521b9"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;data = pandas.DataFrame([
     [2, 1],
     [0, 4],
@@ -222,7 +222,7 @@ data["theta_likelihood"] = data.x_1 + data.x_2
 data = data.reset_index().rename(columns={"index": "theta"})
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;height = Plot.height - 200
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;height = Plot.height - 300
 scatter_1 = holoviews.Scatter(data, vdims=["x_1"], kdims=["theta"]).opts(
     jitter=0.1,
     size=holoviews.dim("x_1")*10 + 5,
@@ -247,7 +247,7 @@ scatter_2 = holoviews.Scatter(data, vdims=["x_2"], kdims=["theta"]).opts(
     yticks=3,
 )
 
-scattered = scatter_1 * scatter_2
+scattered = (scatter_1 * scatter_2).opts(ylabel="X")
 spikes = holoviews.Spikes(data, "theta", "theta_likelihood").opts(
     width=Plot.width,
     xaxis=None,
@@ -264,13 +264,13 @@ Embed(plot=plot, file_name="theta_vs_x1_toy")()
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org7a461be" class="outline-2"&gt;
-&lt;h2 id="org7a461be"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org7a461be"&gt;
+&lt;div id="outline-container-orge113dfa" class="outline-2"&gt;
+&lt;h2 id="orge113dfa"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orge113dfa"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd4edd66" class="outline-3"&gt;
-&lt;h3 id="orgd4edd66"&gt;Source&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgd4edd66"&gt;
+&lt;div id="outline-container-org826855a" class="outline-3"&gt;
+&lt;h3 id="org826855a"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org826855a"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
 &lt;/ol&gt;
