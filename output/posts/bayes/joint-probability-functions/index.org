@@ -23,11 +23,13 @@
 ** Imports
 *** Python
 #+begin_src ipython :session joint :results none
+from argparse import Namespace
 from functools import partial
 from pathlib import Path
 #+end_src
 *** PyPi
 #+begin_src ipython :session joint :results none
+from bokeh.models import HoverTool
 import holoviews
 import pandas
 #+end_src
@@ -35,11 +37,21 @@ import pandas
 #+begin_src ipython :session joint :results none
 from graeae.visualization import EmbedHoloview
 #+end_src
-** The Embed
+** The Plotting
+*** The Holoviews Embedder
 #+begin_src ipython :session joint :results none
 SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
+holoviews.extension("bokeh")
 Embed = partial(EmbedHoloview, folder_path = output)
+#+end_src
+
+*** The Plot Settings
+#+begin_src ipython :session joint :results none
+Plot = Namespace(
+    width=800,
+    height=800,
+)
 #+end_src
 * Middle
 ** The Joint Probability Function
@@ -66,14 +78,57 @@ So, for instance, the joint probability $p(x_2, \theta_2)$ is 0.1. The summary v
 ** Visualizing It
 #+begin_src ipython :session joint :results none
 data = pandas.DataFrame([
-    [2, 0, 1],
-    [1, 4, 2],
-], columns=["theta_1", "theta_2", "theta_3"], index=["x_1", "x_2"])
+    [2, 1],
+    [0, 4],
+    [1, 2]
+], columns=["x_1", "x_2"])
+data["theta_likelihood"] = data.x_1 + data.x_2
+data = data.reset_index().rename(columns={"index": "theta"})
 #+end_src
 
 #+begin_src ipython :session joint :results output raw :exports both
+height = Plot.height - 200
+scatter_1 = holoviews.Scatter(data, vdims=["x_1"], kdims=["theta"]).opts(
+    jitter=0.1,
+    size=holoviews.dim("x_1")*10 + 5,
+).opts(
+    padding=0.5,
+    height=height,
+    width=Plot.width,
+    tools=["hover"],
+    xticks=3,
+    yticks=3,
+)
 
+scatter_2 = holoviews.Scatter(data, vdims=["x_2"], kdims=["theta"]).opts(
+    jitter=0.1,
+    size=holoviews.dim("x_2")*10 + 5,
+).opts(
+    padding=0.5,
+    height=height,
+    width=Plot.width,
+    tools=["hover"],
+    xticks=3,
+    yticks=3,
+)
+
+scattered = scatter_1 * scatter_2
+spikes = holoviews.Spikes(data, "theta", "theta_likelihood").opts(
+    width=Plot.width,
+    xaxis=None,
+    height=200,
+)
+plot = (spikes + scattered).cols(1).opts(title="Theta vs x1")
+Embed(plot=plot, file_name="theta_vs_x1_toy")()
 #+end_src
+
+#+RESULTS:
+#+begin_export html
+<object type="text/html" data="theta_vs_x1_toy.html" style="width:100%" height=800>
+  <p>Figure Missing</p>
+</object>
+#+end_export
+
 * End
 ** Source
 1. Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p. 
