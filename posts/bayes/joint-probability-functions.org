@@ -274,6 +274,7 @@ class JointProbability:
         self._hypothesis_probability = None
         self._probability_of_data_given_hypothesis = None
         self._probability_of_hypothesis_given_data = None
+        self._maximum_a_priori = None
         self._probabilities = None
         return
     
@@ -330,6 +331,15 @@ class JointProbability:
             self._probability_of_hypothesis_given_data = (
                 self.joint_probability/self.data_probability)
         return self._probability_of_hypothesis_given_data
+    
+    @property
+    def maximum_a_priori(self) -> str:
+        """The name of the most likely hypothesis"""
+        if self._maximum_a_priori is None:
+            self._maximum_a_priori = (
+                self.probabilities.loc[self.data]
+                /self.data_probability).idxmax()
+        return self._maximum_a_priori
 #+end_src
 * End
 ** Tests
@@ -399,6 +409,15 @@ class TestProbability:
         actual = self.p_test.probability_of_hypothesis_given_data
         # Then it is the expected value
         expect(isclose(actual, 0.014, abs_tol=1e-3)).to(be_true)
+        return
+    
+    def test_maximum_a_priori(self):
+        # Given an instance of the probability
+        # When the MAP is retrieved
+        actual = self.p_test.maximum_a_priori
+        # Then it is the expected label
+        expect(actual).to(equal("theta4"))
+        return
 
     def __call__(self):
         tests = (thing for thing in dir(self) if thing.startswith("test_"))

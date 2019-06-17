@@ -1,11 +1,16 @@
 aiohttp
 bokeh
+colorama
 expects
 ghp-import2
+holoviews
 hypothesis
 jupyter
 Nikola
+pandas
 ptpython
+python-dotenv
+tabulate
 virtualfish
 watchdog
 wheel
