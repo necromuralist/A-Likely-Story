@@ -7,42 +7,58 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/bayes.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-16T19:45:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-rule.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-16T19:45:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_bayes-theorem.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-15T05:22:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_reference.xml</loc>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/cat_testing.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-15T05:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/infrastructure.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-15T05:22:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/links.xml</loc>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/notes.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-15T05:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/probability.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-16T19:45:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/reference.xml</loc>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://necromuralist.github.io/A-Likely-Story/categories/sources.xml</loc>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/categories/testing.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-15T05:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/rss.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://necromuralist.github.io/A-Likely-Story/sitemap.xml</loc>
-  <lastmod>2019-06-14T05:31:00Z</lastmod>
+  <lastmod>2019-06-16T22:21:00Z</lastmod>
  </sitemap>
 </sitemapindex>

@@ -1,4 +1,5 @@
 aiohttp
+bokeh
 expects
 ghp-import2
 hypothesis

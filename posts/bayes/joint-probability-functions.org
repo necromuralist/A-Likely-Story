@@ -25,11 +25,19 @@
 #+begin_src ipython :session joint :results none
 from argparse import Namespace
 from functools import partial
+from math import isclose
 from pathlib import Path
 #+end_src
 *** PyPi
 #+begin_src ipython :session joint :results none
 from bokeh.models import HoverTool
+from expects import (
+    be,
+    be_true,
+    equal,
+    expect,
+)
+from tabulate import tabulate
 import holoviews
 import pandas
 #+end_src
@@ -54,6 +62,7 @@ Plot = Namespace(
 )
 #+end_src
 * Middle
+  Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.
 ** The Joint Probability Function
 The *Joint Probability Function* is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
 
@@ -75,7 +84,7 @@ The intersection of data and hypothesis is the count we got for our joint probab
 
 So, for instance, the joint probability $p(x_2, \theta_2)$ is 0.1. The summary values at the bottom are the /marginal likelihood of the hypotheses/ - $p(\theta_2) = 0.4$ - and the summary values on the far right are the /marginal likelihood of the data/ - $p(x_2) = 0.7$.
 
-** Visualizing It
+*** Visualizing It
 #+begin_src ipython :session joint :results none
 data = pandas.DataFrame([
     [2, 1],
@@ -116,9 +125,16 @@ scattered = (scatter_1 * scatter_2).opts(ylabel="X")
 spikes = holoviews.Spikes(data, "theta", "theta_likelihood").opts(
     width=Plot.width,
     xaxis=None,
+    yticks=4,
     height=200,
 )
-plot = (spikes + scattered).cols(1).opts(title="Theta vs x1")
+
+x_likelihood = data[["x_1", "x_2"]].sum().reset_index().rename(columns={0: "X Likelihood"})
+
+spikes_2 = holoviews.Spikes(x_likelihood, "index", "X Likelihood").opts(
+height=height)
+plot = scattered << spikes_2 << spikes
+# plot = ((spikes + scattered ).cols(1) + spikes_2).opts(title="Theta vs X")
 Embed(plot=plot, file_name="theta_vs_x1_toy")()
 #+end_src
 
@@ -129,6 +145,271 @@ Embed(plot=plot, file_name="theta_vs_x1_toy")()
 </object>
 #+end_export
 
+** Disesases And Symptoms
+   Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.
+
+#+begin_src ipython :session joint :results none
+joint = pandas.DataFrame(
+    [
+        [0,0,1,0,3,5,10,7,7,4],
+        [0,1,1,10,16,11,12,7,8,5],
+        [3,5,8,9,14,10,3,3,0,0],
+        [8,9,9,5,4,1,1,0,0,0],
+    ],
+    columns=["theta0", "theta1", "theta2", "theta3", "theta4", "theta5", 
+             "theta6", "theta7", "theta8", "theta9"],
+    index=["x0", "x1", "x2", "x3"],
+)
+
+assert joint.shape == (4, 10)
+assert all(joint.T.sum() == pandas.Series([37, 71, 55, 37], 
+["x0", "x1", "x2", "x3"])), joint.T.sum()
+assert joint.T.sum().sum() == 200
+#+end_src
+*** Finding a Joint Probability
+/What is the /joint probability/ that a patient has the symptom $x_1$ and disease $\theta_1$ ($p(x_1, \theta_1)$)? To answer this we can look up the value in the row for $x_1$ and the column for $\theta_1$ and divide it by the total number of patients.
+
+#+begin_src ipython :session joint :results output raw :exports both
+total = joint.sum().sum()
+probabilities = joint/total
+print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
+#+end_src
+
+#+RESULTS:
+|    | theta0 | theta1 | theta2 | theta3 | theta4 | theta5 | theta6 | theta7 | theta8 | theta9 |
+|----+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
+| x0 |      0 |      0 |  0.005 |      0 |  0.015 |  0.025 |   0.05 |  0.035 |  0.035 |   0.02 |
+| x1 |      0 |  0.005 |  0.005 |   0.05 |   0.08 |  0.055 |   0.06 |  0.035 |   0.04 |  0.025 |
+| x2 |  0.015 |  0.025 |   0.04 |  0.045 |   0.07 |   0.05 |  0.015 |  0.015 |      0 |      0 |
+| x3 |   0.04 |  0.045 |  0.045 |  0.025 |   0.02 |  0.005 |  0.005 |      0 |      0 |      0 |
+
+#+begin_src ipython :session joint :results output :exports both
+intermediate = {
+    "p(x1, theta_1)": probabilities.loc["x1", "theta1"]
+}
+print(f"p(x1, theta1) = {intermediate['p(x1, theta_1)']}")
+#+end_src
+
+#+RESULTS:
+: p(x1, theta1) = 0.005
+
+*** What is the probability $p(x_1)$ that a patient has symptoms $x_1$?
+    You can calculate this by counting all the patients that had symptom $x_1$ (the sum of the row in the table across all thetas) and dividing by the total sample size.
+
+#+begin_src ipython :session joint :results output :exports both
+intermediate["p(x1)"] = probabilities.loc["x1"].sum()
+print(f"p(x1) = {intermediate['p(x1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(x1) = 0.355
+*** What is the probability $p(\theta_1)$ that a patient has the disease $\theta_1$?
+    This calculation is similar to calculating the probability of symptom $x_1$ except instead of using a row total you use the column for $\theta_1$.
+#+begin_src ipython :session joint :results output :exports both
+intermediate["p(theta_1)"] = probabilities.theta1.sum()
+print(f"p(theta_1) = {intermediate['p(theta_1)']}")
+#+end_src
+
+#+RESULTS:
+: p(theta_1) = 0.075
+*** What is the conditional probability that a patient has the symptom $x_1$ given that he has the disesase $\theta_1$?
+    This is the count of patients with symptom $x_1$ in the $\theta_1$ column divided by the total number in the $\theta_1$ column.
+
+#+begin_src ipython :session joint :results output :exports both
+intermediate["p(x1|theta_1)"] = probabilities.loc["x1", "theta1"]/probabilities["theta1"].sum()
+print(f"p(x1|theta_1) = {intermediate['p(x1|theta_1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(x1|theta_1) = 0.067
+*** What is the conditional probability that a patent with disease $\theta_1$ has symptom $x_1$ ($p(\theta_1| x_1)$)?
+    Here's where we get to apply Bayes' Rule.
+\[
+p(\theta_1 | x_1) = \frac{p(x_1|\theta_1) p(\theta_1)}{p(x_1)}
+\]
+
+#+begin_src ipython :session joint :results output :exports both
+intermediate["p(theta_1|x_1)"] = ((
+    intermediate["p(x1|theta_1)"] * intermediate["p(theta_1)"])
+                                  /intermediate["p(x1)"])
+print(f"p(theta_1|x_1) = {intermediate['p(theta_1|x_1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(theta_1|x_1) = 0.014
+
+But, in fact, you can calculate this a little more directly using:
+
+\[
+p(\theta_1|x_1) = \frac{p(x_1, \theta_1)}{p(x_1)}
+\]
+
+#+begin_src ipython :session joint :results output :exports both
+alternative = intermediate["p(x1, theta_1)"]/intermediate["p(x1)"]
+print(f"Original: {intermediate['p(theta_1|x_1)']:.3}, Alternative: {alternative:.3}")
+#+end_src
+
+#+RESULTS:
+: Original: 0.0141, Alternative: 0.0141
+
+** The Probability
+   This is just something to generalize what I did above.
+#+begin_src ipython :session joint :results none
+class JointProbability:
+    """A joint probability queryior
+
+    Args:
+     counts: table of counts for joint probability
+     hypothesis: column with the hypothesis counts
+     data: row with the data counts
+    """
+    def __init__(self, counts: pandas.DataFrame, hypothesis: str, 
+                 data: str) -> None:
+        self.counts = counts
+        self.hypothesis = hypothesis
+        self.data = data
+        self._sum_total = None
+        self._joint_probability = None
+        self._data_probability = None
+        self._hypothesis_probability = None
+        self._probability_of_data_given_hypothesis = None
+        self._probability_of_hypothesis_given_data = None
+        self._probabilities = None
+        return
+    
+    @property
+    def sum_total(self) -> int:
+        """The total count of entries in the table"""
+        if self._sum_total is None:
+            self._sum_total = self.counts.sum().sum()
+        return self._sum_total
+    
+    @property
+    def probabilities(self) -> pandas.DataFrame:
+        """The counts converted to probabilities"""
+        if self._probabilities is None:
+            self._probabilities = self.counts/self.sum_total
+        return self._probabilities
+    
+    @property
+    def joint_probability(self) -> float:
+        """the joint probability of the data and hypothesis"""
+        if self._joint_probability is None:
+            self._joint_probability = self.probabilities.loc[self.data, self.hypothesis]
+        return self._joint_probability
+    
+    @property
+    def data_probability(self) -> float:
+        """The probability of the data"""
+        if self._data_probability is None:
+            self._data_probability = self.probabilities.loc[self.data].sum()
+        return self._data_probability
+    
+    @property
+    def hypothesis_probability(self) -> float:
+        """The probability of the hypothesis"""
+        if self._hypothesis_probability is None:
+            self._hypothesis_probability = self.probabilities[
+                self.hypothesis].sum()
+        return self._hypothesis_probability
+    
+    @property
+    def probability_of_data_given_hypothesis(self) -> float:
+        """The probability of our data given the hypothesis"""
+        if self._probability_of_data_given_hypothesis is None:
+            self._probability_of_data_given_hypothesis = (
+                self.probabilities.loc[self.data, self.hypothesis]
+                /self.probabilities[self.hypothesis].sum()
+            )
+        return self._probability_of_data_given_hypothesis
+    
+    @property
+    def probability_of_hypothesis_given_data(self) -> float:
+        """The probability of our hypothesis given our data"""
+        if self._probability_of_hypothesis_given_data is None:
+            self._probability_of_hypothesis_given_data = (
+                self.joint_probability/self.data_probability)
+        return self._probability_of_hypothesis_given_data
+#+end_src
 * End
+** Tests
+#+begin_src ipython :session joint :results none
+class TestProbability:
+    def __init__(self, table: pandas.DataFrame, data: str="x1", hypothesis: str="theta1"):
+        self.table = table
+        self.data = data
+        self.hypothesis = hypothesis
+        self._p_test = None
+        return
+    
+    @property
+    def p_test(self) -> JointProbability:
+        """The thing under test"""
+        if self._p_test is None:
+            self._p_test = JointProbability(self.table, 
+                                            hypothesis=self.hypothesis,
+                                            data=self.data)
+        return self._p_test
+    
+    def test_construction(self):
+        # given an instance of the probability
+        # when the table is retrieved
+        actual = self.p_test.counts
+        # then it is the expected
+        expect(actual).to(be(self.table))
+        # and the total is the expected
+        expect(self.p_test.sum_total).to(equal(200))
+        return
+    
+    def test_joint_probability(self):
+        # given an instance of the probability
+        # when the p(x1, theta1) is retrieved
+        actual = self.p_test.joint_probability
+        # then it is the expected value
+        expect(isclose(actual, 0.005)).to(be_true)
+        return
+
+    def test_data_probabilitiy(self):
+        # Given an instance of the probability
+        # When p(x1) is retrieved
+        actual = self.p_test.data_probability
+        # Then it is the expected value
+        expect(isclose(actual, 0.355)).to(be_true)
+        return
+
+    def test_hypothesis_probability(self):
+        # Given an instance of the probability
+        # When p(theta1) is retrieved
+        actual = self.p_test.hypothesis_probability
+        # Then it is the expected value
+        expect(isclose(actual, 0.075)).to(be_true)
+        return
+
+    def test_probability_of_data_given_hypothesis(self):
+        # Given an instance of the probability
+        # When p(x1 | theta1) is retrieved
+        actual = self.p_test.probability_of_data_given_hypothesis
+        # Then it is the expected value
+        expect(isclose(actual, 0.067, abs_tol=1e-3)).to(be_true)
+        return
+
+    def test_probability_of_hypothesis_given_data(self):
+        # Given an instance of the probability
+        # When p(theta1 | x1) is retrieved
+        actual = self.p_test.probability_of_hypothesis_given_data
+        # Then it is the expected value
+        expect(isclose(actual, 0.014, abs_tol=1e-3)).to(be_true)
+
+    def __call__(self):
+        tests = (thing for thing in dir(self) if thing.startswith("test_"))
+        for test in tests:
+            getattr(self, test)()
+        return
+#+end_src
+
+#+begin_src ipython :session joint :results none
+test = TestProbability(joint)
+test()
+#+end_src
 ** Source
 1. Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p. 
