@@ -341,6 +341,50 @@ class JointProbability:
                 /self.data_probability).idxmax()
         return self._maximum_a_priori
 #+end_src
+
+*** Visualize the MAP
+**** The Probabilities
+     I'll use the =JointProbability= class, although in this case aren't looking at values for a specific theta.
+#+begin_src ipython :session joint :results none
+table = JointProbability(joint, "theta1", data="x1")
+#+end_src
+
+#+begin_src ipython :session joint :results output raw :exports both
+height = int((Plot.height - 300)/3)
+likelihood = (table.counts.loc["x1"]/table.counts.sum()).reset_index().rename(columns={0: "x1"})
+likelihood_spikes = holoviews.Spikes(likelihood, vdims=["x1"], kdims=["index"]).opts(
+).opts(
+    padding=0,
+    height=height,
+    width=Plot.width,
+    tools=["hover"],
+    ylabel="Likelihood (p(x|theta))"
+)
+
+prior = (table.counts.sum()/table.counts.sum().sum()).reset_index().rename(columns={0: "x1"})
+prior_spikes = holoviews.Spikes(prior, vdims=["x1"], kdims=["index"]).opts(
+    height = height,
+    width = Plot.width,
+)
+
+posterior = ((likelihood["x1"] * prior["x1"])/table.data_probability).reset_index()
+
+posterior_spikes = holoviews.Spikes(posterior, vdims=["x1"], kdims=["index"]).opts(
+    height=height,
+    width=Plot.width,
+)
+
+plot = (likelihood_spikes + prior_spikes + posterior_spikes).cols(1).opts(title="Disease Probabilities for x1")
+Embed(plot=plot, file_name="disease_probabilities")()
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<object type="text/html" data="disease_probabilities.html" style="width:100%" height=800>
+  <p>Figure Missing</p>
+</object>
+#+end_export
+
 * End
 ** Tests
 #+begin_src ipython :session joint :results none
