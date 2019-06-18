@@ -65,39 +65,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ef57da">Beginning</a>
+<li><a href="#org6037260">Beginning</a>
 <ul>
-<li><a href="#orgc7e6e10">Imports</a></li>
-<li><a href="#orge94f470">The Plotting</a></li>
+<li><a href="#org3aaa1b1">Imports</a></li>
+<li><a href="#org11db3bf">The Plotting</a></li>
 </ul>
 </li>
-<li><a href="#orge7ce802">Middle</a>
+<li><a href="#org40986f8">Middle</a>
 <ul>
-<li><a href="#orga17118f">The Joint Probability Function</a></li>
-<li><a href="#org49eeb2f">Disesases And Symptoms</a></li>
-<li><a href="#org2923dc4">The Probability</a></li>
+<li><a href="#org8fdb188">The Joint Probability Function</a></li>
+<li><a href="#org345ec47">Disesases And Symptoms</a></li>
+<li><a href="#orgb8d3c80">The Probability</a></li>
 </ul>
 </li>
-<li><a href="#org895a5e6">End</a>
+<li><a href="#org33812ef">End</a>
 <ul>
-<li><a href="#org1350896">Tests</a></li>
-<li><a href="#org45dd9eb">Source</a></li>
+<li><a href="#org4499f78">Tests</a></li>
+<li><a href="#orgaf475a5">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org1ef57da">
-<h2 id="org1ef57da">Beginning</h2>
-<div class="outline-text-2" id="text-org1ef57da">
+<div class="outline-2" id="outline-container-org6037260">
+<h2 id="org6037260">Beginning</h2>
+<div class="outline-text-2" id="text-org6037260">
 <p>This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete.</p>
 </div>
-<div class="outline-3" id="outline-container-orgc7e6e10">
-<h3 id="orgc7e6e10">Imports</h3>
-<div class="outline-text-3" id="text-orgc7e6e10"></div>
-<div class="outline-4" id="outline-container-org5a77900">
-<h4 id="org5a77900">Python</h4>
-<div class="outline-text-4" id="text-org5a77900">
+<div class="outline-3" id="outline-container-org3aaa1b1">
+<h3 id="org3aaa1b1">Imports</h3>
+<div class="outline-text-3" id="text-org3aaa1b1"></div>
+<div class="outline-4" id="outline-container-org64302ce">
+<h4 id="org64302ce">Python</h4>
+<div class="outline-text-4" id="text-org64302ce">
 <div class="highlight">
 <pre><span></span>from argparse import Namespace
 from functools import partial
@@ -106,9 +106,9 @@ from pathlib import Path
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgf894030">
-<h4 id="orgf894030">PyPi</h4>
-<div class="outline-text-4" id="text-orgf894030">
+<div class="outline-4" id="outline-container-orgaa45f1d">
+<h4 id="orgaa45f1d">PyPi</h4>
+<div class="outline-text-4" id="text-orgaa45f1d">
 <div class="highlight">
 <pre><span></span>from bokeh.models import HoverTool
 from expects import (
@@ -123,21 +123,21 @@ import pandas
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgfdce8ff">
-<h4 id="orgfdce8ff">My Stuff</h4>
-<div class="outline-text-4" id="text-orgfdce8ff">
+<div class="outline-4" id="outline-container-orga0c5b0d">
+<h4 id="orga0c5b0d">My Stuff</h4>
+<div class="outline-text-4" id="text-orga0c5b0d">
 <div class="highlight">
 <pre><span></span>from graeae.visualization import EmbedHoloview
 </pre></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orge94f470">
-<h3 id="orge94f470">The Plotting</h3>
-<div class="outline-text-3" id="text-orge94f470"></div>
-<div class="outline-4" id="outline-container-org53b2f78">
-<h4 id="org53b2f78">The Holoviews Embedder</h4>
-<div class="outline-text-4" id="text-org53b2f78">
+<div class="outline-3" id="outline-container-org11db3bf">
+<h3 id="org11db3bf">The Plotting</h3>
+<div class="outline-text-3" id="text-org11db3bf"></div>
+<div class="outline-4" id="outline-container-org6cad1a8">
+<h4 id="org6cad1a8">The Holoviews Embedder</h4>
+<div class="outline-text-4" id="text-org6cad1a8">
 <div class="highlight">
 <pre><span></span>SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
@@ -146,9 +146,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org9e488a9">
-<h4 id="org9e488a9">The Plot Settings</h4>
-<div class="outline-text-4" id="text-org9e488a9">
+<div class="outline-4" id="outline-container-orgb6a9b0a">
+<h4 id="orgb6a9b0a">The Plot Settings</h4>
+<div class="outline-text-4" id="text-orgb6a9b0a">
 <div class="highlight">
 <pre><span></span>Plot = Namespace(
     width=800,
@@ -159,14 +159,14 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orge7ce802">
-<h2 id="orge7ce802">Middle</h2>
-<div class="outline-text-2" id="text-orge7ce802">
+<div class="outline-2" id="outline-container-org40986f8">
+<h2 id="org40986f8">Middle</h2>
+<div class="outline-text-2" id="text-org40986f8">
 <p>Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.</p>
 </div>
-<div class="outline-3" id="outline-container-orga17118f">
-<h3 id="orga17118f">The Joint Probability Function</h3>
-<div class="outline-text-3" id="text-orga17118f">
+<div class="outline-3" id="outline-container-org8fdb188">
+<h3 id="org8fdb188">The Joint Probability Function</h3>
+<div class="outline-text-3" id="text-org8fdb188">
 <p>The <b>Joint Probability Function</b> is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.</p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -255,9 +255,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </table>
 <p>So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - \(p(\theta_2) = 0.4\) - and the summary values on the far right are the <i>marginal likelihood of the data</i> - \(p(x_2) = 0.7\).</p>
 </div>
-<div class="outline-4" id="outline-container-orgb53b9e0">
-<h4 id="orgb53b9e0">Visualizing It</h4>
-<div class="outline-text-4" id="text-orgb53b9e0">
+<div class="outline-4" id="outline-container-org47858fa">
+<h4 id="org47858fa">Visualizing It</h4>
+<div class="outline-text-4" id="text-org47858fa">
 <div class="highlight">
 <pre><span></span>data = pandas.DataFrame([
     [2, 1],
@@ -314,9 +314,9 @@ Embed(plot=plot, file_name="theta_vs_x1_toy")()
 </object></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org49eeb2f">
-<h3 id="org49eeb2f">Disesases And Symptoms</h3>
-<div class="outline-text-3" id="text-org49eeb2f">
+<div class="outline-3" id="outline-container-org345ec47">
+<h3 id="org345ec47">Disesases And Symptoms</h3>
+<div class="outline-text-3" id="text-org345ec47">
 <p>Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.</p>
 <div class="highlight">
 <pre><span></span>joint = pandas.DataFrame(
@@ -337,9 +337,9 @@ assert all(joint.T.sum() == pandas.Series([37, 71, 55, 37],
 assert joint.T.sum().sum() == 200
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org886483b">
-<h4 id="org886483b">Finding a Joint Probability</h4>
-<div class="outline-text-4" id="text-org886483b">
+<div class="outline-4" id="outline-container-org1ff28b3">
+<h4 id="org1ff28b3">Finding a Joint Probability</h4>
+<div class="outline-text-4" id="text-org1ff28b3">
 <p><i>What is the /joint probability</i> that a patient has the symptom \(x_1\) and disease \(\theta_1\) (\(p(x_1, \theta_1)\))? To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.</p>
 <div class="highlight">
 <pre><span></span>total = joint.sum().sum()
@@ -440,9 +440,9 @@ p(x1, theta1) = 0.005
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orgb43cd57">
-<h4 id="orgb43cd57">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
-<div class="outline-text-4" id="text-orgb43cd57">
+<div class="outline-4" id="outline-container-org5d49774">
+<h4 id="org5d49774">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
+<div class="outline-text-4" id="text-org5d49774">
 <p>You can calculate this by counting all the patients that had symptom \(x_1\) (the sum of the row in the table across all thetas) and dividing by the total sample size.</p>
 <div class="highlight">
 <pre><span></span>intermediate["p(x1)"] = probabilities.loc["x1"].sum()
@@ -453,9 +453,9 @@ p(x1) = 0.355
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orgd294c86">
-<h4 id="orgd294c86">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-orgd294c86">
+<div class="outline-4" id="outline-container-org947e7a1">
+<h4 id="org947e7a1">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-org947e7a1">
 <p>This calculation is similar to calculating the probability of symptom \(x_1\) except instead of using a row total you use the column for \(\theta_1\).</p>
 <div class="highlight">
 <pre><span></span>intermediate["p(theta_1)"] = probabilities.theta1.sum()
@@ -466,9 +466,9 @@ p(theta_1) = 0.075
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org0cfca33">
-<h4 id="org0cfca33">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-org0cfca33">
+<div class="outline-4" id="outline-container-orgb852ceb">
+<h4 id="orgb852ceb">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-orgb852ceb">
 <p>This is the count of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total number in the \(\theta_1\) column.</p>
 <div class="highlight">
 <pre><span></span>intermediate["p(x1|theta_1)"] = probabilities.loc["x1", "theta1"]/probabilities["theta1"].sum()
@@ -479,9 +479,9 @@ p(x1|theta_1) = 0.067
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org49fe2b6">
-<h4 id="org49fe2b6">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
-<div class="outline-text-4" id="text-org49fe2b6">
+<div class="outline-4" id="outline-container-org0319271">
+<h4 id="org0319271">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
+<div class="outline-text-4" id="text-org0319271">
 <p>Here's where we get to apply Bayes' Rule. \[ p(\theta_1 | x_1) = \frac{p(x_1|\theta_1) p(\theta_1)}{p(x_1)} \]</p>
 <div class="highlight">
 <pre><span></span>intermediate["p(theta_1|x_1)"] = ((
@@ -505,9 +505,9 @@ Original: 0.0141, Alternative: 0.0141
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org2923dc4">
-<h3 id="org2923dc4">The Probability</h3>
-<div class="outline-text-3" id="text-org2923dc4">
+<div class="outline-3" id="outline-container-orgb8d3c80">
+<h3 id="orgb8d3c80">The Probability</h3>
+<div class="outline-text-3" id="text-orgb8d3c80">
 <p>This is just something to generalize what I did above.</p>
 <div class="highlight">
 <pre><span></span>class JointProbability:
@@ -597,12 +597,12 @@ Original: 0.0141, Alternative: 0.0141
         return self._maximum_a_priori
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org3e83f45">
-<h4 id="org3e83f45">Visualize the MAP</h4>
-<div class="outline-text-4" id="text-org3e83f45"></div>
-<div class="outline-5" id="outline-container-org6f5e404">
-<h5 id="org6f5e404">The Probabilities</h5>
-<div class="outline-text-5" id="text-org6f5e404">
+<div class="outline-4" id="outline-container-orgf88195c">
+<h4 id="orgf88195c">Visualize the MAP</h4>
+<div class="outline-text-4" id="text-orgf88195c"></div>
+<div class="outline-5" id="outline-container-org013234b">
+<h5 id="org013234b">The Probabilities</h5>
+<div class="outline-text-5" id="text-org013234b">
 <p>I'll use the <code>JointProbability</code> class, although in this case aren't looking at values for a specific theta.</p>
 <div class="highlight">
 <pre><span></span>table = JointProbability(joint, "theta1", data="x1")
@@ -616,7 +616,7 @@ likelihood_spikes = holoviews.Spikes(likelihood, vdims=["x1"], kdims=["index"]).
     height=height,
     width=Plot.width,
     tools=["hover"],
-    xlabel="Likelihood (p(x|theta))"
+    ylabel="Likelihood (p(x|theta))"
 )
 
 prior = (table.counts.sum()/table.counts.sum().sum()).reset_index().rename(columns={0: "x1"})
@@ -642,12 +642,12 @@ Embed(plot=plot, file_name="disease_probabilities")()
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org895a5e6">
-<h2 id="org895a5e6">End</h2>
-<div class="outline-text-2" id="text-org895a5e6"></div>
-<div class="outline-3" id="outline-container-org1350896">
-<h3 id="org1350896">Tests</h3>
-<div class="outline-text-3" id="text-org1350896">
+<div class="outline-2" id="outline-container-org33812ef">
+<h2 id="org33812ef">End</h2>
+<div class="outline-text-2" id="text-org33812ef"></div>
+<div class="outline-3" id="outline-container-org4499f78">
+<h3 id="org4499f78">Tests</h3>
+<div class="outline-text-3" id="text-org4499f78">
 <div class="highlight">
 <pre><span></span>class TestProbability:
     def __init__(self, table: pandas.DataFrame, data: str="x1", hypothesis: str="theta1"):
@@ -736,9 +736,9 @@ test()
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org45dd9eb">
-<h3 id="org45dd9eb">Source</h3>
-<div class="outline-text-3" id="text-org45dd9eb">
+<div class="outline-3" id="outline-container-orgaf475a5">
+<h3 id="orgaf475a5">Source</h3>
+<div class="outline-text-3" id="text-orgaf475a5">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>
