@@ -82,40 +82,40 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org79e7b4e">Beginning</a>
+<li><a href="#org93d4be7">Beginning</a>
 <ul>
-<li><a href="#org5e16960">Imports</a></li>
-<li><a href="#org930da04">The Plotting</a></li>
+<li><a href="#orgcfca1c1">Imports</a></li>
+<li><a href="#org7c70525">The Plotting</a></li>
 </ul>
 </li>
-<li><a href="#orgd0c1d24">Middle</a>
+<li><a href="#org2155c54">Middle</a>
 <ul>
-<li><a href="#org6a40de0">The Joint Probability Function</a></li>
-<li><a href="#orgac78b13">Diseases And Symptoms</a></li>
-<li><a href="#org6c53bf9">The Probability</a></li>
-<li><a href="#orgb1f35a6">Visualize the Maximum A-Priori</a></li>
+<li><a href="#org1be915d">The Joint Probability Function</a></li>
+<li><a href="#orgac42bc0">Diseases And Symptoms</a></li>
+<li><a href="#org17d2516">The Probability</a></li>
+<li><a href="#orgbe96bb3">Visualize the Maximum A-Priori</a></li>
 </ul>
 </li>
-<li><a href="#orgfe91eaa">End</a>
+<li><a href="#org0764680">End</a>
 <ul>
-<li><a href="#org1bcd5e1">Tests</a></li>
-<li><a href="#org9992488">Source</a></li>
+<li><a href="#org0ce5d02">Tests</a></li>
+<li><a href="#org910a777">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org79e7b4e">
-<h2 id="org79e7b4e">Beginning</h2>
-<div class="outline-text-2" id="text-org79e7b4e">
+<div class="outline-2" id="outline-container-org93d4be7">
+<h2 id="org93d4be7">Beginning</h2>
+<div class="outline-text-2" id="text-org93d4be7">
 <p>This is another re-working of an example from <a href="http://jim-stone.staff.shef.ac.uk/BookBayes2012/BayesRuleBookMain.html">Bayes' Rule: A Tutorial Introduction to Bayesian Analysis</a>. This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete.</p>
 </div>
-<div class="outline-3" id="outline-container-org5e16960">
-<h3 id="org5e16960">Imports</h3>
-<div class="outline-text-3" id="text-org5e16960"></div>
-<div class="outline-4" id="outline-container-org0c0768a">
-<h4 id="org0c0768a">Python</h4>
-<div class="outline-text-4" id="text-org0c0768a">
+<div class="outline-3" id="outline-container-orgcfca1c1">
+<h3 id="orgcfca1c1">Imports</h3>
+<div class="outline-text-3" id="text-orgcfca1c1"></div>
+<div class="outline-4" id="outline-container-orgad0f083">
+<h4 id="orgad0f083">Python</h4>
+<div class="outline-text-4" id="text-orgad0f083">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
@@ -125,9 +125,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org39ac0a7">
-<h4 id="org39ac0a7">PyPi</h4>
-<div class="outline-text-4" id="text-org39ac0a7">
+<div class="outline-4" id="outline-container-org3ddb874">
+<h4 id="org3ddb874">PyPi</h4>
+<div class="outline-text-4" id="text-org3ddb874">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">HoverTool</span>
 <span class="kn">from</span> <span class="nn">expects</span> <span class="kn">import</span> <span class="p">(</span>
@@ -144,21 +144,21 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org5a668fd">
-<h4 id="org5a668fd">My Stuff</h4>
-<div class="outline-text-4" id="text-org5a668fd">
+<div class="outline-4" id="outline-container-orga02e811">
+<h4 id="orga02e811">My Stuff</h4>
+<div class="outline-text-4" id="text-orga02e811">
 <div class="highlight">
 <pre><span></span><span class="kn">from</span> <span class="nn">graeae.visualization</span> <span class="kn">import</span> <span class="n">EmbedHoloview</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org930da04">
-<h3 id="org930da04">The Plotting</h3>
-<div class="outline-text-3" id="text-org930da04"></div>
-<div class="outline-4" id="outline-container-orgf6d491f">
-<h4 id="orgf6d491f">The Holoviews Embedder</h4>
-<div class="outline-text-4" id="text-orgf6d491f">
+<div class="outline-3" id="outline-container-org7c70525">
+<h3 id="org7c70525">The Plotting</h3>
+<div class="outline-text-3" id="text-org7c70525"></div>
+<div class="outline-4" id="outline-container-org0dbb4d2">
+<h4 id="org0dbb4d2">The Holoviews Embedder</h4>
+<div class="outline-text-4" id="text-org0dbb4d2">
 <div class="highlight">
 <pre><span></span><span class="n">SLUG</span> <span class="o">=</span> <span class="s2">"joint-probability-functions"</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../files/posts/bayes/"</span><span class="p">)</span><span class="o">/</span><span class="n">SLUG</span>
@@ -167,9 +167,9 @@
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org56b63c0">
-<h4 id="org56b63c0">The Plot Settings</h4>
-<div class="outline-text-4" id="text-org56b63c0">
+<div class="outline-4" id="outline-container-orgb79f7c3">
+<h4 id="orgb79f7c3">The Plot Settings</h4>
+<div class="outline-text-4" id="text-orgb79f7c3">
 <div class="highlight">
 <pre><span></span><span class="n">Plot</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
@@ -180,14 +180,14 @@
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgd0c1d24">
-<h2 id="orgd0c1d24">Middle</h2>
-<div class="outline-text-2" id="text-orgd0c1d24">
+<div class="outline-2" id="outline-container-org2155c54">
+<h2 id="org2155c54">Middle</h2>
+<div class="outline-text-2" id="text-org2155c54">
 <p>Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.</p>
 </div>
-<div class="outline-3" id="outline-container-org6a40de0">
-<h3 id="org6a40de0">The Joint Probability Function</h3>
-<div class="outline-text-3" id="text-org6a40de0">
+<div class="outline-3" id="outline-container-org1be915d">
+<h3 id="org1be915d">The Joint Probability Function</h3>
+<div class="outline-text-3" id="text-org1be915d">
 <p>The <b>Joint Probability Function</b> is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.</p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -278,9 +278,9 @@
 <p>So if we want to look up the joint probability \(p(x_2, \theta_2)\) for \(x_2\) and \(\theta_2\) in the table we find the intersection of \(x_2\) and \(\theta_2\) in the table and find that it is 0.4. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - e.g. \(p(\theta_2) = 0.4\) and the summary values on the far right are the <i>marginal likelihood of the data</i> - e.g. \(p(x_2) = 0.7\).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orgac78b13">
-<h3 id="orgac78b13">Diseases And Symptoms</h3>
-<div class="outline-text-3" id="text-orgac78b13">
+<div class="outline-3" id="outline-container-orgac42bc0">
+<h3 id="orgac42bc0">Diseases And Symptoms</h3>
+<div class="outline-text-3" id="text-orgac42bc0">
 <p>This next bit comes from the book, I'm just converting it to use pandas. I also changed the indexing to be zero-based, just because.</p>
 <p>Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.</p>
 <div class="highlight">
@@ -302,9 +302,9 @@
 <span class="k">assert</span> <span class="n">joint</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span>
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org1af5f97">
-<h4 id="org1af5f97">What is the joint probability that a patient has the symptom \(x_1\) and disease \(\theta_1\) [\(p(x_1, \theta_1)\)]?</h4>
-<div class="outline-text-4" id="text-org1af5f97">
+<div class="outline-4" id="outline-container-org10df921">
+<h4 id="org10df921">What is the joint probability that a patient has the symptom \(x_1\) and disease \(\theta_1\) [\(p(x_1, \theta_1)\)]?</h4>
+<div class="outline-text-4" id="text-org10df921">
 <p>To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.</p>
 <div class="highlight">
 <pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">joint</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -405,9 +405,9 @@ p(x_1, theta_1) = 0.005
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orge9b1362">
-<h4 id="orge9b1362">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
-<div class="outline-text-4" id="text-orge9b1362">
+<div class="outline-4" id="outline-container-org9d19527">
+<h4 id="org9d19527">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
+<div class="outline-text-4" id="text-org9d19527">
 <p>You can calculate this by counting all the patients that had symptom \(x_1\) (the sum of the row in the table across all thetas) and dividing by the total sample size.</p>
 <div class="highlight">
 <pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -418,9 +418,9 @@ p(x_1) = 0.355
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org159f286">
-<h4 id="org159f286">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-org159f286">
+<div class="outline-4" id="outline-container-org8127daa">
+<h4 id="org8127daa">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-org8127daa">
 <p>This calculation is similar to calculating the probability of symptom \(x_1\) except instead of using a row total you use the column for \(\theta_1\).</p>
 <div class="highlight">
 <pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(theta_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">theta_1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -431,9 +431,9 @@ p(theta_1) = 0.075
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orgcf28d3c">
-<h4 id="orgcf28d3c">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-orgcf28d3c">
+<div class="outline-4" id="outline-container-orgdcd2715">
+<h4 id="orgdcd2715">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-orgdcd2715">
 <p>This is the probability of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total probability in the \(\theta_1\) column.</p>
 <div class="highlight">
 <pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1|theta_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">,</span> <span class="s2">"theta_1"</span><span class="p">]</span>
@@ -445,9 +445,9 @@ p(x_1|theta_1) = 0.067
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orgad57699">
-<h4 id="orgad57699">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
-<div class="outline-text-4" id="text-orgad57699">
+<div class="outline-4" id="outline-container-orga6c55f0">
+<h4 id="orga6c55f0">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
+<div class="outline-text-4" id="text-orga6c55f0">
 <p>Here's where we get to apply Bayes' Rule. \[ p(\theta_1 | x_1) = \frac{p(x_1|\theta_1) p(\theta_1)}{p(x_1)} \]</p>
 <div class="highlight">
 <pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(theta_1|x_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span>
@@ -471,9 +471,9 @@ Original: 0.0141, Alternative: 0.0141
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org6c53bf9">
-<h3 id="org6c53bf9">The Probability</h3>
-<div class="outline-text-3" id="text-org6c53bf9">
+<div class="outline-3" id="outline-container-org17d2516">
+<h3 id="org17d2516">The Probability</h3>
+<div class="outline-text-3" id="text-org17d2516">
 <p>This is a class to generalize what I did above.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">JointProbability</span><span class="p">:</span>
@@ -565,12 +565,12 @@ Original: 0.0141, Alternative: 0.0141
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-orgb1f35a6">
-<h3 id="orgb1f35a6">Visualize the Maximum A-Priori</h3>
-<div class="outline-text-3" id="text-orgb1f35a6"></div>
-<div class="outline-5" id="outline-container-org95d58af">
-<h5 id="org95d58af">The Probabilities</h5>
-<div class="outline-text-5" id="text-org95d58af">
+<div class="outline-3" id="outline-container-orgbe96bb3">
+<h3 id="orgbe96bb3">Visualize the Maximum A-Priori</h3>
+<div class="outline-text-3" id="text-orgbe96bb3"></div>
+<div class="outline-5" id="outline-container-org31866a2">
+<h5 id="org31866a2">The Probabilities</h5>
+<div class="outline-text-5" id="text-org31866a2">
 <p>The <i>Maximum A-Priori</i> (MAP) is the hypothesis that has the highest probability given the data.</p>
 <p>I wrote the <code>JointProbability</code> class intending it to look at only one theta, but I'll use it again and ignore the theta argument.</p>
 <div class="highlight">
@@ -635,17 +635,17 @@ Original: 0.0141, Alternative: 0.0141
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-orgfe91eaa">
-<h2 id="orgfe91eaa">End</h2>
-<div class="outline-text-2" id="text-orgfe91eaa">
+<div class="outline-2" id="outline-container-org0764680">
+<h2 id="org0764680">End</h2>
+<div class="outline-text-2" id="text-org0764680">
 <p>Before getting to the testing, it should be noted that the joint probability distribution is generally not available, which is why we need Bayes' Rule. I'm not sure I fully understand that point yet, so I'll just keep reading.</p>
 </div>
-<div class="outline-3" id="outline-container-org1bcd5e1">
-<h3 id="org1bcd5e1">Tests</h3>
-<div class="outline-text-3" id="text-org1bcd5e1"></div>
-<div class="outline-4" id="outline-container-orge684421">
-<h4 id="orge684421">Test Our Example</h4>
-<div class="outline-text-4" id="text-orge684421">
+<div class="outline-3" id="outline-container-org0ce5d02">
+<h3 id="org0ce5d02">Tests</h3>
+<div class="outline-text-3" id="text-org0ce5d02"></div>
+<div class="outline-4" id="outline-container-org676f142">
+<h4 id="org676f142">Test Our Example</h4>
+<div class="outline-text-4" id="text-org676f142">
 <p>These are tests using values from the example.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">TestProbability</span><span class="p">:</span>
@@ -734,9 +734,9 @@ Original: 0.0141, Alternative: 0.0141
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgb0907a5">
-<h4 id="orgb0907a5">Test Hypothesis</h4>
-<div class="outline-text-4" id="text-orgb0907a5">
+<div class="outline-4" id="outline-container-org2b0e301">
+<h4 id="org2b0e301">Test Hypothesis</h4>
+<div class="outline-text-4" id="text-org2b0e301">
 <p>Now for some <a href="https://hypothesis.readthedocs.io/en/latest/numpy.html#pandas">Pandas hypothesis testing</a>.</p>
 <div class="highlight">
 <pre><span></span><span class="k">class</span> <span class="nc">TestHypothesis</span><span class="p">:</span>
@@ -864,9 +864,9 @@ Original: 0.0141, Alternative: 0.0141
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org9992488">
-<h3 id="org9992488">Source</h3>
-<div class="outline-text-3" id="text-org9992488">
+<div class="outline-3" id="outline-container-org910a777">
+<h3 id="org910a777">Source</h3>
+<div class="outline-text-3" id="text-org910a777">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>

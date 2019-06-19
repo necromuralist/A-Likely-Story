@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description>Notes on probability and statistics.</description><atom:link href="https://necromuralist.github.io/A-Likely-Story/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Wed, 19 Jun 2019 20:00:10 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Interesting Sources</title><link>https://necromuralist.github.io/A-Likely-Story/posts/interesting-sources/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description>Notes on probability and statistics.</description><atom:link href="https://necromuralist.github.io/A-Likely-Story/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Wed, 19 Jun 2019 20:01:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Interesting Sources</title><link>https://necromuralist.github.io/A-Likely-Story/posts/interesting-sources/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
@@ -18,43 +18,43 @@
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org79e7b4e"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org93d4be7"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org5e16960"&gt;Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org930da04"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgcfca1c1"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org7c70525"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgd0c1d24"&gt;Middle&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org2155c54"&gt;Middle&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org6a40de0"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgac78b13"&gt;Diseases And Symptoms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org6c53bf9"&gt;The Probability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgb1f35a6"&gt;Visualize the Maximum A-Priori&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org1be915d"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgac42bc0"&gt;Diseases And Symptoms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org17d2516"&gt;The Probability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgbe96bb3"&gt;Visualize the Maximum A-Priori&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgfe91eaa"&gt;End&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org0764680"&gt;End&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org1bcd5e1"&gt;Tests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org9992488"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org0ce5d02"&gt;Tests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org910a777"&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org79e7b4e" class="outline-2"&gt;
-&lt;h2 id="org79e7b4e"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org79e7b4e"&gt;
+&lt;div id="outline-container-org93d4be7" class="outline-2"&gt;
+&lt;h2 id="org93d4be7"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org93d4be7"&gt;
 &lt;p&gt;
 This is another re-working of an example from &lt;a href="http://jim-stone.staff.shef.ac.uk/BookBayes2012/BayesRuleBookMain.html"&gt;Bayes' Rule: A Tutorial Introduction to Bayesian Analysis&lt;/a&gt;. This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org5e16960" class="outline-3"&gt;
-&lt;h3 id="org5e16960"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org5e16960"&gt;
+&lt;div id="outline-container-orgcfca1c1" class="outline-3"&gt;
+&lt;h3 id="orgcfca1c1"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgcfca1c1"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org0c0768a" class="outline-4"&gt;
-&lt;h4 id="org0c0768a"&gt;Python&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org0c0768a"&gt;
+&lt;div id="outline-container-orgad0f083" class="outline-4"&gt;
+&lt;h4 id="orgad0f083"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgad0f083"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;isclose&lt;/span&gt;
@@ -63,9 +63,9 @@ This is another re-working of an example from &lt;a href="http://jim-stone.staff
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org39ac0a7" class="outline-4"&gt;
-&lt;h4 id="org39ac0a7"&gt;PyPi&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org39ac0a7"&gt;
+&lt;div id="outline-container-org3ddb874" class="outline-4"&gt;
+&lt;h4 id="org3ddb874"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org3ddb874"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bokeh.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HoverTool&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;expects&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -81,21 +81,21 @@ This is another re-working of an example from &lt;a href="http://jim-stone.staff
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org5a668fd" class="outline-4"&gt;
-&lt;h4 id="org5a668fd"&gt;My Stuff&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org5a668fd"&gt;
+&lt;div id="outline-container-orga02e811" class="outline-4"&gt;
+&lt;h4 id="orga02e811"&gt;My Stuff&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga02e811"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;graeae.visualization&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EmbedHoloview&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org930da04" class="outline-3"&gt;
-&lt;h3 id="org930da04"&gt;The Plotting&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org930da04"&gt;
+&lt;div id="outline-container-org7c70525" class="outline-3"&gt;
+&lt;h3 id="org7c70525"&gt;The Plotting&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org7c70525"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgf6d491f" class="outline-4"&gt;
-&lt;h4 id="orgf6d491f"&gt;The Holoviews Embedder&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgf6d491f"&gt;
+&lt;div id="outline-container-org0dbb4d2" class="outline-4"&gt;
+&lt;h4 id="org0dbb4d2"&gt;The Holoviews Embedder&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org0dbb4d2"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SLUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"joint-probability-functions"&lt;/span&gt;
 &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"../../files/posts/bayes/"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SLUG&lt;/span&gt;
 &lt;span class="n"&gt;holoviews&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extension&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"bokeh"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -104,9 +104,9 @@ This is another re-working of an example from &lt;a href="http://jim-stone.staff
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org56b63c0" class="outline-4"&gt;
-&lt;h4 id="org56b63c0"&gt;The Plot Settings&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org56b63c0"&gt;
+&lt;div id="outline-container-orgb79f7c3" class="outline-4"&gt;
+&lt;h4 id="orgb79f7c3"&gt;The Plot Settings&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgb79f7c3"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Plot&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;800&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;800&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -116,16 +116,16 @@ This is another re-working of an example from &lt;a href="http://jim-stone.staff
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgd0c1d24" class="outline-2"&gt;
-&lt;h2 id="orgd0c1d24"&gt;Middle&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgd0c1d24"&gt;
+&lt;div id="outline-container-org2155c54" class="outline-2"&gt;
+&lt;h2 id="org2155c54"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org2155c54"&gt;
 &lt;p&gt;
 Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org6a40de0" class="outline-3"&gt;
-&lt;h3 id="org6a40de0"&gt;The Joint Probability Function&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org6a40de0"&gt;
+&lt;div id="outline-container-org1be915d" class="outline-3"&gt;
+&lt;h3 id="org1be915d"&gt;The Joint Probability Function&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org1be915d"&gt;
 &lt;p&gt;
 The &lt;b&gt;Joint Probability Function&lt;/b&gt; is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
 &lt;/p&gt;
@@ -247,9 +247,9 @@ So if we want to look up the joint probability \(p(x_2, \theta_2)\) for \(x_2\) 
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgac78b13" class="outline-3"&gt;
-&lt;h3 id="orgac78b13"&gt;Diseases And Symptoms&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgac78b13"&gt;
+&lt;div id="outline-container-orgac42bc0" class="outline-3"&gt;
+&lt;h3 id="orgac42bc0"&gt;Diseases And Symptoms&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgac42bc0"&gt;
 &lt;p&gt;
 This next bit comes from the book, I'm just converting it to use pandas. I also changed the indexing to be zero-based, just because.
 &lt;/p&gt;
@@ -276,9 +276,9 @@ Suppose you have ten diseases and four symptoms and you count the number of pati
 &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;joint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org1af5f97" class="outline-4"&gt;
-&lt;h4 id="org1af5f97"&gt;What is the joint probability that a patient has the symptom \(x_1\) and disease \(\theta_1\) [\(p(x_1, \theta_1)\)]?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org1af5f97"&gt;
+&lt;div id="outline-container-org10df921" class="outline-4"&gt;
+&lt;h4 id="org10df921"&gt;What is the joint probability that a patient has the symptom \(x_1\) and disease \(\theta_1\) [\(p(x_1, \theta_1)\)]?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org10df921"&gt;
 &lt;p&gt;
 To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.
 &lt;/p&gt;
@@ -401,9 +401,9 @@ p(x_1, theta_1) = 0.005
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orge9b1362" class="outline-4"&gt;
-&lt;h4 id="orge9b1362"&gt;What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orge9b1362"&gt;
+&lt;div id="outline-container-org9d19527" class="outline-4"&gt;
+&lt;h4 id="org9d19527"&gt;What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org9d19527"&gt;
 &lt;p&gt;
 You can calculate this by counting all the patients that had symptom \(x_1\) (the sum of the row in the table across all thetas) and dividing by the total sample size.
 &lt;/p&gt;
@@ -418,9 +418,9 @@ p(x_1) = 0.355
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org159f286" class="outline-4"&gt;
-&lt;h4 id="org159f286"&gt;What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org159f286"&gt;
+&lt;div id="outline-container-org8127daa" class="outline-4"&gt;
+&lt;h4 id="org8127daa"&gt;What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org8127daa"&gt;
 &lt;p&gt;
 This calculation is similar to calculating the probability of symptom \(x_1\) except instead of using a row total you use the column for \(\theta_1\).
 &lt;/p&gt;
@@ -434,9 +434,9 @@ p(theta_1) = 0.075
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgcf28d3c" class="outline-4"&gt;
-&lt;h4 id="orgcf28d3c"&gt;What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgcf28d3c"&gt;
+&lt;div id="outline-container-orgdcd2715" class="outline-4"&gt;
+&lt;h4 id="orgdcd2715"&gt;What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgdcd2715"&gt;
 &lt;p&gt;
 This is the probability of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total probability in the \(\theta_1\) column.
 &lt;/p&gt;
@@ -452,9 +452,9 @@ p(x_1|theta_1) = 0.067
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgad57699" class="outline-4"&gt;
-&lt;h4 id="orgad57699"&gt;What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgad57699"&gt;
+&lt;div id="outline-container-orga6c55f0" class="outline-4"&gt;
+&lt;h4 id="orga6c55f0"&gt;What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga6c55f0"&gt;
 &lt;p&gt;
 Here's where we get to apply Bayes' Rule.
 \[
@@ -495,9 +495,9 @@ Original: 0.0141, Alternative: 0.0141
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org6c53bf9" class="outline-3"&gt;
-&lt;h3 id="org6c53bf9"&gt;The Probability&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org6c53bf9"&gt;
+&lt;div id="outline-container-org17d2516" class="outline-3"&gt;
+&lt;h3 id="org17d2516"&gt;The Probability&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org17d2516"&gt;
 &lt;p&gt;
 This is a class to generalize what I did above.
 &lt;/p&gt;
@@ -592,13 +592,13 @@ This is a class to generalize what I did above.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb1f35a6" class="outline-3"&gt;
-&lt;h3 id="orgb1f35a6"&gt;Visualize the Maximum A-Priori&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgb1f35a6"&gt;
+&lt;div id="outline-container-orgbe96bb3" class="outline-3"&gt;
+&lt;h3 id="orgbe96bb3"&gt;Visualize the Maximum A-Priori&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgbe96bb3"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org95d58af" class="outline-5"&gt;
-&lt;h5 id="org95d58af"&gt;The Probabilities&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org95d58af"&gt;
+&lt;div id="outline-container-org31866a2" class="outline-5"&gt;
+&lt;h5 id="org31866a2"&gt;The Probabilities&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org31866a2"&gt;
 &lt;p&gt;
 The &lt;i&gt;Maximum A-Priori&lt;/i&gt; (MAP) is the hypothesis that has the highest probability given the data.
 &lt;/p&gt;
@@ -672,20 +672,20 @@ Looking at the plot you can see that \(\theta_9\) has the highest likelihood (it
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgfe91eaa" class="outline-2"&gt;
-&lt;h2 id="orgfe91eaa"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-orgfe91eaa"&gt;
+&lt;div id="outline-container-org0764680" class="outline-2"&gt;
+&lt;h2 id="org0764680"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0764680"&gt;
 &lt;p&gt;
 Before getting to the testing, it should be noted that the joint probability distribution is generally not available, which is why we need Bayes' Rule. I'm not sure I fully understand that point yet, so I'll just keep reading.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org1bcd5e1" class="outline-3"&gt;
-&lt;h3 id="org1bcd5e1"&gt;Tests&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org1bcd5e1"&gt;
+&lt;div id="outline-container-org0ce5d02" class="outline-3"&gt;
+&lt;h3 id="org0ce5d02"&gt;Tests&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org0ce5d02"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orge684421" class="outline-4"&gt;
-&lt;h4 id="orge684421"&gt;Test Our Example&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orge684421"&gt;
+&lt;div id="outline-container-org676f142" class="outline-4"&gt;
+&lt;h4 id="org676f142"&gt;Test Our Example&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org676f142"&gt;
 &lt;p&gt;
 These are tests using values from the example.
 &lt;/p&gt;
@@ -776,9 +776,9 @@ These are tests using values from the example.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb0907a5" class="outline-4"&gt;
-&lt;h4 id="orgb0907a5"&gt;Test Hypothesis&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgb0907a5"&gt;
+&lt;div id="outline-container-org2b0e301" class="outline-4"&gt;
+&lt;h4 id="org2b0e301"&gt;Test Hypothesis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org2b0e301"&gt;
 &lt;p&gt;
 Now for some &lt;a href="https://hypothesis.readthedocs.io/en/latest/numpy.html#pandas"&gt;Pandas hypothesis testing&lt;/a&gt;.
 &lt;/p&gt;
@@ -907,9 +907,9 @@ Now for some &lt;a href="https://hypothesis.readthedocs.io/en/latest/numpy.html#
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org9992488" class="outline-3"&gt;
-&lt;h3 id="org9992488"&gt;Source&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org9992488"&gt;
+&lt;div id="outline-container-org910a777" class="outline-3"&gt;
+&lt;h3 id="org910a777"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org910a777"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
 &lt;/ol&gt;
