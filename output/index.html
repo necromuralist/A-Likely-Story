@@ -97,112 +97,112 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#org0667afe">Beginning</a>
+<li><a href="posts/bayes/joint-probability-functions/#org79e7b4e">Beginning</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#org93887cb">Imports</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org0fbd7a6">The Plotting</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org5e16960">Imports</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org930da04">The Plotting</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/joint-probability-functions/#org501983f">Middle</a>
+<li><a href="posts/bayes/joint-probability-functions/#orgd0c1d24">Middle</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#org8f57e55">The Joint Probability Function</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org2b951ec">Disesases And Symptoms</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org6af146e">The Probability</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org915d06e">Visualize the Maximum A-Priori</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org6a40de0">The Joint Probability Function</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#orgac78b13">Diseases And Symptoms</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org6c53bf9">The Probability</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#orgb1f35a6">Visualize the Maximum A-Priori</a></li>
 </ul>
 </li>
-<li><a href="posts/bayes/joint-probability-functions/#org20d8787">End</a>
+<li><a href="posts/bayes/joint-probability-functions/#orgfe91eaa">End</a>
 <ul>
-<li><a href="posts/bayes/joint-probability-functions/#orgde75329">Tests</a></li>
-<li><a href="posts/bayes/joint-probability-functions/#org1f41f5e">Source</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org1bcd5e1">Tests</a></li>
+<li><a href="posts/bayes/joint-probability-functions/#org9992488">Source</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0667afe">
-<h2 id="org0667afe">Beginning</h2>
-<div class="outline-text-2" id="text-org0667afe">
+<div class="outline-2" id="outline-container-org79e7b4e">
+<h2 id="org79e7b4e">Beginning</h2>
+<div class="outline-text-2" id="text-org79e7b4e">
 <p>This is another re-working of an example from <a href="http://jim-stone.staff.shef.ac.uk/BookBayes2012/BayesRuleBookMain.html">Bayes' Rule: A Tutorial Introduction to Bayesian Analysis</a>. This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete.</p>
 </div>
-<div class="outline-3" id="outline-container-org93887cb">
-<h3 id="org93887cb">Imports</h3>
-<div class="outline-text-3" id="text-org93887cb"></div>
-<div class="outline-4" id="outline-container-org7faefe9">
-<h4 id="org7faefe9">Python</h4>
-<div class="outline-text-4" id="text-org7faefe9">
+<div class="outline-3" id="outline-container-org5e16960">
+<h3 id="org5e16960">Imports</h3>
+<div class="outline-text-3" id="text-org5e16960"></div>
+<div class="outline-4" id="outline-container-org0c0768a">
+<h4 id="org0c0768a">Python</h4>
+<div class="outline-text-4" id="text-org0c0768a">
 <div class="highlight">
-<pre><span></span>from argparse import Namespace
-from functools import partial
-from math import isclose
-from pathlib import Path
-import random
+<pre><span></span><span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">Namespace</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">random</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org7981ae1">
-<h4 id="org7981ae1">PyPi</h4>
-<div class="outline-text-4" id="text-org7981ae1">
+<div class="outline-4" id="outline-container-org39ac0a7">
+<h4 id="org39ac0a7">PyPi</h4>
+<div class="outline-text-4" id="text-org39ac0a7">
 <div class="highlight">
-<pre><span></span>from bokeh.models import HoverTool
-from expects import (
-    be,
-    be_true,
-    equal,
-    expect,
-)
-from hypothesis import given
-from hypothesis.extra.pandas import columns, data_frames, range_indexes
-from tabulate import tabulate
-import holoviews
-import pandas
+<pre><span></span><span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">HoverTool</span>
+<span class="kn">from</span> <span class="nn">expects</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">be</span><span class="p">,</span>
+    <span class="n">be_true</span><span class="p">,</span>
+    <span class="n">equal</span><span class="p">,</span>
+    <span class="n">expect</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.extra.pandas</span> <span class="kn">import</span> <span class="n">columns</span><span class="p">,</span> <span class="n">data_frames</span><span class="p">,</span> <span class="n">range_indexes</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">holoviews</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-orgaed3124">
-<h4 id="orgaed3124">My Stuff</h4>
-<div class="outline-text-4" id="text-orgaed3124">
+<div class="outline-4" id="outline-container-org5a668fd">
+<h4 id="org5a668fd">My Stuff</h4>
+<div class="outline-text-4" id="text-org5a668fd">
 <div class="highlight">
-<pre><span></span>from graeae.visualization import EmbedHoloview
-</pre></div>
-</div>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0fbd7a6">
-<h3 id="org0fbd7a6">The Plotting</h3>
-<div class="outline-text-3" id="text-org0fbd7a6"></div>
-<div class="outline-4" id="outline-container-org1124269">
-<h4 id="org1124269">The Holoviews Embedder</h4>
-<div class="outline-text-4" id="text-org1124269">
-<div class="highlight">
-<pre><span></span>SLUG = "joint-probability-functions"
-output = Path("../../files/posts/bayes/")/SLUG
-holoviews.extension("bokeh")
-Embed = partial(EmbedHoloview, folder_path = output)
-</pre></div>
-</div>
-</div>
-<div class="outline-4" id="outline-container-orgd42abd7">
-<h4 id="orgd42abd7">The Plot Settings</h4>
-<div class="outline-text-4" id="text-orgd42abd7">
-<div class="highlight">
-<pre><span></span>Plot = Namespace(
-    width=800,
-    height=800,
-)
+<pre><span></span><span class="kn">from</span> <span class="nn">graeae.visualization</span> <span class="kn">import</span> <span class="n">EmbedHoloview</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="outline-3" id="outline-container-org930da04">
+<h3 id="org930da04">The Plotting</h3>
+<div class="outline-text-3" id="text-org930da04"></div>
+<div class="outline-4" id="outline-container-orgf6d491f">
+<h4 id="orgf6d491f">The Holoviews Embedder</h4>
+<div class="outline-text-4" id="text-orgf6d491f">
+<div class="highlight">
+<pre><span></span><span class="n">SLUG</span> <span class="o">=</span> <span class="s2">"joint-probability-functions"</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../files/posts/bayes/"</span><span class="p">)</span><span class="o">/</span><span class="n">SLUG</span>
+<span class="n">holoviews</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="s2">"bokeh"</span><span class="p">)</span>
+<span class="n">Embed</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">EmbedHoloview</span><span class="p">,</span> <span class="n">folder_path</span> <span class="o">=</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="outline-2" id="outline-container-org501983f">
-<h2 id="org501983f">Middle</h2>
-<div class="outline-text-2" id="text-org501983f">
+</div>
+<div class="outline-4" id="outline-container-org56b63c0">
+<h4 id="org56b63c0">The Plot Settings</h4>
+<div class="outline-text-4" id="text-org56b63c0">
+<div class="highlight">
+<pre><span></span><span class="n">Plot</span> <span class="o">=</span> <span class="n">Namespace</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orgd0c1d24">
+<h2 id="orgd0c1d24">Middle</h2>
+<div class="outline-text-2" id="text-orgd0c1d24">
 <p>Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.</p>
 </div>
-<div class="outline-3" id="outline-container-org8f57e55">
-<h3 id="org8f57e55">The Joint Probability Function</h3>
-<div class="outline-text-3" id="text-org8f57e55">
+<div class="outline-3" id="outline-container-org6a40de0">
+<h3 id="org6a40de0">The Joint Probability Function</h3>
+<div class="outline-text-3" id="text-org6a40de0">
 <p>The <b>Joint Probability Function</b> is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.</p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -290,40 +290,41 @@ Embed = partial(EmbedHoloview, folder_path = output)
 </tbody>
 </table>
 <p>This table represents the <a href="https://en.wikipedia.org/wiki/Joint_probability_distribution?oldformat=true">Joint Probability Distribution</a>.</p>
-<p>So if we look up the joint probability for \(p(x_2, \theta_2)\) in the table we find the intersection of \(x_2\) and \(\theta_2\) in the table and find that it is 0.4. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - e.g. \(p(\theta_2) = 0.4\) and the summary values on the far right are the <i>marginal likelihood of the data</i> - e.g. \(p(x_2) = 0.7\).</p>
+<p>So if we want to look up the joint probability \(p(x_2, \theta_2)\) for \(x_2\) and \(\theta_2\) in the table we find the intersection of \(x_2\) and \(\theta_2\) in the table and find that it is 0.4. The summary values at the bottom are the <i>marginal likelihood of the hypotheses</i> - e.g. \(p(\theta_2) = 0.4\) and the summary values on the far right are the <i>marginal likelihood of the data</i> - e.g. \(p(x_2) = 0.7\).</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org2b951ec">
-<h3 id="org2b951ec">Disesases And Symptoms</h3>
-<div class="outline-text-3" id="text-org2b951ec">
+<div class="outline-3" id="outline-container-orgac78b13">
+<h3 id="orgac78b13">Diseases And Symptoms</h3>
+<div class="outline-text-3" id="text-orgac78b13">
+<p>This next bit comes from the book, I'm just converting it to use pandas. I also changed the indexing to be zero-based, just because.</p>
 <p>Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.</p>
 <div class="highlight">
-<pre><span></span>joint = pandas.DataFrame(
-    [
-        [0,0,1,0,3,5,10,7,7,4],
-        [0,1,1,10,16,11,12,7,8,5],
-        [3,5,8,9,14,10,3,3,0,0],
-        [8,9,9,5,4,1,1,0,0,0],
-    ],
-    columns=["theta0", "theta1", "theta2", "theta3", "theta4", "theta5", 
-             "theta6", "theta7", "theta8", "theta9"],
-    index=["x0", "x1", "x2", "x3"],
-)
+<pre><span></span><span class="n">joint</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"theta_0"</span><span class="p">,</span> <span class="s2">"theta_1"</span><span class="p">,</span> <span class="s2">"theta_2"</span><span class="p">,</span> <span class="s2">"theta_3"</span><span class="p">,</span> <span class="s2">"theta_4"</span><span class="p">,</span> 
+             <span class="s2">"theta_5"</span><span class="p">,</span> <span class="s2">"theta_6"</span><span class="p">,</span> <span class="s2">"theta_7"</span><span class="p">,</span> <span class="s2">"theta_8"</span><span class="p">,</span> <span class="s2">"theta_9"</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"x_0"</span><span class="p">,</span> <span class="s2">"x_1"</span><span class="p">,</span> <span class="s2">"x_2"</span><span class="p">,</span> <span class="s2">"x_3"</span><span class="p">],</span>
+<span class="p">)</span>
 
-assert joint.shape == (4, 10)
-assert all(joint.T.sum() == pandas.Series([37, 71, 55, 37], 
-["x0", "x1", "x2", "x3"])), joint.T.sum()
-assert joint.T.sum().sum() == 200
+<span class="k">assert</span> <span class="n">joint</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">joint</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">37</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">37</span><span class="p">],</span> 
+<span class="p">[</span><span class="s2">"x_0"</span><span class="p">,</span> <span class="s2">"x_1"</span><span class="p">,</span> <span class="s2">"x_2"</span><span class="p">,</span> <span class="s2">"x_3"</span><span class="p">])),</span> <span class="n">joint</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">joint</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span>
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org68b06dc">
-<h4 id="org68b06dc">Finding a Joint Probability</h4>
-<div class="outline-text-4" id="text-org68b06dc">
-<p>What is the <i>joint probability</i> that a patient has the symptom \(x_1\) and disease \(\theta_1\) (\(p(x_1, \theta_1)\))? To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.</p>
+<div class="outline-4" id="outline-container-org1af5f97">
+<h4 id="org1af5f97">What is the joint probability that a patient has the symptom \(x_1\) and disease \(\theta_1\) [\(p(x_1, \theta_1)\)]?</h4>
+<div class="outline-text-4" id="text-org1af5f97">
+<p>To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.</p>
 <div class="highlight">
-<pre><span></span>total = joint.sum().sum()
-probabilities = joint/total
-print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
+<pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">joint</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">joint</span><span class="o">/</span><span class="n">total</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="s2">"keys"</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">"orgtbl"</span><span class="p">))</span>
 </pre></div>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -341,21 +342,21 @@ print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 <thead>
 <tr>
 <th class="org-left" scope="col">&nbsp;</th>
-<th class="org-right" scope="col">theta0</th>
-<th class="org-right" scope="col">theta1</th>
-<th class="org-right" scope="col">theta2</th>
-<th class="org-right" scope="col">theta3</th>
-<th class="org-right" scope="col">theta4</th>
-<th class="org-right" scope="col">theta5</th>
-<th class="org-right" scope="col">theta6</th>
-<th class="org-right" scope="col">theta7</th>
-<th class="org-right" scope="col">theta8</th>
-<th class="org-right" scope="col">theta9</th>
+<th class="org-right" scope="col">theta_0</th>
+<th class="org-right" scope="col">theta_1</th>
+<th class="org-right" scope="col">theta_2</th>
+<th class="org-right" scope="col">theta_3</th>
+<th class="org-right" scope="col">theta_4</th>
+<th class="org-right" scope="col">theta_5</th>
+<th class="org-right" scope="col">theta_6</th>
+<th class="org-right" scope="col">theta_7</th>
+<th class="org-right" scope="col">theta_8</th>
+<th class="org-right" scope="col">theta_9</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">x0</td>
+<td class="org-left">x_0</td>
 <td class="org-right">0</td>
 <td class="org-right">0</td>
 <td class="org-right">0.005</td>
@@ -368,7 +369,7 @@ print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 <td class="org-right">0.02</td>
 </tr>
 <tr>
-<td class="org-left">x1</td>
+<td class="org-left">x_1</td>
 <td class="org-right">0</td>
 <td class="org-right">0.005</td>
 <td class="org-right">0.005</td>
@@ -381,7 +382,7 @@ print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 <td class="org-right">0.025</td>
 </tr>
 <tr>
-<td class="org-left">x2</td>
+<td class="org-left">x_2</td>
 <td class="org-right">0.015</td>
 <td class="org-right">0.025</td>
 <td class="org-right">0.04</td>
@@ -394,7 +395,7 @@ print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 <td class="org-right">0</td>
 </tr>
 <tr>
-<td class="org-left">x3</td>
+<td class="org-left">x_3</td>
 <td class="org-right">0.04</td>
 <td class="org-right">0.045</td>
 <td class="org-right">0.045</td>
@@ -409,64 +410,65 @@ print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 </tbody>
 </table>
 <div class="highlight">
-<pre><span></span>intermediate = {
-    "p(x1, theta_1)": probabilities.loc["x1", "theta1"]
-}
-print(f"p(x1, theta1) = {intermediate['p(x1, theta_1)']}")
+<pre><span></span><span class="n">intermediate</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"p(x_1, theta_1)"</span><span class="p">:</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">,</span> <span class="s2">"theta_1"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"p(x_1, theta_1) = {intermediate['p(x_1, theta_1)']}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
-p(x1, theta1) = 0.005
+p(x_1, theta_1) = 0.005
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org6a0ae9c">
-<h4 id="org6a0ae9c">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
-<div class="outline-text-4" id="text-org6a0ae9c">
+<div class="outline-4" id="outline-container-orge9b1362">
+<h4 id="orge9b1362">What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?</h4>
+<div class="outline-text-4" id="text-orge9b1362">
 <p>You can calculate this by counting all the patients that had symptom \(x_1\) (the sum of the row in the table across all thetas) and dividing by the total sample size.</p>
 <div class="highlight">
-<pre><span></span>intermediate["p(x1)"] = probabilities.loc["x1"].sum()
-print(f"p(x1) = {intermediate['p(x1)']:.3f}")
+<pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"p(x_1) = {intermediate['p(x_1)']:.3f}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
-p(x1) = 0.355
+p(x_1) = 0.355
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org228070f">
-<h4 id="org228070f">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-org228070f">
+<div class="outline-4" id="outline-container-org159f286">
+<h4 id="org159f286">What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-org159f286">
 <p>This calculation is similar to calculating the probability of symptom \(x_1\) except instead of using a row total you use the column for \(\theta_1\).</p>
 <div class="highlight">
-<pre><span></span>intermediate["p(theta_1)"] = probabilities.theta1.sum()
-print(f"p(theta_1) = {intermediate['p(theta_1)']}")
+<pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(theta_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">theta_1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"p(theta_1) = {intermediate['p(theta_1)']}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
 p(theta_1) = 0.075
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-orga93bc8e">
-<h4 id="orga93bc8e">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
-<div class="outline-text-4" id="text-orga93bc8e">
-<p>This is the count of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total number in the \(\theta_1\) column.</p>
+<div class="outline-4" id="outline-container-orgcf28d3c">
+<h4 id="orgcf28d3c">What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?</h4>
+<div class="outline-text-4" id="text-orgcf28d3c">
+<p>This is the probability of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total probability in the \(\theta_1\) column.</p>
 <div class="highlight">
-<pre><span></span>intermediate["p(x1|theta_1)"] = probabilities.loc["x1", "theta1"]/probabilities["theta1"].sum()
-print(f"p(x1|theta_1) = {intermediate['p(x1|theta_1)']:.3f}")
+<pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1|theta_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">,</span> <span class="s2">"theta_1"</span><span class="p">]</span>
+                                  <span class="o">/</span> <span class="n">probabilities</span><span class="p">[</span><span class="s2">"theta_1"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"p(x_1|theta_1) = {intermediate['p(x_1|theta_1)']:.3f}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
-p(x1|theta_1) = 0.067
+p(x_1|theta_1) = 0.067
 
 </pre></div>
 </div>
-<div class="outline-4" id="outline-container-org5fef793">
-<h4 id="org5fef793">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
-<div class="outline-text-4" id="text-org5fef793">
+<div class="outline-4" id="outline-container-orgad57699">
+<h4 id="orgad57699">What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?</h4>
+<div class="outline-text-4" id="text-orgad57699">
 <p>Here's where we get to apply Bayes' Rule. \[ p(\theta_1 | x_1) = \frac{p(x_1|\theta_1) p(\theta_1)}{p(x_1)} \]</p>
 <div class="highlight">
-<pre><span></span>intermediate["p(theta_1|x_1)"] = ((
-    intermediate["p(x1|theta_1)"] * intermediate["p(theta_1)"])
-                                  /intermediate["p(x1)"])
-print(f"p(theta_1|x_1) = {intermediate['p(theta_1|x_1)']:.3f}")
+<pre><span></span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(theta_1|x_1)"</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span>
+    <span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1|theta_1)"</span><span class="p">]</span> <span class="o">*</span> <span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(theta_1)"</span><span class="p">])</span>
+                                  <span class="o">/</span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1)"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"p(theta_1|x_1) = {intermediate['p(theta_1|x_1)']:.3f}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
 p(theta_1|x_1) = 0.014
@@ -475,8 +477,8 @@ p(theta_1|x_1) = 0.014
 <p>But, in fact, you can calculate this a little more directly using:</p>
 <p>\[ p(\theta_1|x_1) = \frac{p(x_1, \theta_1)}{p(x_1)} \]</p>
 <div class="highlight">
-<pre><span></span>alternative = intermediate["p(x1, theta_1)"]/intermediate["p(x1)"]
-print(f"Original: {intermediate['p(theta_1|x_1)']:.3}, Alternative: {alternative:.3}")
+<pre><span></span><span class="n">alternative</span> <span class="o">=</span> <span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1, theta_1)"</span><span class="p">]</span><span class="o">/</span><span class="n">intermediate</span><span class="p">[</span><span class="s2">"p(x_1)"</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">"Original: {intermediate['p(theta_1|x_1)']:.3}, Alternative: {alternative:.3}"</span><span class="p">)</span>
 </pre></div>
 <pre class="example">
 Original: 0.0141, Alternative: 0.0141
@@ -484,335 +486,402 @@ Original: 0.0141, Alternative: 0.0141
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org6af146e">
-<h3 id="org6af146e">The Probability</h3>
-<div class="outline-text-3" id="text-org6af146e">
-<p>This is just something to generalize what I did above.</p>
+<div class="outline-3" id="outline-container-org6c53bf9">
+<h3 id="org6c53bf9">The Probability</h3>
+<div class="outline-text-3" id="text-org6c53bf9">
+<p>This is a class to generalize what I did above.</p>
 <div class="highlight">
-<pre><span></span>class JointProbability:
-    """A joint probability queryior
+<pre><span></span><span class="k">class</span> <span class="nc">JointProbability</span><span class="p">:</span>
+    <span class="sd">"""A joint probability inquirer</span>
 
-    Args:
-     counts: table of counts for joint probability
-     hypothesis: column with the hypothesis counts
-     data: row with the data counts
-    """
-    def __init__(self, counts: pandas.DataFrame, hypothesis: str, 
-                 data: str) -&gt; None:
-        self.counts = counts
-        self.hypothesis = hypothesis
-        self.data = data
-        self._sum_total = None
-        self._joint_probability = None
-        self._data_probability = None
-        self._hypothesis_probability = None
-        self._probability_of_data_given_hypothesis = None
-        self._probability_of_hypothesis_given_data = None
-        self._maximum_a_priori = None
-        self._probabilities = None
-        return
+<span class="sd">    Args:</span>
+<span class="sd">     counts: table of counts for joint probability</span>
+<span class="sd">     hypothesis: column with the hypothesis counts</span>
+<span class="sd">     data: row with the data counts</span>
+<span class="sd">    """</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                 <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span> <span class="o">=</span> <span class="n">hypothesis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sum_total</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_joint_probability</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_probability</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hypothesis_probability</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_data_given_hypothesis</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_hypothesis_given_data</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maximum_a_priori</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_probabilities</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span>
 
-    @property
-    def sum_total(self) -&gt; int:
-        """The total count of entries in the table"""
-        if self._sum_total is None:
-            self._sum_total = self.counts.sum().sum()
-        return self._sum_total
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sum_total</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">"""The total count of entries in the table"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sum_total</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sum_total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sum_total</span>
 
-    @property
-    def probabilities(self) -&gt; pandas.DataFrame:
-        """The counts converted to probabilities"""
-        if self._probabilities is None:
-            self._probabilities = self.counts/self.sum_total
-        return self._probabilities
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">probabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="sd">"""The counts converted to probabilities"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probabilities</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">sum_total</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probabilities</span>
 
-    @property
-    def joint_probability(self) -&gt; float:
-        """the joint probability of the data and hypothesis"""
-        if self._joint_probability is None:
-            self._joint_probability = self.probabilities.loc[self.data, self.hypothesis]
-        return self._joint_probability
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">joint_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""the joint probability of the data and hypothesis"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_joint_probability</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_joint_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> 
+                                                             <span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_joint_probability</span>
 
-    @property
-    def data_probability(self) -&gt; float:
-        """The probability of the data"""
-        if self._data_probability is None:
-            self._data_probability = self.probabilities.loc[self.data].sum()
-        return self._data_probability
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The probability of the data"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_probability</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_probability</span>
 
-    @property
-    def hypothesis_probability(self) -&gt; float:
-        """The probability of the hypothesis"""
-        if self._hypothesis_probability is None:
-            self._hypothesis_probability = self.probabilities[
-                self.hypothesis].sum()
-        return self._hypothesis_probability
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hypothesis_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The probability of the hypothesis"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hypothesis_probability</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hypothesis_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hypothesis_probability</span>
 
-    @property
-    def probability_of_data_given_hypothesis(self) -&gt; float:
-        """The probability of our data given the hypothesis"""
-        if self._probability_of_data_given_hypothesis is None:
-            self._probability_of_data_given_hypothesis = (
-                self.probabilities.loc[self.data, self.hypothesis]
-                /self.probabilities[self.hypothesis].sum()
-            )
-        return self._probability_of_data_given_hypothesis
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">probability_of_data_given_hypothesis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The probability of our data given the hypothesis"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_data_given_hypothesis</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_data_given_hypothesis</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span>
+                <span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_data_given_hypothesis</span>
 
-    @property
-    def probability_of_hypothesis_given_data(self) -&gt; float:
-        """The probability of our hypothesis given our data"""
-        if self._probability_of_hypothesis_given_data is None:
-            self._probability_of_hypothesis_given_data = (
-                self.joint_probability/self.data_probability)
-        return self._probability_of_hypothesis_given_data
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">probability_of_hypothesis_given_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">"""The probability of our hypothesis given our data"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_hypothesis_given_data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_hypothesis_given_data</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">joint_probability</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">data_probability</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_probability_of_hypothesis_given_data</span>
 
-    @property
-    def maximum_a_priori(self) -&gt; str:
-        """The name of the most likely hypothesis"""
-        if self._maximum_a_priori is None:
-            self._maximum_a_priori = (
-                self.probabilities.loc[self.data]
-                /self.data_probability).idxmax()
-        return self._maximum_a_priori
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">maximum_a_priori</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">"""The name of the most likely hypothesis"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maximum_a_priori</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_maximum_a_priori</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">]</span>
+                <span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">data_probability</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maximum_a_priori</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org915d06e">
-<h3 id="org915d06e">Visualize the Maximum A-Priori</h3>
-<div class="outline-text-3" id="text-org915d06e"></div>
-<div class="outline-5" id="outline-container-org7d69587">
-<h5 id="org7d69587">The Probabilities</h5>
-<div class="outline-text-5" id="text-org7d69587">
-<p>I'll use the <code>JointProbability</code> class, although in this case aren't looking at values for a specific theta.</p>
+<div class="outline-3" id="outline-container-orgb1f35a6">
+<h3 id="orgb1f35a6">Visualize the Maximum A-Priori</h3>
+<div class="outline-text-3" id="text-orgb1f35a6"></div>
+<div class="outline-5" id="outline-container-org95d58af">
+<h5 id="org95d58af">The Probabilities</h5>
+<div class="outline-text-5" id="text-org95d58af">
+<p>The <i>Maximum A-Priori</i> (MAP) is the hypothesis that has the highest probability given the data.</p>
+<p>I wrote the <code>JointProbability</code> class intending it to look at only one theta, but I'll use it again and ignore the theta argument.</p>
 <div class="highlight">
-<pre><span></span>table = JointProbability(joint, "theta1", data="x1")
+<pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">JointProbability</span><span class="p">(</span><span class="n">joint</span><span class="p">,</span> <span class="s2">"theta_1"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s2">"x_1"</span><span class="p">)</span>
 </pre></div>
 <div class="highlight">
-<pre><span></span>height = int((Plot.height - 100)/3)
-likelihood = (table.counts.loc["x1"]/table.counts.sum()).reset_index().rename(columns={0: "x1"})
-likelihood["index"] = likelihood.index
-likelihood_spikes = holoviews.Spikes(likelihood, vdims=["x1"], kdims=["index"]).opts(
-).opts(
-    padding=0,
-    height=height,
-    width=Plot.width,
-    tools=["hover"],
-    ylabel="Likelihood [p(x1|theta)]",
-    labelled=["y"],
-    xaxis="bare",
-)
+<pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">Plot</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"x_1"</span><span class="p">]</span><span class="o">/</span><span class="n">table</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">"p(x1|theta)"</span><span class="p">})</span>
+<span class="n">likelihood</span><span class="p">[</span><span class="s2">"theta"</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span><span class="o">.</span><span class="n">index</span>
+<span class="n">likelihood_spikes</span> <span class="o">=</span> <span class="n">holoviews</span><span class="o">.</span><span class="n">Spikes</span><span class="p">(</span><span class="n">likelihood</span><span class="p">,</span> <span class="n">vdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"p(x1|theta)"</span><span class="p">],</span> <span class="n">kdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"theta"</span><span class="p">])</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+<span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="n">Plot</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s2">"hover"</span><span class="p">],</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Likelihood [p(x1|theta)]"</span><span class="p">,</span>
+    <span class="n">labelled</span><span class="o">=</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span>
+    <span class="n">xaxis</span><span class="o">=</span><span class="s2">"bare"</span><span class="p">,</span>
+<span class="p">)</span>
 
-prior = (table.counts.sum()/table.counts.sum().sum()).reset_index().rename(columns={0: "x1"})
-prior["index"] = prior.index
-prior_spikes = holoviews.Spikes(prior, vdims=["x1"], kdims=["index"]).opts(
-    height = height,
-    width = Plot.width,
-    tools=["hover"],
-    ylabel = "Prior [p(theta)]",
-    labelled=["y"],
-    xaxis="bare",
-)
+<span class="n">prior</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">table</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">"p(theta)"</span><span class="p">,</span> <span class="s2">"index"</span><span class="p">:</span> <span class="s2">"theta"</span><span class="p">})</span>
+<span class="n">prior</span><span class="p">[</span><span class="s2">"theta"</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">index</span>
+<span class="n">prior_spikes</span> <span class="o">=</span> <span class="n">holoviews</span><span class="o">.</span><span class="n">Spikes</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">vdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"p(theta)"</span><span class="p">],</span> <span class="n">kdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"theta"</span><span class="p">])</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">height</span><span class="p">,</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">Plot</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s2">"hover"</span><span class="p">],</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">"Prior [p(theta)]"</span><span class="p">,</span>
+    <span class="n">labelled</span><span class="o">=</span><span class="p">[</span><span class="s2">"y"</span><span class="p">],</span>
+    <span class="n">xaxis</span><span class="o">=</span><span class="s2">"bare"</span><span class="p">,</span>
+<span class="p">)</span>
 
-posterior = ((likelihood["x1"] * prior["x1"])/table.data_probability).reset_index().rename(columns={"index": "theta"})
+<span class="n">posterior</span> <span class="o">=</span> <span class="p">((</span>
+    <span class="p">(</span><span class="n">likelihood</span><span class="p">[</span><span class="s2">"p(x1|theta)"</span><span class="p">]</span> <span class="o">*</span> <span class="n">prior</span><span class="p">[</span><span class="s2">"p(theta)"</span><span class="p">])</span><span class="o">/</span><span class="n">table</span><span class="o">.</span><span class="n">data_probability</span><span class="p">)</span>
+             <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span> <span class="s2">"theta"</span><span class="p">,</span>
+                                            <span class="mi">0</span><span class="p">:</span> <span class="s2">"p(theta|x1)"</span><span class="p">}))</span>
 
-posterior_spikes = holoviews.Spikes(posterior, vdims=["x1"], kdims=["theta"]).opts(
-    height=height,
-    width=Plot.width,
-    tools=["hover"],
-    xticks = 10,
-    ylabel="Posterior [p(theta|x1)]",
-    xlabel="theta",
-)
+<span class="n">posterior_spikes</span> <span class="o">=</span> <span class="n">holoviews</span><span class="o">.</span><span class="n">Spikes</span><span class="p">(</span><span class="n">posterior</span><span class="p">,</span> <span class="n">vdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"p(theta|x1)"</span><span class="p">],</span> <span class="n">kdims</span><span class="o">=</span><span class="p">[</span><span class="s2">"theta"</span><span class="p">])</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="n">Plot</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s2">"hover"</span><span class="p">],</span>
+    <span class="n">xticks</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Posterior [p(theta|x1)]"</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"theta"</span><span class="p">,</span>
+<span class="p">)</span>
 
-plot = (likelihood_spikes + prior_spikes + posterior_spikes).cols(1).opts(
-    holoviews.opts.Layout(
-        title="Disease Probabilities for x1"
-    ),
-    holoviews.opts.Spikes(
-        color="blue",
-        line_width=4,
-    )
-)
-Embed(plot=plot, file_name="disease_probabilities")()
+<span class="n">plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">likelihood_spikes</span> <span class="o">+</span> <span class="n">prior_spikes</span> <span class="o">+</span> <span class="n">posterior_spikes</span><span class="p">)</span><span class="o">.</span><span class="n">cols</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">holoviews</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">"Disease Probabilities for x1"</span>
+    <span class="p">),</span>
+    <span class="n">holoviews</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">Spikes</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span>
+        <span class="n">line_width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">Embed</span><span class="p">(</span><span class="n">plot</span><span class="o">=</span><span class="n">plot</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">"disease_probabilities"</span><span class="p">)()</span>
 </pre></div>
 <object data="posts/bayes/joint-probability-functions/disease_probabilities.html" height="800" style="width:100%" type="text/html">
 <p>Figure Missing</p>
 </object>
-<p>Looking at the plot you can see that \(\theta_9\) has the highest likelihood, but \(\theta_4\) has the highest posterior probability and so if a person had symptom \(x_1\) we should probably diagnose that he or she has \(\theta_9\).</p>
+<p>Looking at the plot you can see that \(\theta_9\) has the highest likelihood (it is the <i>Maximum Likelihood Estimate</i> or MLE), but \(\theta_4\) has the highest posterior probability and so if a person had symptom \(x_1\) we should probably diagnose that he or she has \(\theta_9\).</p>
 </div>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org20d8787">
-<h2 id="org20d8787">End</h2>
-<div class="outline-text-2" id="text-org20d8787"></div>
-<div class="outline-3" id="outline-container-orgde75329">
-<h3 id="orgde75329">Tests</h3>
-<div class="outline-text-3" id="text-orgde75329"></div>
-<div class="outline-4" id="outline-container-orgdda1044">
-<h4 id="orgdda1044">Test Our Example</h4>
-<div class="outline-text-4" id="text-orgdda1044">
+<div class="outline-2" id="outline-container-orgfe91eaa">
+<h2 id="orgfe91eaa">End</h2>
+<div class="outline-text-2" id="text-orgfe91eaa">
+<p>Before getting to the testing, it should be noted that the joint probability distribution is generally not available, which is why we need Bayes' Rule. I'm not sure I fully understand that point yet, so I'll just keep reading.</p>
+</div>
+<div class="outline-3" id="outline-container-org1bcd5e1">
+<h3 id="org1bcd5e1">Tests</h3>
+<div class="outline-text-3" id="text-org1bcd5e1"></div>
+<div class="outline-4" id="outline-container-orge684421">
+<h4 id="orge684421">Test Our Example</h4>
+<div class="outline-text-4" id="text-orge684421">
+<p>These are tests using values from the example.</p>
 <div class="highlight">
-<pre><span></span>class TestProbability:
-    def __init__(self, table: pandas.DataFrame, data: str="x1", hypothesis: str="theta1"):
-        self.table = table
-        self.data = data
-        self.hypothesis = hypothesis
-        self._p_test = None
-        return
+<pre><span></span><span class="k">class</span> <span class="nc">TestProbability</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">"x1"</span><span class="p">,</span> <span class="n">hypothesis</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">"theta1"</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span> <span class="o">=</span> <span class="n">hypothesis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p_test</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">return</span>
 
-    @property
-    def p_test(self) -&gt; JointProbability:
-        """The thing under test"""
-        if self._p_test is None:
-            self._p_test = JointProbability(self.table, 
-                                            hypothesis=self.hypothesis,
-                                            data=self.data)
-        return self._p_test
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">p_test</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JointProbability</span><span class="p">:</span>
+        <span class="sd">"""The thing under test"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p_test</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_p_test</span> <span class="o">=</span> <span class="n">JointProbability</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> 
+                                            <span class="n">hypothesis</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">,</span>
+                                            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_p_test</span>
 
-    def test_construction(self):
-        # given an instance of the probability
-        # when the table is retrieved
-        actual = self.p_test.counts
-        # then it is the expected
-        expect(actual).to(be(self.table))
-        # and the total is the expected
-        expect(self.p_test.sum_total).to(equal(200))
-        return
+    <span class="k">def</span> <span class="nf">test_construction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># given an instance of the probability</span>
+        <span class="c1"># when the table is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">counts</span>
+        <span class="c1"># then it is the expected</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">))</span>
+        <span class="c1"># and the total is the expected</span>
+        <span class="n">expect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">sum_total</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="mi">200</span><span class="p">))</span>
+        <span class="k">return</span>
 
-    def test_joint_probability(self):
-        # given an instance of the probability
-        # when the p(x1, theta1) is retrieved
-        actual = self.p_test.joint_probability
-        # then it is the expected value
-        expect(isclose(actual, 0.005)).to(be_true)
-        return
+    <span class="k">def</span> <span class="nf">test_joint_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># given an instance of the probability</span>
+        <span class="c1"># when the p(x1, theta1) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">joint_probability</span>
+        <span class="c1"># then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def test_data_probabilitiy(self):
-        # Given an instance of the probability
-        # When p(x1) is retrieved
-        actual = self.p_test.data_probability
-        # Then it is the expected value
-        expect(isclose(actual, 0.355)).to(be_true)
-        return
+    <span class="k">def</span> <span class="nf">test_data_probabilitiy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Given an instance of the probability</span>
+        <span class="c1"># When p(x1) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">data_probability</span>
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="mf">0.355</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def test_hypothesis_probability(self):
-        # Given an instance of the probability
-        # When p(theta1) is retrieved
-        actual = self.p_test.hypothesis_probability
-        # Then it is the expected value
-        expect(isclose(actual, 0.075)).to(be_true)
-        return
+    <span class="k">def</span> <span class="nf">test_hypothesis_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Given an instance of the probability</span>
+        <span class="c1"># When p(theta1) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">hypothesis_probability</span>
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="mf">0.075</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def test_probability_of_data_given_hypothesis(self):
-        # Given an instance of the probability
-        # When p(x1 | theta1) is retrieved
-        actual = self.p_test.probability_of_data_given_hypothesis
-        # Then it is the expected value
-        expect(isclose(actual, 0.067, abs_tol=1e-3)).to(be_true)
-        return
+    <span class="k">def</span> <span class="nf">test_probability_of_data_given_hypothesis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Given an instance of the probability</span>
+        <span class="c1"># When p(x1 | theta1) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">probability_of_data_given_hypothesis</span>
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="mf">0.067</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def test_probability_of_hypothesis_given_data(self):
-        # Given an instance of the probability
-        # When p(theta1 | x1) is retrieved
-        actual = self.p_test.probability_of_hypothesis_given_data
-        # Then it is the expected value
-        expect(isclose(actual, 0.014, abs_tol=1e-3)).to(be_true)
-        return
+    <span class="k">def</span> <span class="nf">test_probability_of_hypothesis_given_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Given an instance of the probability</span>
+        <span class="c1"># When p(theta1 | x1) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">probability_of_hypothesis_given_data</span>
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="mf">0.014</span><span class="p">,</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">be_true</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    def test_maximum_a_priori(self):
-        # Given an instance of the probability
-        # When the MAP is retrieved
-        actual = self.p_test.maximum_a_priori
-        # Then it is the expected label
-        expect(actual).to(equal("theta4"))
-        return
+    <span class="k">def</span> <span class="nf">test_maximum_a_priori</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Given an instance of the probability</span>
+        <span class="c1"># When the MAP is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_test</span><span class="o">.</span><span class="n">maximum_a_priori</span>
+        <span class="c1"># Then it is the expected label</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="s2">"theta4"</span><span class="p">))</span>
+        <span class="k">return</span>
 
-    def __call__(self):
-        tests = (thing for thing in dir(self) if thing.startswith("test_"))
-        for test in tests:
-            getattr(self, test)()
-        return
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tests</span> <span class="o">=</span> <span class="p">(</span><span class="n">thing</span> <span class="k">for</span> <span class="n">thing</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="k">if</span> <span class="n">thing</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"test_"</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">)()</span>
+        <span class="k">return</span>
 
-test = TestProbability(joint)
-test()
+<span class="n">test</span> <span class="o">=</span> <span class="n">TestProbability</span><span class="p">(</span><span class="n">joint</span><span class="p">)</span>
+<span class="n">test</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org9eb252b">
-<h4 id="org9eb252b">Test Hypothesis</h4>
-<div class="outline-text-4" id="text-org9eb252b">
+<div class="outline-4" id="outline-container-orgb0907a5">
+<h4 id="orgb0907a5">Test Hypothesis</h4>
+<div class="outline-text-4" id="text-orgb0907a5">
+<p>Now for some <a href="https://hypothesis.readthedocs.io/en/latest/numpy.html#pandas">Pandas hypothesis testing</a>.</p>
 <div class="highlight">
-<pre><span></span>class TestHypothesis:
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_total_sum(self, table) -&gt; None:
-        probability = self.get_instance(table)
-        expect(probability.sum_total).to(equal(table.sum().sum()))
-        return
+<pre><span></span><span class="k">class</span> <span class="nc">TestHypothesis</span><span class="p">:</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_total_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_joint_probability(self, table) -&gt; None:
-        tester = self.get_instance(table)
-        expect(tester.joint_probability).to(
-            equal(tester.probabilities.loc[tester.data, tester.hypothesis]))
-        return
+        <span class="c1"># when the sum_total is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">sum_total</span>
 
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_data_probabilitiy(table):
-        test = self.get_instance(table)
-        expect(test.data_probability).to(
-            equal(test.table.loc[test.data].sum()/test.sum_total))
-        return
+        <span class="c1"># then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+        <span class="k">return</span>
 
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_hypothesis_probabilitiy(table):
-        test = self.get_instance(table)
-        expect(test.hypothesis_probability).to(equal(
-            test.table[test.hypothesis].sum()/test.sum_total
-        ))
-        return
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_joint_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_probabilitiy_of_data_given_hypothesis(table):
-        test = self.get_instance(table)
-        expect(test.probability_of_data_given_hypothesis).to(equal(
-            test.joint_probability/test.hypothesis_probability
-        ))
-        return
+        <span class="c1"># when the joint probability is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">joint_probability</span>
 
-    @given(data_frames(columns=columns(10, dtype=int),
-                       index=range_indexes(min_size=1)))
-    def test_probabilitiy_of_hypothesis_given_data(table):
-        test = self.get_instance(table)
-        expect(test.probability_of_hypothesis_given_data).to(equal(
-            (test.probability_of_data_given_hypothesis 
-             * test.probability_of_hypothesis)/test.probability_of_data
-        ))
-        return
+        <span class="c1"># then it is the expected value</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">tester</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">tester</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span><span class="o">/</span><span class="n">tester</span><span class="o">.</span><span class="n">sum_total</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">equal</span><span class="p">(</span><span class="n">expected</span><span class="p">))</span>
+        <span class="k">return</span>
 
-    def get_instance(self, table) -&gt; JointProbability:
-        data = table.sample().index
-        hypothesis = random.sample(list(table.columns), 1)[0]
-        return JointProbability(table, data=data, hypothesis=hypothesis)
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_data_probabilitiy</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+        <span class="c1"># given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 
-    def __call__(self) -&gt; None:
-        self.test_total_sum()
-        return
+        <span class="c1"># when the probability of the data is retrieved</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">data_probability</span>
 
-test_hypothesis = TestHypothesis()
-test_hypothesis()
+        <span class="c1"># then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="n">equal</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">data</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">sum_total</span><span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_hypothesis_probabilitiy</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+        <span class="c1"># Given a JointProbability instance    </span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="c1"># When the probability of the hypothesis is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">hypothesis_probability</span>
+
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">table</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">sum_total</span>
+        <span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_probabilitiy_of_data_given_hypothesis</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+        <span class="c1"># Given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="c1"># When p(data | hypothesis) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">probability_of_data_given_hypothesis</span>
+
+        <span class="c1"># Then it is the expected data</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">joint_probability</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">hypothesis_probability</span>
+        <span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_probabilitiy_of_hypothesis_given_data</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+        <span class="c1"># Given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="c1"># When p(hypothesis | data) is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">probability_of_hypothesis_given_data</span>
+
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">probability_of_data_given_hypothesis</span> 
+             <span class="o">*</span> <span class="n">test</span><span class="o">.</span><span class="n">probability_of_hypothesis</span><span class="p">)</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">probability_of_data</span>
+        <span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="nd">@given</span><span class="p">(</span><span class="n">data_frames</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="n">range_indexes</span><span class="p">(</span><span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="k">def</span> <span class="nf">test_maximum_a_priori</span><span class="p">(</span><span class="n">table</span><span class="p">):</span>
+        <span class="c1"># Given a JointProbability instance</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_instance</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="c1"># When the MAP is retrieved</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">maximum_a_priori</span>
+
+        <span class="c1"># Then it is the expected value</span>
+        <span class="n">best_column</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">best_so_far</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">test</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">probability</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span>
+                <span class="n">test</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">hypothesis</span><span class="p">]</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">probability_of_data</span>
+            <span class="k">if</span> <span class="n">probability</span> <span class="o">&gt;</span> <span class="n">best_column</span><span class="p">:</span>
+                <span class="n">best_column</span> <span class="o">=</span> <span class="n">column</span>
+        <span class="n">expect</span><span class="p">(</span><span class="n">actual</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">best_column</span><span class="p">))</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">get_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JointProbability</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">JointProbability</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">hypothesis</span><span class="o">=</span><span class="n">hypothesis</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_total_sum</span><span class="p">()</span>
+        <span class="k">return</span>
+
+<span class="n">test_hypothesis</span> <span class="o">=</span> <span class="n">TestHypothesis</span><span class="p">()</span>
+<span class="n">test_hypothesis</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org1f41f5e">
-<h3 id="org1f41f5e">Source</h3>
-<div class="outline-text-3" id="text-org1f41f5e">
+<div class="outline-3" id="outline-container-org9992488">
+<h3 id="org9992488">Source</h3>
+<div class="outline-text-3" id="text-org9992488">
 <ol class="org-ol">
 <li>Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.</li>
 </ol>
