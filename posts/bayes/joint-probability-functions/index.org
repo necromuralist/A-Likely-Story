@@ -14,34 +14,58 @@
 #+OPTIONS: ^:{}
 #+OPTIONS: H:5
 #+TOC: headlines 2
-#+BEGIN_SRC ipython :session joint :results none :exports none
+#+BEGIN_SRC python :session joint :results none :exports none
 %load_ext autoreload
 %autoreload 2
 #+END_SRC
 * Beginning
-  This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
+  This is another re-working of an example from [[http://jim-stone.staff.shef.ac.uk/BookBayes2012/BayesRuleBookMain.html][Bayes' Rule: A Tutorial Introduction to Bayesian Analysis]]. This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
 ** Imports
 *** Python
-#+begin_src ipython :session joint :results none
+#+begin_src python :session joint :results none
+from argparse import Namespace
 from functools import partial
+from math import isclose
 from pathlib import Path
+import random
 #+end_src
 *** PyPi
-#+begin_src ipython :session joint :results none
+#+begin_src python :session joint :results none
+from bokeh.models import HoverTool
+from expects import (
+    be,
+    be_true,
+    equal,
+    expect,
+)
+from hypothesis import given
+from hypothesis.extra.pandas import columns, data_frames, range_indexes
+from tabulate import tabulate
 import holoviews
 import pandas
 #+end_src
 *** My Stuff
-#+begin_src ipython :session joint :results none
+#+begin_src python :session joint :results none
 from graeae.visualization import EmbedHoloview
 #+end_src
-** The Embed
-#+begin_src ipython :session joint :results none
+** The Plotting
+*** The Holoviews Embedder
+#+begin_src python :session joint :results none
 SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
+holoviews.extension("bokeh")
 Embed = partial(EmbedHoloview, folder_path = output)
 #+end_src
+
+*** The Plot Settings
+#+begin_src python :session joint :results none
+Plot = Namespace(
+    width=800,
+    height=800,
+)
+#+end_src
 * Middle
+  Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.
 ** The Joint Probability Function
 The *Joint Probability Function* is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
 
@@ -52,6 +76,7 @@ The *Joint Probability Function* is the distribution of input and output probabi
 |-------+------------+------------+------------+-----|
 | Sum   |          3 |          4 |          3 |  10 |
 
+
 The intersection of data and hypothesis is the count we got for our joint probability calculation. To get the actual joint probability we divide the numbers by the total count.
 
 | Data  | $\theta_1$ | $\theta_2$ | $\theta_3$ | Sum |
@@ -61,19 +86,498 @@ The intersection of data and hypothesis is the count we got for our joint probab
 |-------+------------+------------+------------+-----|
 | Sum   |        0.3 |        0.4 |        0.3 |   1 |
 
-So, for instance, the joint probability $p(x_2, \theta_2)$ is 0.1. The summary values at the bottom are the /marginal likelihood of the hypotheses/ - $p(\theta_2) = 0.4$ - and the summary values on the far right are the /marginal likelihood of the data/ - $p(x_2) = 0.7$.
+This table represents the [[https://en.wikipedia.org/wiki/Joint_probability_distribution?oldformat=true][Joint Probability Distribution]].
 
-** Visualizing It
-#+begin_src ipython :session joint :results none
-data = pandas.DataFrame([
-    [2, 0, 1],
-    [1, 4, 2],
-], columns=["theta_1", "theta_2", "theta_3"], index=["x_1", "x_2"])
+So if we want to look up the joint probability $p(x_2, \theta_2)$ for $x_2$ and $\theta_2$ in the table we find the intersection of $x_2$ and $\theta_2$ in the table and find that it is 0.4. The summary values at the bottom are the /marginal likelihood of the hypotheses/ - e.g. $p(\theta_2) = 0.4$ and the summary values on the far right are the /marginal likelihood of the data/ - e.g. $p(x_2) = 0.7$.
+
+** Diseases And Symptoms
+   This next bit comes from the book, I'm just converting it to use pandas. I also changed the indexing to be zero-based, just because.
+
+   Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.
+
+#+begin_src python :session joint :results none
+joint = pandas.DataFrame(
+    [
+        [0,0,1,0,3,5,10,7,7,4],
+        [0,1,1,10,16,11,12,7,8,5],
+        [3,5,8,9,14,10,3,3,0,0],
+        [8,9,9,5,4,1,1,0,0,0],
+    ],
+    columns=["theta_0", "theta_1", "theta_2", "theta_3", "theta_4", 
+             "theta_5", "theta_6", "theta_7", "theta_8", "theta_9"],
+    index=["x_0", "x_1", "x_2", "x_3"],
+)
+
+assert joint.shape == (4, 10)
+assert all(joint.T.sum() == pandas.Series([37, 71, 55, 37], 
+["x_0", "x_1", "x_2", "x_3"])), joint.T.sum()
+assert joint.T.sum().sum() == 200
+#+end_src
+*** What is the joint probability that a patient has the symptom $x_1$ and disease $\theta_1$ [$p(x_1, \theta_1)$]?
+
+To answer this we can look up the value in the row for $x_1$ and the column for $\theta_1$ and divide it by the total number of patients.
+
+#+begin_src python :session joint :results output raw :exports both
+total = joint.sum().sum()
+probabilities = joint/total
+print(tabulate(probabilities, headers="keys", tablefmt="orgtbl"))
 #+end_src
 
-#+begin_src ipython :session joint :results output raw :exports both
+#+RESULTS:
+|     | theta_0 | theta_1 | theta_2 | theta_3 | theta_4 | theta_5 | theta_6 | theta_7 | theta_8 | theta_9 |
+|-----+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+| x_0 |       0 |       0 |   0.005 |       0 |   0.015 |   0.025 |    0.05 |   0.035 |   0.035 |    0.02 |
+| x_1 |       0 |   0.005 |   0.005 |    0.05 |    0.08 |   0.055 |    0.06 |   0.035 |    0.04 |   0.025 |
+| x_2 |   0.015 |   0.025 |    0.04 |   0.045 |    0.07 |    0.05 |   0.015 |   0.015 |       0 |       0 |
+| x_3 |    0.04 |   0.045 |   0.045 |   0.025 |    0.02 |   0.005 |   0.005 |       0 |       0 |       0 |
 
+#+begin_src python :session joint :results output :exports both
+intermediate = {
+    "p(x_1, theta_1)": probabilities.loc["x_1", "theta_1"]
+}
+print(f"p(x_1, theta_1) = {intermediate['p(x_1, theta_1)']}")
 #+end_src
+
+#+RESULTS:
+: p(x_1, theta_1) = 0.005
+
+*** What is the probability $p(x_1)$ that a patient has symptoms $x_1$?
+    You can calculate this by counting all the patients that had symptom $x_1$ (the sum of the row in the table across all thetas) and dividing by the total sample size.
+
+#+begin_src python :session joint :results output :exports both
+intermediate["p(x_1)"] = probabilities.loc["x_1"].sum()
+print(f"p(x_1) = {intermediate['p(x_1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(x_1) = 0.355
+*** What is the probability $p(\theta_1)$ that a patient has the disease $\theta_1$?
+    This calculation is similar to calculating the probability of symptom $x_1$ except instead of using a row total you use the column for $\theta_1$.
+#+begin_src python :session joint :results output :exports both
+intermediate["p(theta_1)"] = probabilities.theta_1.sum()
+print(f"p(theta_1) = {intermediate['p(theta_1)']}")
+#+end_src
+
+#+RESULTS:
+: p(theta_1) = 0.075
+*** What is the conditional probability that a patient has the symptom $x_1$ given that he has the disesase $\theta_1$?
+    This is the probability of patients with symptom $x_1$ in the $\theta_1$ column divided by the total probability in the $\theta_1$ column.
+
+#+begin_src python :session joint :results output :exports both
+intermediate["p(x_1|theta_1)"] = (probabilities.loc["x_1", "theta_1"]
+                                  / probabilities["theta_1"].sum())
+print(f"p(x_1|theta_1) = {intermediate['p(x_1|theta_1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(x_1|theta_1) = 0.067
+*** What is the conditional probability that a patent with disease $\theta_1$ has symptom $x_1$ ($p(\theta_1| x_1)$)?
+    Here's where we get to apply Bayes' Rule.
+\[
+p(\theta_1 | x_1) = \frac{p(x_1|\theta_1) p(\theta_1)}{p(x_1)}
+\]
+
+#+begin_src python :session joint :results output :exports both
+intermediate["p(theta_1|x_1)"] = ((
+    intermediate["p(x_1|theta_1)"] * intermediate["p(theta_1)"])
+                                  /intermediate["p(x_1)"])
+print(f"p(theta_1|x_1) = {intermediate['p(theta_1|x_1)']:.3f}")
+#+end_src
+
+#+RESULTS:
+: p(theta_1|x_1) = 0.014
+
+But, in fact, you can calculate this a little more directly using:
+
+\[
+p(\theta_1|x_1) = \frac{p(x_1, \theta_1)}{p(x_1)}
+\]
+
+#+begin_src python :session joint :results output :exports both
+alternative = intermediate["p(x_1, theta_1)"]/intermediate["p(x_1)"]
+print(f"Original: {intermediate['p(theta_1|x_1)']:.3}, Alternative: {alternative:.3}")
+#+end_src
+
+#+RESULTS:
+: Original: 0.0141, Alternative: 0.0141
+
+** The Probability
+   This is a class to generalize what I did above.
+
+#+begin_src python :session joint :results none
+class JointProbability:
+    """A joint probability inquirer
+
+    Args:
+     counts: table of counts for joint probability
+     hypothesis: column with the hypothesis counts
+     data: row with the data counts
+    """
+    def __init__(self, counts: pandas.DataFrame, hypothesis: str, 
+                 data: str) -> None:
+        self.counts = counts
+        self.hypothesis = hypothesis
+        self.data = data
+        self._sum_total = None
+        self._joint_probability = None
+        self._data_probability = None
+        self._hypothesis_probability = None
+        self._probability_of_data_given_hypothesis = None
+        self._probability_of_hypothesis_given_data = None
+        self._maximum_a_priori = None
+        self._probabilities = None
+        return
+    
+    @property
+    def sum_total(self) -> int:
+        """The total count of entries in the table"""
+        if self._sum_total is None:
+            self._sum_total = self.counts.sum().sum()
+        return self._sum_total
+    
+    @property
+    def probabilities(self) -> pandas.DataFrame:
+        """The counts converted to probabilities"""
+        if self._probabilities is None:
+            self._probabilities = self.counts/self.sum_total
+        return self._probabilities
+    
+    @property
+    def joint_probability(self) -> float:
+        """the joint probability of the data and hypothesis"""
+        if self._joint_probability is None:
+            self._joint_probability = self.probabilities.loc[self.data, 
+                                                             self.hypothesis]
+        return self._joint_probability
+    
+    @property
+    def data_probability(self) -> float:
+        """The probability of the data"""
+        if self._data_probability is None:
+            self._data_probability = self.probabilities.loc[self.data].sum()
+        return self._data_probability
+    
+    @property
+    def hypothesis_probability(self) -> float:
+        """The probability of the hypothesis"""
+        if self._hypothesis_probability is None:
+            self._hypothesis_probability = self.probabilities[
+                self.hypothesis].sum()
+        return self._hypothesis_probability
+    
+    @property
+    def probability_of_data_given_hypothesis(self) -> float:
+        """The probability of our data given the hypothesis"""
+        if self._probability_of_data_given_hypothesis is None:
+            self._probability_of_data_given_hypothesis = (
+                self.probabilities.loc[self.data, self.hypothesis]
+                /self.probabilities[self.hypothesis].sum()
+            )
+        return self._probability_of_data_given_hypothesis
+    
+    @property
+    def probability_of_hypothesis_given_data(self) -> float:
+        """The probability of our hypothesis given our data"""
+        if self._probability_of_hypothesis_given_data is None:
+            self._probability_of_hypothesis_given_data = (
+                self.joint_probability/self.data_probability)
+        return self._probability_of_hypothesis_given_data
+    
+    @property
+    def maximum_a_priori(self) -> str:
+        """The name of the most likely hypothesis"""
+        if self._maximum_a_priori is None:
+            self._maximum_a_priori = (
+                self.probabilities.loc[self.data]
+                /self.data_probability).idxmax()
+        return self._maximum_a_priori
+#+end_src
+
+** Visualize the Maximum A-Priori
+**** The Probabilities
+     The /Maximum A-Priori/ (MAP) is the hypothesis that has the highest probability given the data.
+
+     I wrote the =JointProbability= class intending it to look at only one theta, but I'll use it again and ignore the theta argument.
+#+begin_src python :session joint :results none
+table = JointProbability(joint, "theta_1", data="x_1")
+#+end_src
+
+#+begin_src python :session joint :results output raw :exports both
+height = int((Plot.height - 100)/3)
+likelihood = (table.counts.loc["x_1"]/table.counts.sum()).reset_index().rename(columns={0: "p(x1|theta)"})
+likelihood["theta"] = likelihood.index
+likelihood_spikes = holoviews.Spikes(likelihood, vdims=["p(x1|theta)"], kdims=["theta"]).opts(
+).opts(
+    padding=0,
+    height=height,
+    width=Plot.width,
+    tools=["hover"],
+    ylabel="Likelihood [p(x1|theta)]",
+    labelled=["y"],
+    xaxis="bare",
+)
+
+prior = (table.counts.sum()/table.counts.sum().sum()).reset_index().rename(columns={0: "p(theta)", "index": "theta"})
+prior["theta"] = prior.index
+prior_spikes = holoviews.Spikes(prior, vdims=["p(theta)"], kdims=["theta"]).opts(
+    height = height,
+    width = Plot.width,
+    tools=["hover"],
+    ylabel = "Prior [p(theta)]",
+    labelled=["y"],
+    xaxis="bare",
+)
+
+posterior = ((
+    (likelihood["p(x1|theta)"] * prior["p(theta)"])/table.data_probability)
+             .reset_index().rename(columns={"index": "theta",
+                                            0: "p(theta|x1)"}))
+
+posterior_spikes = holoviews.Spikes(posterior, vdims=["p(theta|x1)"], kdims=["theta"]).opts(
+    height=height,
+    width=Plot.width,
+    tools=["hover"],
+    xticks = 10,
+    ylabel="Posterior [p(theta|x1)]",
+    xlabel="theta",
+)
+
+plot = (likelihood_spikes + prior_spikes + posterior_spikes).cols(1).opts(
+    holoviews.opts.Layout(
+        title="Disease Probabilities for x1"
+    ),
+    holoviews.opts.Spikes(
+        color="blue",
+        line_width=4,
+    )
+)
+Embed(plot=plot, file_name="disease_probabilities")()
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+<object type="text/html" data="disease_probabilities.html" style="width:100%" height=800>
+  <p>Figure Missing</p>
+</object>
+#+end_export
+
+Looking at the plot you can see that $\theta_9$ has the highest likelihood (it is the /Maximum Likelihood Estimate/ or MLE), but $\theta_4$ has the highest posterior probability and so if a person had symptom $x_1$ we should probably diagnose that he or she has $\theta_9$.
+
 * End
+  Before getting to the testing, it should be noted that the joint probability distribution is generally not available, which is why we need Bayes' Rule. I'm not sure I fully understand that point yet, so I'll just keep reading.
+** Tests
+*** Test Our Example
+    These are tests using values from the example.
+#+begin_src python :session joint :results none
+class TestProbability:
+    def __init__(self, table: pandas.DataFrame, data: str="x1", hypothesis: str="theta1"):
+        self.table = table
+        self.data = data
+        self.hypothesis = hypothesis
+        self._p_test = None
+        return
+    
+    @property
+    def p_test(self) -> JointProbability:
+        """The thing under test"""
+        if self._p_test is None:
+            self._p_test = JointProbability(self.table, 
+                                            hypothesis=self.hypothesis,
+                                            data=self.data)
+        return self._p_test
+    
+    def test_construction(self):
+        # given an instance of the probability
+        # when the table is retrieved
+        actual = self.p_test.counts
+        # then it is the expected
+        expect(actual).to(be(self.table))
+        # and the total is the expected
+        expect(self.p_test.sum_total).to(equal(200))
+        return
+    
+    def test_joint_probability(self):
+        # given an instance of the probability
+        # when the p(x1, theta1) is retrieved
+        actual = self.p_test.joint_probability
+        # then it is the expected value
+        expect(isclose(actual, 0.005)).to(be_true)
+        return
+
+    def test_data_probabilitiy(self):
+        # Given an instance of the probability
+        # When p(x1) is retrieved
+        actual = self.p_test.data_probability
+        # Then it is the expected value
+        expect(isclose(actual, 0.355)).to(be_true)
+        return
+
+    def test_hypothesis_probability(self):
+        # Given an instance of the probability
+        # When p(theta1) is retrieved
+        actual = self.p_test.hypothesis_probability
+        # Then it is the expected value
+        expect(isclose(actual, 0.075)).to(be_true)
+        return
+
+    def test_probability_of_data_given_hypothesis(self):
+        # Given an instance of the probability
+        # When p(x1 | theta1) is retrieved
+        actual = self.p_test.probability_of_data_given_hypothesis
+        # Then it is the expected value
+        expect(isclose(actual, 0.067, abs_tol=1e-3)).to(be_true)
+        return
+
+    def test_probability_of_hypothesis_given_data(self):
+        # Given an instance of the probability
+        # When p(theta1 | x1) is retrieved
+        actual = self.p_test.probability_of_hypothesis_given_data
+        # Then it is the expected value
+        expect(isclose(actual, 0.014, abs_tol=1e-3)).to(be_true)
+        return
+    
+    def test_maximum_a_priori(self):
+        # Given an instance of the probability
+        # When the MAP is retrieved
+        actual = self.p_test.maximum_a_priori
+        # Then it is the expected label
+        expect(actual).to(equal("theta4"))
+        return
+
+    def __call__(self):
+        tests = (thing for thing in dir(self) if thing.startswith("test_"))
+        for test in tests:
+            getattr(self, test)()
+        return
+
+test = TestProbability(joint)
+test()
+#+end_src
+
+*** Test Hypothesis
+    Now for some [[https://hypothesis.readthedocs.io/en/latest/numpy.html#pandas][Pandas hypothesis testing]].
+#+begin_src python :session joint :results none
+class TestHypothesis:
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_total_sum(self, table) -> None:
+        # given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # when the sum_total is retrieved
+        actual = test.sum_total
+        
+        # then it is the expected value
+        expect(actual).to(equal(table.sum().sum()))
+        return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_joint_probability(self, table) -> None:
+        # given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # when the joint probability is retrieved
+        actual = test.joint_probability
+        
+        # then it is the expected value
+        expected = test.table.loc[
+            tester.data, tester.hypothesis]/tester.sum_total
+        expect(actual).to(
+            equal(expected))
+        return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_data_probabilitiy(table):
+        # given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # when the probability of the data is retrieved
+        test.data_probability
+        
+        # then it is the expected value
+        expect(actual).to(
+            equal(test.table.loc[test.data].sum()/test.sum_total))
+        return
+    
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_hypothesis_probabilitiy(table):
+        # Given a JointProbability instance    
+        test = self.get_instance(table)
+        
+        # When the probability of the hypothesis is retrieved
+        actual = test.hypothesis_probability
+        
+        # Then it is the expected value
+        expect(actual).to(equal(
+            test.table[test.hypothesis].sum()/test.sum_total
+        ))
+        return
+    
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_probabilitiy_of_data_given_hypothesis(table):
+        # Given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # When p(data | hypothesis) is retrieved
+        actual = test.probability_of_data_given_hypothesis
+        
+        # Then it is the expected data
+        expect(actual).to(equal(
+            test.joint_probability/test.hypothesis_probability
+        ))
+        return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_probabilitiy_of_hypothesis_given_data(table):
+        # Given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # When p(hypothesis | data) is retrieved
+        actual = test.probability_of_hypothesis_given_data
+        
+        # Then it is the expected value
+        expect(actual).to(equal(
+            (test.probability_of_data_given_hypothesis 
+             ,* test.probability_of_hypothesis)/test.probability_of_data
+        ))
+        return
+    
+    @given(data_frames(columns=columns(10, dtype=int),
+                       index=range_indexes(min_size=1)))
+    def test_maximum_a_priori(table):
+        # Given a JointProbability instance
+        test = self.get_instance(table)
+        
+        # When the MAP is retrieved
+        actual = test.maximum_a_priori
+        
+        # Then it is the expected value
+        best_column = None
+        best_so_far = 0
+        for column in test.table.columns:
+            probability = test.probabilities[
+                test.data, test.hypothesis]/test.probability_of_data
+            if probability > best_column:
+                best_column = column
+        expect(actual).to(equal(best_column))
+        return
+            
+    def get_instance(self, table) -> JointProbability:
+        data = table.sample().index
+        hypothesis = random.sample(list(table.columns), 1)[0]
+        return JointProbability(table, data=data, hypothesis=hypothesis)
+    
+    def __call__(self) -> None:
+        self.test_total_sum()
+        return
+
+test_hypothesis = TestHypothesis()
+test_hypothesis()
+#+end_src
 ** Source
 1. Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p. 

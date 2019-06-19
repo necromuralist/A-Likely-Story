@@ -1,0 +1,22 @@
+#+BEGIN_COMMENT
+.. title: Interesting Sources
+.. slug: interesting-sources
+.. date: 2019-06-16 15:19:12 UTC-07:00
+.. tags: reference,links,sources
+.. category: Reference
+.. link: 
+.. description: A list of sources.
+.. type: text
+.. status: 
+.. updated: 
+
+#+END_COMMENT
+#+OPTIONS: ^:{}
+#+OPTIONS: H:5
+#+TOC: headlines 2
+#+BEGIN_SRC ipython :session joint :results none :exports none
+%load_ext autoreload
+%autoreload 2
+#+END_SRC
+* Interesting Authors
+  - [[http://timharford.com/][The Undercover Economist]]
