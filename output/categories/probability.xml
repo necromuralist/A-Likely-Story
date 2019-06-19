@@ -1,54 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about probability)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/probability.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Tue, 18 Jun 2019 05:41:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Joint Probability Functions</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>A Likely Story (Posts about probability)</title><link>https://necromuralist.github.io/A-Likely-Story/</link><description></description><atom:link href="https://necromuralist.github.io/A-Likely-Story/categories/probability.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:necromuralist@protonmail.com"&gt;Cloistered Monkey&lt;/a&gt; </copyright><lastBuildDate>Wed, 19 Jun 2019 01:14:16 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Joint Probability Functions</title><link>https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/</link><dc:creator>Cloistered Monkey</dc:creator><description>&lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;div id="text-table-of-contents"&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org6037260"&gt;Beginning&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org0667afe"&gt;Beginning&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org3aaa1b1"&gt;Imports&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org11db3bf"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org93887cb"&gt;Imports&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org0fbd7a6"&gt;The Plotting&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org40986f8"&gt;Middle&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org501983f"&gt;Middle&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org8fdb188"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org345ec47"&gt;Disesases And Symptoms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgb8d3c80"&gt;The Probability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org8f57e55"&gt;The Joint Probability Function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org2b951ec"&gt;Disesases And Symptoms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org6af146e"&gt;The Probability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org915d06e"&gt;Visualize the Maximum A-Priori&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org33812ef"&gt;End&lt;/a&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org20d8787"&gt;End&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org4499f78"&gt;Tests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgaf475a5"&gt;Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#orgde75329"&gt;Tests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/#org1f41f5e"&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org6037260" class="outline-2"&gt;
-&lt;h2 id="org6037260"&gt;Beginning&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org6037260"&gt;
+&lt;div id="outline-container-org0667afe" class="outline-2"&gt;
+&lt;h2 id="org0667afe"&gt;Beginning&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org0667afe"&gt;
 &lt;p&gt;
-This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
+This is another re-working of an example from &lt;a href="http://jim-stone.staff.shef.ac.uk/BookBayes2012/BayesRuleBookMain.html"&gt;Bayes' Rule: A Tutorial Introduction to Bayesian Analysis&lt;/a&gt;. This looks at the case where we have more than one input and more than one possible output value. This assumes the possible outputs are discrete. 
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org3aaa1b1" class="outline-3"&gt;
-&lt;h3 id="org3aaa1b1"&gt;Imports&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org3aaa1b1"&gt;
+&lt;div id="outline-container-org93887cb" class="outline-3"&gt;
+&lt;h3 id="org93887cb"&gt;Imports&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org93887cb"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org64302ce" class="outline-4"&gt;
-&lt;h4 id="org64302ce"&gt;Python&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org64302ce"&gt;
+&lt;div id="outline-container-org7faefe9" class="outline-4"&gt;
+&lt;h4 id="org7faefe9"&gt;Python&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org7faefe9"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from argparse import Namespace
 from functools import partial
 from math import isclose
 from pathlib import Path
+import random
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgaa45f1d" class="outline-4"&gt;
-&lt;h4 id="orgaa45f1d"&gt;PyPi&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgaa45f1d"&gt;
+&lt;div id="outline-container-org7981ae1" class="outline-4"&gt;
+&lt;h4 id="org7981ae1"&gt;PyPi&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org7981ae1"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from bokeh.models import HoverTool
 from expects import (
     be,
@@ -56,27 +58,29 @@ from expects import (
     equal,
     expect,
 )
+from hypothesis import given
+from hypothesis.extra.pandas import columns, data_frames, range_indexes
 from tabulate import tabulate
 import holoviews
 import pandas
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orga0c5b0d" class="outline-4"&gt;
-&lt;h4 id="orga0c5b0d"&gt;My Stuff&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orga0c5b0d"&gt;
+&lt;div id="outline-container-orgaed3124" class="outline-4"&gt;
+&lt;h4 id="orgaed3124"&gt;My Stuff&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgaed3124"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;from graeae.visualization import EmbedHoloview
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org11db3bf" class="outline-3"&gt;
-&lt;h3 id="org11db3bf"&gt;The Plotting&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org11db3bf"&gt;
+&lt;div id="outline-container-org0fbd7a6" class="outline-3"&gt;
+&lt;h3 id="org0fbd7a6"&gt;The Plotting&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org0fbd7a6"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org6cad1a8" class="outline-4"&gt;
-&lt;h4 id="org6cad1a8"&gt;The Holoviews Embedder&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org6cad1a8"&gt;
+&lt;div id="outline-container-org1124269" class="outline-4"&gt;
+&lt;h4 id="org1124269"&gt;The Holoviews Embedder&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org1124269"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SLUG = "joint-probability-functions"
 output = Path("../../files/posts/bayes/")/SLUG
 holoviews.extension("bokeh")
@@ -85,9 +89,9 @@ Embed = partial(EmbedHoloview, folder_path = output)
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb6a9b0a" class="outline-4"&gt;
-&lt;h4 id="orgb6a9b0a"&gt;The Plot Settings&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgb6a9b0a"&gt;
+&lt;div id="outline-container-orgd42abd7" class="outline-4"&gt;
+&lt;h4 id="orgd42abd7"&gt;The Plot Settings&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgd42abd7"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plot = Namespace(
     width=800,
     height=800,
@@ -97,16 +101,16 @@ Embed = partial(EmbedHoloview, folder_path = output)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org40986f8" class="outline-2"&gt;
-&lt;h2 id="org40986f8"&gt;Middle&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org40986f8"&gt;
+&lt;div id="outline-container-org501983f" class="outline-2"&gt;
+&lt;h2 id="org501983f"&gt;Middle&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org501983f"&gt;
 &lt;p&gt;
 Although Bayes Rule is often shown as being a binary hypothesis (you have a disease or you don't) with one data input (you tested positive for the disease), in most cases you will have more than one of each. Creating a table of counts/probabilities will make it easier to work with these hypotheses and data.
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org8fdb188" class="outline-3"&gt;
-&lt;h3 id="org8fdb188"&gt;The Joint Probability Function&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org8fdb188"&gt;
+&lt;div id="outline-container-org8f57e55" class="outline-3"&gt;
+&lt;h3 id="org8f57e55"&gt;The Joint Probability Function&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org8f57e55"&gt;
 &lt;p&gt;
 The &lt;b&gt;Joint Probability Function&lt;/b&gt; is the distribution of input and output probabilities for each joint probability. To find the probabilities we need to take measurement counts. If we had two types of data and three hypotheses we could write out our counts in a table like this.
 &lt;/p&gt;
@@ -161,6 +165,7 @@ The &lt;b&gt;Joint Probability Function&lt;/b&gt; is the distribution of input a
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
 
 &lt;p&gt;
 The intersection of data and hypothesis is the count we got for our joint probability calculation. To get the actual joint probability we divide the numbers by the total count.
@@ -218,74 +223,18 @@ The intersection of data and hypothesis is the count we got for our joint probab
 &lt;/table&gt;
 
 &lt;p&gt;
-So, for instance, the joint probability \(p(x_2, \theta_2)\) is 0.1. The summary values at the bottom are the &lt;i&gt;marginal likelihood of the hypotheses&lt;/i&gt; - \(p(\theta_2) = 0.4\) - and the summary values on the far right are the &lt;i&gt;marginal likelihood of the data&lt;/i&gt; - \(p(x_2) = 0.7\).
+This table represents the &lt;a href="https://en.wikipedia.org/wiki/Joint_probability_distribution?oldformat=true"&gt;Joint Probability Distribution&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+So if we look up the joint probability for \(p(x_2, \theta_2)\) in the table we find the intersection of \(x_2\) and \(\theta_2\) in the table and find that it is 0.4. The summary values at the bottom are the &lt;i&gt;marginal likelihood of the hypotheses&lt;/i&gt; - e.g. \(p(\theta_2) = 0.4\) and the summary values on the far right are the &lt;i&gt;marginal likelihood of the data&lt;/i&gt; - e.g. \(p(x_2) = 0.7\).
 &lt;/p&gt;
 &lt;/div&gt;
-
-&lt;div id="outline-container-org47858fa" class="outline-4"&gt;
-&lt;h4 id="org47858fa"&gt;Visualizing It&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org47858fa"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;data = pandas.DataFrame([
-    [2, 1],
-    [0, 4],
-    [1, 2]
-], columns=["x_1", "x_2"])
-data["theta_likelihood"] = data.x_1 + data.x_2
-data = data.reset_index().rename(columns={"index": "theta"})
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;height = Plot.height - 300
-scatter_1 = holoviews.Scatter(data, vdims=["x_1"], kdims=["theta"]).opts(
-    jitter=0.1,
-    size=holoviews.dim("x_1")*10 + 5,
-).opts(
-    padding=0.5,
-    height=height,
-    width=Plot.width,
-    tools=["hover"],
-    xticks=3,
-    yticks=3,
-)
-
-scatter_2 = holoviews.Scatter(data, vdims=["x_2"], kdims=["theta"]).opts(
-    jitter=0.1,
-    size=holoviews.dim("x_2")*10 + 5,
-).opts(
-    padding=0.5,
-    height=height,
-    width=Plot.width,
-    tools=["hover"],
-    xticks=3,
-    yticks=3,
-)
-
-scattered = (scatter_1 * scatter_2).opts(ylabel="X")
-spikes = holoviews.Spikes(data, "theta", "theta_likelihood").opts(
-    width=Plot.width,
-    xaxis=None,
-    yticks=4,
-    height=200,
-)
-
-x_likelihood = data[["x_1", "x_2"]].sum().reset_index().rename(columns={0: "X Likelihood"})
-
-spikes_2 = holoviews.Spikes(x_likelihood, "index", "X Likelihood").opts(
-height=height)
-plot = scattered &amp;lt;&amp;lt; spikes_2 &amp;lt;&amp;lt; spikes
-# plot = ((spikes + scattered ).cols(1) + spikes_2).opts(title="Theta vs X")
-Embed(plot=plot, file_name="theta_vs_x1_toy")()
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;object type="text/html" data="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/theta_vs_x1_toy.html" style="width:100%" height="800"&gt;
-  &lt;p&gt;Figure Missing&lt;/p&gt;
-&lt;/object&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org345ec47" class="outline-3"&gt;
-&lt;h3 id="org345ec47"&gt;Disesases And Symptoms&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org345ec47"&gt;
+&lt;div id="outline-container-org2b951ec" class="outline-3"&gt;
+&lt;h3 id="org2b951ec"&gt;Disesases And Symptoms&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org2b951ec"&gt;
 &lt;p&gt;
 Suppose you have ten diseases and four symptoms and you count the number of patients that have a disease and a symptom. You can show the Joint Probability as a table.
 &lt;/p&gt;
@@ -308,11 +257,11 @@ assert all(joint.T.sum() == pandas.Series([37, 71, 55, 37],
 assert joint.T.sum().sum() == 200
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org1ff28b3" class="outline-4"&gt;
-&lt;h4 id="org1ff28b3"&gt;Finding a Joint Probability&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org1ff28b3"&gt;
+&lt;div id="outline-container-org68b06dc" class="outline-4"&gt;
+&lt;h4 id="org68b06dc"&gt;Finding a Joint Probability&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org68b06dc"&gt;
 &lt;p&gt;
-&lt;i&gt;What is the /joint probability&lt;/i&gt; that a patient has the symptom \(x_1\) and disease \(\theta_1\) (\(p(x_1, \theta_1)\))? To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.
+What is the &lt;i&gt;joint probability&lt;/i&gt; that a patient has the symptom \(x_1\) and disease \(\theta_1\) (\(p(x_1, \theta_1)\))? To answer this we can look up the value in the row for \(x_1\) and the column for \(\theta_1\) and divide it by the total number of patients.
 &lt;/p&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;total = joint.sum().sum()
@@ -433,9 +382,9 @@ p(x1, theta1) = 0.005
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org5d49774" class="outline-4"&gt;
-&lt;h4 id="org5d49774"&gt;What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org5d49774"&gt;
+&lt;div id="outline-container-org6a0ae9c" class="outline-4"&gt;
+&lt;h4 id="org6a0ae9c"&gt;What is the probability \(p(x_1)\) that a patient has symptoms \(x_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org6a0ae9c"&gt;
 &lt;p&gt;
 You can calculate this by counting all the patients that had symptom \(x_1\) (the sum of the row in the table across all thetas) and dividing by the total sample size.
 &lt;/p&gt;
@@ -450,9 +399,9 @@ p(x1) = 0.355
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org947e7a1" class="outline-4"&gt;
-&lt;h4 id="org947e7a1"&gt;What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org947e7a1"&gt;
+&lt;div id="outline-container-org228070f" class="outline-4"&gt;
+&lt;h4 id="org228070f"&gt;What is the probability \(p(\theta_1)\) that a patient has the disease \(\theta_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org228070f"&gt;
 &lt;p&gt;
 This calculation is similar to calculating the probability of symptom \(x_1\) except instead of using a row total you use the column for \(\theta_1\).
 &lt;/p&gt;
@@ -466,9 +415,9 @@ p(theta_1) = 0.075
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgb852ceb" class="outline-4"&gt;
-&lt;h4 id="orgb852ceb"&gt;What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgb852ceb"&gt;
+&lt;div id="outline-container-orga93bc8e" class="outline-4"&gt;
+&lt;h4 id="orga93bc8e"&gt;What is the conditional probability that a patient has the symptom \(x_1\) given that he has the disesase \(\theta_1\)?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orga93bc8e"&gt;
 &lt;p&gt;
 This is the count of patients with symptom \(x_1\) in the \(\theta_1\) column divided by the total number in the \(\theta_1\) column.
 &lt;/p&gt;
@@ -483,9 +432,9 @@ p(x1|theta_1) = 0.067
 &lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org0319271" class="outline-4"&gt;
-&lt;h4 id="org0319271"&gt;What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-org0319271"&gt;
+&lt;div id="outline-container-org5fef793" class="outline-4"&gt;
+&lt;h4 id="org5fef793"&gt;What is the conditional probability that a patent with disease \(\theta_1\) has symptom \(x_1\) (\(p(\theta_1| x_1)\))?&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org5fef793"&gt;
 &lt;p&gt;
 Here's where we get to apply Bayes' Rule.
 \[
@@ -526,9 +475,9 @@ Original: 0.0141, Alternative: 0.0141
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-orgb8d3c80" class="outline-3"&gt;
-&lt;h3 id="orgb8d3c80"&gt;The Probability&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgb8d3c80"&gt;
+&lt;div id="outline-container-org6af146e" class="outline-3"&gt;
+&lt;h3 id="org6af146e"&gt;The Probability&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org6af146e"&gt;
 &lt;p&gt;
 This is just something to generalize what I did above.
 &lt;/p&gt;
@@ -619,64 +568,92 @@ This is just something to generalize what I did above.
 	return self._maximum_a_priori
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-
-&lt;div id="outline-container-orgf88195c" class="outline-4"&gt;
-&lt;h4 id="orgf88195c"&gt;Visualize the MAP&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-orgf88195c"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org013234b" class="outline-5"&gt;
-&lt;h5 id="org013234b"&gt;The Probabilities&lt;/h5&gt;
-&lt;div class="outline-text-5" id="text-org013234b"&gt;
+
+&lt;div id="outline-container-org915d06e" class="outline-3"&gt;
+&lt;h3 id="org915d06e"&gt;Visualize the Maximum A-Priori&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org915d06e"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org7d69587" class="outline-5"&gt;
+&lt;h5 id="org7d69587"&gt;The Probabilities&lt;/h5&gt;
+&lt;div class="outline-text-5" id="text-org7d69587"&gt;
 &lt;p&gt;
 I'll use the &lt;code&gt;JointProbability&lt;/code&gt; class, although in this case aren't looking at values for a specific theta.
 &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;table = JointProbability(joint, "theta1", data="x1")
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;height = int((Plot.height - 300)/3)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;height = int((Plot.height - 100)/3)
 likelihood = (table.counts.loc["x1"]/table.counts.sum()).reset_index().rename(columns={0: "x1"})
+likelihood["index"] = likelihood.index
 likelihood_spikes = holoviews.Spikes(likelihood, vdims=["x1"], kdims=["index"]).opts(
 ).opts(
     padding=0,
     height=height,
     width=Plot.width,
     tools=["hover"],
-    ylabel="Likelihood (p(x|theta))"
+    ylabel="Likelihood [p(x1|theta)]",
+    labelled=["y"],
+    xaxis="bare",
 )
 
 prior = (table.counts.sum()/table.counts.sum().sum()).reset_index().rename(columns={0: "x1"})
+prior["index"] = prior.index
 prior_spikes = holoviews.Spikes(prior, vdims=["x1"], kdims=["index"]).opts(
     height = height,
     width = Plot.width,
+    tools=["hover"],
+    ylabel = "Prior [p(theta)]",
+    labelled=["y"],
+    xaxis="bare",
 )
 
-posterior = ((likelihood["x1"] * prior["x1"])/table.data_probability).reset_index()
+posterior = ((likelihood["x1"] * prior["x1"])/table.data_probability).reset_index().rename(columns={"index": "theta"})
 
-posterior_spikes = holoviews.Spikes(posterior, vdims=["x1"], kdims=["index"]).opts(
+posterior_spikes = holoviews.Spikes(posterior, vdims=["x1"], kdims=["theta"]).opts(
     height=height,
     width=Plot.width,
+    tools=["hover"],
+    xticks = 10,
+    ylabel="Posterior [p(theta|x1)]",
+    xlabel="theta",
 )
 
-plot = (likelihood_spikes + prior_spikes + posterior_spikes).cols(1).opts(title="Disease Probabilities for x1")
+plot = (likelihood_spikes + prior_spikes + posterior_spikes).cols(1).opts(
+    holoviews.opts.Layout(
+	title="Disease Probabilities for x1"
+    ),
+    holoviews.opts.Spikes(
+	color="blue",
+	line_width=4,
+    )
+)
 Embed(plot=plot, file_name="disease_probabilities")()
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;object type="text/html" data="https://necromuralist.github.io/A-Likely-Story/posts/bayes/joint-probability-functions/disease_probabilities.html" style="width:100%" height="800"&gt;
   &lt;p&gt;Figure Missing&lt;/p&gt;
 &lt;/object&gt;
-&lt;/div&gt;
+
+&lt;p&gt;
+Looking at the plot you can see that \(\theta_9\) has the highest likelihood, but \(\theta_4\) has the highest posterior probability and so if a person had symptom \(x_1\) we should probably diagnose that he or she has \(\theta_9\).
+&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id="outline-container-org33812ef" class="outline-2"&gt;
-&lt;h2 id="org33812ef"&gt;End&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-org33812ef"&gt;
+&lt;div id="outline-container-org20d8787" class="outline-2"&gt;
+&lt;h2 id="org20d8787"&gt;End&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-org20d8787"&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-org4499f78" class="outline-3"&gt;
-&lt;h3 id="org4499f78"&gt;Tests&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-org4499f78"&gt;
+&lt;div id="outline-container-orgde75329" class="outline-3"&gt;
+&lt;h3 id="orgde75329"&gt;Tests&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-orgde75329"&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-orgdda1044" class="outline-4"&gt;
+&lt;h4 id="orgdda1044"&gt;Test Our Example&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-orgdda1044"&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;class TestProbability:
     def __init__(self, table: pandas.DataFrame, data: str="x1", hypothesis: str="theta1"):
 	self.table = table
@@ -757,16 +734,86 @@ Embed(plot=plot, file_name="disease_probabilities")()
 	for test in tests:
 	    getattr(self, test)()
 	return
-&lt;/pre&gt;&lt;/div&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;test = TestProbability(joint)
+test = TestProbability(joint)
 test()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="outline-container-orgaf475a5" class="outline-3"&gt;
-&lt;h3 id="orgaf475a5"&gt;Source&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-orgaf475a5"&gt;
+
+&lt;div id="outline-container-org9eb252b" class="outline-4"&gt;
+&lt;h4 id="org9eb252b"&gt;Test Hypothesis&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-org9eb252b"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;class TestHypothesis:
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_total_sum(self, table) -&amp;gt; None:
+	probability = self.get_instance(table)
+	expect(probability.sum_total).to(equal(table.sum().sum()))
+	return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_joint_probability(self, table) -&amp;gt; None:
+	tester = self.get_instance(table)
+	expect(tester.joint_probability).to(
+	    equal(tester.probabilities.loc[tester.data, tester.hypothesis]))
+	return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_data_probabilitiy(table):
+	test = self.get_instance(table)
+	expect(test.data_probability).to(
+	    equal(test.table.loc[test.data].sum()/test.sum_total))
+	return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_hypothesis_probabilitiy(table):
+	test = self.get_instance(table)
+	expect(test.hypothesis_probability).to(equal(
+	    test.table[test.hypothesis].sum()/test.sum_total
+	))
+	return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_probabilitiy_of_data_given_hypothesis(table):
+	test = self.get_instance(table)
+	expect(test.probability_of_data_given_hypothesis).to(equal(
+	    test.joint_probability/test.hypothesis_probability
+	))
+	return
+
+    @given(data_frames(columns=columns(10, dtype=int),
+		       index=range_indexes(min_size=1)))
+    def test_probabilitiy_of_hypothesis_given_data(table):
+	test = self.get_instance(table)
+	expect(test.probability_of_hypothesis_given_data).to(equal(
+	    (test.probability_of_data_given_hypothesis 
+	     * test.probability_of_hypothesis)/test.probability_of_data
+	))
+	return
+
+    def get_instance(self, table) -&amp;gt; JointProbability:
+	data = table.sample().index
+	hypothesis = random.sample(list(table.columns), 1)[0]
+	return JointProbability(table, data=data, hypothesis=hypothesis)
+
+    def __call__(self) -&amp;gt; None:
+	self.test_total_sum()
+	return
+
+test_hypothesis = TestHypothesis()
+test_hypothesis()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-org1f41f5e" class="outline-3"&gt;
+&lt;h3 id="org1f41f5e"&gt;Source&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-org1f41f5e"&gt;
 &lt;ol class="org-ol"&gt;
 &lt;li&gt;Stone JV. Bayes’ rule: a tutorial introduction to Bayesian analysis. First edition, third printing [with corrections]. Sheffield: Sebtel Press; 2014. 170 p.&lt;/li&gt;
 &lt;/ol&gt;
